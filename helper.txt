@@ -1,0 +1,9 @@
+[
+    { "m": { "x": 953, "y": 1073 } }, # To move the cursor to a given location
+    { "c": { "x": 953, "y": 1073 } }, # To click something at a given location
+    { "w": "Hello World" },           # To type a text
+    { "k": "enter" },                 # To hit a key
+    { "s": 10 },                      # To pause for an amount of time
+    { "d": { "x": 303, "y": 271 } },  # To drag cursor to a guven location
+    { "p": "example\\image.png" }     # To wait till a certain image appears on screen
+]
