@@ -1,5 +1,4 @@
 # Clicker
-This project was created in a day,
 
 To run the project on your local device you would need to install python.
 
@@ -9,4 +8,4 @@ To run the project on your local device you would need to install python.
   - json
   - time
  
-If using file to upload check the format example provided in the repository.
+If using file to input check the format example named "Helper.txt"
