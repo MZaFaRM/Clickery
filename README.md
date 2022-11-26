@@ -67,8 +67,6 @@ Typing speed, Clicking speed, Dragging speed can be modified from the [```sample
 
 This project uses sqlite3 as the database to store all the successful executions from the last ```reset.py``` upto this point,
 
-https://www.sqlite.org/download.html
-
 schema of the database used in the project located at [```assets\database\history.db```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/database/history.db) is
 ```
 CREATE TABLE history (
@@ -78,10 +76,17 @@ CREATE TABLE history (
 );
 ```
 
+sqlite3 can be downloaded from
+
+https://www.sqlite.org/download.html
+
+Although, downloading is not necessary for successful execution of the software, given certain features may be inaccessible.
+
+
 ## Additional Features
 
 - The very last successful execution is saved at [```assets\json\history.json```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/json/history.json).
-- All successful actions from the last ```reset.py``` to the current date is saved in the database, refer [Database](https://github.com/MZaFaRM/CLICKERY/blob/main/README.md#database) section for details.
+- All successful actions from the last ```reset.py``` to the current date is saved in a database, refer [Database](https://github.com/MZaFaRM/CLICKERY/blob/main/README.md#database) section for details.
 
 
 ## Screenshots
