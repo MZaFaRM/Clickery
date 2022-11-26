@@ -15,22 +15,22 @@ execute the given command in the terminal
 
 ```py install.py```
 
-which would install all the required libraries to run the project, then execute the given command in the terminal to start the program.
+which would install all the required libraries to run the project, then execute this command in the terminal to start the program.
 
 ```py main.py```
 #### Mode of Input
 
-After which you will be provided with two choice for manual input and file input, if choosing file input please refer the ```format.txt``` to understand how to properly format your json file
+After which you will be provided with two choice for manual input and file input, if choosing file input please refer the [```Guide\format```](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format) to understand how to properly format your json file.
 
  *Note: only json files are supported for file input*
 
- For manual input insert the required calls to record yout action, eg:
+ For manual input insert the required calls to record your action, eg:
  
   ```"1"``` for move
 
    ```"0"``` for screenshot
 
-   after recording insert ```esc``` to go to the next step
+   After recording insert ```esc``` to go to the next step.
 
    #### Post Input
    After you have recorded the actions, it can be then further modified through *looping* or *replacing* before execution. If you have no modifications to make, start execution with ```space```.
@@ -40,7 +40,7 @@ After which you will be provided with two choice for manual input and file input
 ## Developing
 
 #### Built with
-Python version - Python ```3.11.0```
+Python version - Python [```3.11.0```](https://www.python.org/downloads/)
 
 Given below are all the libraries required to run the project
 
