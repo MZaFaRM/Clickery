@@ -13,11 +13,16 @@ This is an AUTOGUI software designed to make it easier to use AUTOGUI without co
 
 execute the given command in the terminal
 
-```py install.py```
+```
+py install.py
+```
 
 which would install all the required libraries to run the project, then execute this command in the terminal to start the program.
 
-```py main.py```
+```
+py main.py
+```
+
 #### Mode of Input
 
 After which you will be provided with two choice for manual input and file input, if choosing file input please refer the [```Guide\format```](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format) to understand how to properly format your json file.
@@ -65,7 +70,7 @@ Typing speed, Clicking speed, Dragging speed can be modified from the [```sample
  
 ## Database
 
-This project uses [```sqlite3```](https://www.sqlite.org/index.html) as the database to store all the successful executions from the last ```reset.py``` upto this point,
+This project uses ```sqlite3``` as the database to store all the successful executions from the last ```reset.py``` upto this point,
 
 schema of the database used in the project located at [```assets\database\history.db```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/database/history.db) is
 ```
@@ -80,7 +85,7 @@ CREATE TABLE history (
 
 https://www.sqlite.org/download.html
 
-Although, downloading is not necessary for successful execution of the software, not doing so may make certain features may be inaccessible.
+Although, downloading is not necessary for successful execution of the software, not doing so may make certain features inaccessible.
 
 
 ## Additional Features
