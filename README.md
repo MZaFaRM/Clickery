@@ -80,8 +80,10 @@ CREATE TABLE history (
 
 ## Screenshots
 
-<img width="960" alt="Clickery_2" src="https://user-images.githubusercontent.com/98420006/204108909-1cdb461f-bdb8-4218-b0c4-f88fc89ebaf8.png">
-<img width="960" alt="Clickery" src="https://user-images.githubusercontent.com/98420006/204108913-0297cfdb-142c-4b1c-a0e8-a0c1b417e607.png">
+<img width="960" alt="Clickery_2" src="https://user-images.githubusercontent.com/98420006/204109098-2293428f-6807-495e-aeec-723ad2aac875.png">
+
+<img width="960" alt="Clickery" src="https://user-images.githubusercontent.com/98420006/204109092-a2f0f8bf-0a0a-4f59-a683-99f43ac544d7.png">
+
 
 ## Documentation
 
