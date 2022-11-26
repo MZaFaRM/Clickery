@@ -69,7 +69,7 @@ CREATE TABLE history (
 ```
 ## License
 
-#### [MIT License](https:something.com)
+#### [MIT License](https://github.com/MZaFaRM/CLICKERY/blob/main/LICENSE)
 *Copyright (c) 2022 Muhammed Zafar M. M.*
 ## Documentation
 
