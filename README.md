@@ -49,10 +49,10 @@ Given below are all the libraries required to run the project
 
 ## Configurations
 
-Typing speed, Clicking speed, Dragging speed can be modified from the ```sample\universal\config.py```.
+Typing speed, Clicking speed, Dragging speed can be modified from the [```sample\universal\config.py```](https://github.com/MZaFaRM/CLICKERY/blob/main/sample/universal/config.py).
 ## Navigation
 
- Checkout ```\structure``` for help in navigating through the project directory.
+ Checkout [```\structure```](https://github.com/MZaFaRM/CLICKERY/tree/main/structure) for help in navigating through the project directory.
  
  
  ![Directory Structure](https://raw.githubusercontent.com/MZaFaRM/CLICKERY/5b1a869ad83411e924052c6d1e7e95460556fb4b/structure/structure.dot.svg)
@@ -63,7 +63,7 @@ This project uses sqlite3 as the database to store all the successful executions
 
 https://www.sqlite.org/download.html
 
-schema of the database used in the project located at ```assets\database\history.db``` is
+schema of the database used in the project located at [```assets\database\history.db```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/database/history.db) is
 ```
 CREATE TABLE history (
     actions_id INTEGER NOT NULL,
@@ -71,27 +71,28 @@ CREATE TABLE history (
     PRIMARY KEY (actions_id)
 );
 ```
-## License
-
-#### [MIT License](https://github.com/MZaFaRM/CLICKERY/blob/main/LICENSE)
-*Copyright (c) 2022 Muhammed Zafar M. M.*
-## Documentation
-
-[Guide](https://linktodocumentation)
-
-[File Input formatting](guide.json)
-
 
 ## Additional Features
 
-- The very last successful execution is saved at ```assets\json\history.json```.
+- The very last successful execution is saved at [```assets\json\history.json```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/json/history.json).
 - All successful actions from the last ```reset.py``` to the current date is saved in the database, refer [Database](https://github.com/MZaFaRM/CLICKERY/blob/main/README.md#database) section for details.
 
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+<img width="960" alt="Clickery_2" src="https://user-images.githubusercontent.com/98420006/204108909-1cdb461f-bdb8-4218-b0c4-f88fc89ebaf8.png">
+<img width="960" alt="Clickery" src="https://user-images.githubusercontent.com/98420006/204108913-0297cfdb-142c-4b1c-a0e8-a0c1b417e607.png">
 
+## Documentation
+
+[Guide](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/guide)
+
+[Format](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format)
+
+## License
+
+#### [MIT License](https://github.com/MZaFaRM/CLICKERY/blob/main/LICENSE)
+*Copyright (c) 2022 Muhammed Zafar M. M.*
 
 ## Feedback
 
