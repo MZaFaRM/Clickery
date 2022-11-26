@@ -85,7 +85,7 @@ CREATE TABLE history (
 ## Additional Features
 
 - The very last successful execution is saved at ```assets\json\history.json```.
-- All successful actions from the last ```reset.py``` to the current date is saved in the database, refer Database section for details.
+- All successful actions from the last ```reset.py``` to the current date is saved in the database, refer [Database](https://github.com/MZaFaRM/CLICKERY/blob/main/README.md#database) section for details.
 
 
 ## Screenshots
