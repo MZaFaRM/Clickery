@@ -35,7 +35,7 @@ After which you will be provided with two choice for manual input and file input
    #### Post Input
    After you have recorded the actions, it can be then further modified through *looping* or *replacing* before execution. If you have no modifications to make, start execution with ```space```.
 
-   *Note: deeper details regarding each function and their usage is provided in the ```guide```*
+   *Note: deeper details regarding each function and their usage is provided in the* [```guide```](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/guide)
 
 ## Developing
 
