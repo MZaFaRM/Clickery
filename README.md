@@ -53,7 +53,10 @@ Typing speed, Clicking speed, Dragging speed can be modified from the ```sample\
 ## Navigation
 
  Checkout ```\structure``` for help in navigating through the project directory.
+ 
+ 
  ![Directory Structure](https://raw.githubusercontent.com/MZaFaRM/CLICKERY/5b1a869ad83411e924052c6d1e7e95460556fb4b/structure/structure.dot.svg)
+ 
 ## Database
 
 This project uses sqlite3 as the database to store all the successful executions from the last ```reset.py``` upto this point,
