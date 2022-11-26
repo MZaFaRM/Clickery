@@ -80,7 +80,7 @@ sqlite3 can be downloaded from
 
 https://www.sqlite.org/download.html
 
-Although, downloading is not necessary for successful execution of the software, given certain features may be inaccessible.
+Although, downloading is not necessary for successful execution of the software, not doing so may make certain features may be inaccessible.
 
 
 ## Additional Features
