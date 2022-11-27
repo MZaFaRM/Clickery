@@ -59,22 +59,30 @@ def MoveCursor():
     return action
 
 
-def ClickCursor():
+def LeftClickCursor():
 
     # Declares dictionaries
     action = {}
-    current_position = {}
-
-    # Saves position
-    x, y = pyautogui.position()
-    current_position["x"] = x
-    current_position["y"] = y
 
     # Saves action
-    action["click"] = current_position
+    action["l-click"] = 1
 
     # For user
-    print(f" :Rose:  [#29C7AC BOLD]CLICK AT[/#29C7AC BOLD] {current_position}")
+    print(f" :Rose:  [#29C7AC BOLD]LEFT CLICK AT POSITION[/#29C7AC BOLD]")
+
+    return action
+
+
+def RightClickCursor():
+
+    # Declares dictionaries
+    action = {}
+
+    # Saves action
+    action["r-click"] = 1
+
+    # For user
+    print(f" :Rose:  [#29C7AC BOLD]RIGHT CLICK AT POSITION[/#29C7AC BOLD]")
 
     return action
 
