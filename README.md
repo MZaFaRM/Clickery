@@ -33,7 +33,7 @@ After which you will be provided with two choice for manual input and file input
  
   ```"1"``` for move
 
-   ```"0"``` for screenshot
+   ```"5"``` for text input 
 
    After recording insert ```esc``` to go to the next step.
 
