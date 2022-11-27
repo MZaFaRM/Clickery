@@ -56,7 +56,8 @@ def file_format(record):
     # checks the keys in the file
     actions = [
         "move",
-        "click",
+        "l-click",
+        "r-click",
         "drag",
         "write",
         "image",

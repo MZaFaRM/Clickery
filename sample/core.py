@@ -59,10 +59,10 @@ def startup(argv):
             return
     # For manual input
     elif keyboardinput in ["right shift", "shift"]:
-        
+
         print_menu()
         manual_input()
-        
+
     # If actions record is empty the process quits
     if not len(config.record):
         PrintRecorded()
@@ -127,9 +127,9 @@ def startup(argv):
     # Execution of actions can be stopped by moving the cursor to the corner of the screen
     except pyautogui.FailSafeException:
         newline_tab(
-                1,
-                "\n:cactus: [bold #8D72E1] FAILED [/bold #8D72E1] :cactus:\n\n[#082032]{  execution cancelled  }",
-            )
+            1,
+            "\n:cactus: [bold #8D72E1] FAILED [/bold #8D72E1] :cactus:\n\n[#082032]{  execution cancelled  }",
+        )
         return
 
     # If all goes well...
@@ -167,11 +167,36 @@ def play_recorded():
                 )
                 print(f" :palm_tree:  [#829460 BOLD]MOVED TO[/#829460 BOLD] {position}")
 
-            # For Clicking
-            if key == "click":
-                pyautogui.click(position["x"], position["y"])
+            # For left Clicking
+            if key == "l-click":
+                
+                pyautogui.click(button='left')
+                                
+                current_position = {}
+
+                # Saves position
+                x, y = pyautogui.position()
+                current_position["x"] = x
+                current_position["y"] = y
+                
                 print(
-                    f" :palm_tree:  [#829460 BOLD]CLICKED AT[/#829460 BOLD] {position}"
+                    f" :palm_tree:  [#829460 BOLD]LEFT CLICKED AT[/#829460 BOLD]{current_position}"
+                )
+                
+            # For right Clicking
+            if key == "r-click":
+                
+                pyautogui.click(button='right')
+                
+                current_position = {}
+
+                # Saves position
+                x, y = pyautogui.position()
+                current_position["x"] = x
+                current_position["y"] = y
+                
+                print(
+                    f" :palm_tree:  [#829460 BOLD]RIGHT CLICKED AT [/#829460 BOLD]{current_position}"
                 )
 
             # For dragging with cursor
@@ -212,10 +237,8 @@ def play_recorded():
                 for current_key in action["hotkey"]:
                     pyautogui.keyUp(current_key)
 
-                hotkeys_display = display_hotkeys()
-
                 print(
-                    f" :palm_tree:  [#829460 BOLD]INSERTED HOTKEYS[/#829460 BOLD][italic #F0A500] {hotkeys_display}"
+                    f" :palm_tree:  [#829460 BOLD]INSERTED HOTKEYS[/#829460 BOLD][italic #F0A500]{action['hotkey']}"
                 )
 
             # For key input
