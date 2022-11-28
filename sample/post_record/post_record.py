@@ -92,7 +92,7 @@ def looper():
     InsertAfter = loop.loop_final["InsertAfter"]
 
     # Gets the loop to multiply
-    looper_list = config.record[start - 1 : end]
+    looper_list = config.record[start - 1: end]
 
     # Multiplies the loop
     looper_list = looper_list * loops
@@ -103,7 +103,7 @@ def looper():
 
     # re-adds id after modification
     add_id()
-    
+
     # Lists all recorded actions
     PrintRecorded()
 

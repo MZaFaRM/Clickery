@@ -9,39 +9,50 @@ def print_menu():
     # Menu for manual input
     menu_items = []
     single_item = {}
+    # configures the table to be displayed at menu
     for item in config.actions_list:
+        # capitalises all headings
         single_item["ID"] = item["id"]
         single_item["DESCRIPTION"] = item["description"]
         single_item["CALL"] = '"' + item["call"] + '"'
         menu_items.append(single_item)
         single_item = {}
 
+    # for user
     newline_tab(1, sentence="[#F0EBCE italic]Initialized...:dizzy::dizzy::dizzy:")
     newline_tab(1, sentence="Usage:")
     newline_tab(
-        1,
-        sentence="[#ECDBBA]\tHover over the screen and press the apropriate call \n\t\tto perform the related operation",
+        0, sentence="[#ECDBBA]\tHover over the screen and press the apropriate call"
     )
+    newline_tab(1, sentence="\t\t[#ECDBBA]to perform the related operation")
+
     newline_tab(1, sentence="Supported Operations:")
+
+    # menu table printed
     print(tabulate(menu_items, "keys", "rounded_grid"), end="\n\n")
+
     newline_tab(
         1, sentence="Finally, [italic #F0A500]ESC[/italic #F0A500] to Start operation"
     )
+    # starts recording
 
 
-def newline_tab(n, sentence="", error=0):
+def newline_tab(n, sentence=""):
+    # a text formatting function
     print(sentence)
     for i in range(n):
         print()
 
 
 def SaveJSON():
+    # saves recorded actions to json
     add_id()
     with open(r"assets\json\history.json", "w") as save:
         dump(config.record, save, indent=4)
 
 
 def add_id():
+    # adds id to the recorded actions before adding them to json/db
     id = 1
     new_list = []
     for value in config.record:
@@ -69,5 +80,6 @@ def SaveToDB():
 
 
 def PrintRecorded():
+    # prints all recorded actions
     print(f"\n[#FFCCB3]Recorded actions:[/#FFCCB3]\n")
     print(config.record)

@@ -12,11 +12,23 @@ def clear_all():
 
     # Sets cursor
     cursor = history.cursor()
-
-    # Gets ready to save it to database
-    cursor.execute("DELETE FROM history")
-    # Saves it to database
-    history.commit()
+    
+    try:
+        
+        # Gets ready to save it to database
+        cursor.execute("DELETE FROM history")
+    
+        # Saves it to database
+        history.commit()
+        
+    except sqlite3.OperationalError:
+        
+        # if table not found create table
+        cursor.execute("CREATE TABLE history (\n\tactions_id INTEGER NOT NULL,\n\tJSON TEXT NOT NULL,\n\tPRIMARY KEY (actions_id)\n)")
+        
+        # Saves table
+        history.commit()
+    
     # Terminates connection
     history.close()
 
