@@ -78,8 +78,9 @@ def print_menu_replace():
 
 
 def looper():
+    
     # initiates looper process
-    loop.LoopWindow()
+    loop.loop_window()
 
     # Checks if the user input any value
     if not loop.loop_final:

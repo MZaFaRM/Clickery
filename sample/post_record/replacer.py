@@ -1,14 +1,15 @@
 import sample.universal.config as config
-from tkinter import messagebox, font
+from tkinter import messagebox
 import tkinter
+from sample.helpers.dir import InputDialogueBox
 
 
 replace_id = 0
 
 
 def ReplaceSave(ReplaceID, window):
+    
     # saves replace_id to global variable
-
     # gets the global variable
     global replace_id
 
@@ -25,6 +26,7 @@ def ReplaceSave(ReplaceID, window):
                 raise AttributeError
             if ReplaceID < 1:
                 raise IndentationError
+            
             # if all true assigns it to global variable
             replace_id = ReplaceID
 
@@ -59,44 +61,10 @@ def ReplaceSave(ReplaceID, window):
 
 def replace_window():
 
-    global window
-    # sets the colours for the windwo
-    ContentColor = "#2C3639"
-    ButtonColor = "#3F4E4F"
-    TextColor = "#F9F2ED"
+    tkwindow = InputDialogueBox()
 
-    # initiates the window
-    window = tkinter.Tk()
-    # window title, frame configurations
-    window.title("Replace Action")
-    frame = tkinter.Frame(window)
-    frame.pack()
-
-    # window color
-    frame.configure(background=ContentColor)
-
-    # button and heading style
-    buttonf = font.Font(weight="bold", size=10)
-    headf = font.Font(size=20, weight="bold")
-
-    # heading position and configurations
-    loop_frame = tkinter.LabelFrame(frame, text="REPLACE ACTION")
-    loop_frame.grid(row=2, column=0, columnspan=3)
-    loop_frame["font"] = headf
-
-    # Configures all child elements
-    for widget in loop_frame.winfo_children():
-        widget.grid_configure(padx=10, pady=5)
-
-    # configures main frame position and color
-    loop_frame.grid(row=1, column=0, sticky="news", padx=20, pady=10, columnspan=3)
-    loop_frame.configure(
-        background=ContentColor,
-        foreground="#FEDB39",
-        highlightbackground="yellow",
-        highlightcolor="red",
-        borderwidth=0,
-    )
+    main_window = tkwindow.initialise_window(title="Replace Action")
+    loop_frame, frame = tkwindow.main_frame(main_window, heading="REPLACE ACTION")
 
     # sub-heading name and configurations
     ReplaceID_label = tkinter.Label(loop_frame, text="INPUT ID :- ")
@@ -107,36 +75,21 @@ def replace_window():
     ReplaceID_spinbox.grid(row=1, column=2, padx=75)
 
     # input box color and input position
-    ReplaceID_spinbox.configure(background=ContentColor, foreground=TextColor)
-    ReplaceID_label.configure(background=ContentColor, foreground=TextColor)
-    ReplaceID_spinbox.configure(justify="center")
+    ReplaceID_spinbox.configure(
+        background=tkwindow.ContentColor, foreground=tkwindow.TextColor
+    )
+    ReplaceID_label.configure(
+        background=tkwindow.ContentColor, foreground=tkwindow.TextColor
+    )
+    ReplaceID_spinbox.configure(justify="center") 
 
     # Button calls 'ReplaceSave on click
     button = tkinter.Button(
-        frame, text="REPLACE", command=lambda: ReplaceSave(ReplaceID_spinbox, window)
+        frame,
+        text="REPLACE",
+        command=lambda: ReplaceSave(ReplaceID_spinbox, main_window),
     )
 
-    # configures postion of button on grid
-    button.grid(row=5, column=1, sticky="news", padx=20, pady=20)
+    tkwindow.configure_button(button)
 
-    # configures color of button
-    button.configure(
-        background=ButtonColor,
-        foreground=TextColor,
-        activebackground=TextColor,
-        activeforeground=ButtonColor,
-        borderwidth=0,
-    )
-
-    # configures button font
-    button["font"] = buttonf
-
-    # lifts the window above all other windows once
-    window.lift()
-    window.attributes("-topmost", True)
-    window.after_idle(window.attributes, "-topmost", False)
-
-    # doesn't allow window resizing
-    window.resizable(False, False)
-
-    window.mainloop()
+    tkwindow.configure_window(main_window)
