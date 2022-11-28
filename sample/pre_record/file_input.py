@@ -49,7 +49,7 @@ def test_file(location):
         print(
             ":x: [italic #CC3636]Format error, check out the documentation on how to format your json file..."
         )
-        newline_tab(1, "https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format")
+        newline_tab(1, "https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format.md")
 
 
 def file_format(record):
