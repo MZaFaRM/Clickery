@@ -12,7 +12,6 @@ from sample.pre_record.file_input import file_input
 from sample.pre_record.manual_input import manual_input
 from sample.pre_record.operations.general import eleos
 from sample.post_record.post_record import looper, replacer
-from sample.pre_record.operations.hot_key_insert import display_hotkeys
 from sample.helpers.dir import clarity
 from sample.helpers.menu import (
     newline_tab,
@@ -239,7 +238,7 @@ def play_recorded():
                     pyautogui.keyUp(current_key)
 
                 print(
-                    f" :palm_tree:  [#829460 BOLD]INSERTED HOTKEYS[/#829460 BOLD][italic #F0A500]{action['hotkey']}"
+                    f" :palm_tree:  [#829460 BOLD]INSERTED HOTKEYS[/#829460 BOLD] [italic #F0A500]{action['hotkey']}"
                 )
 
             # For key input

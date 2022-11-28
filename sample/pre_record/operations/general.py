@@ -6,10 +6,7 @@ import sample.universal.config as config
 from tkinter.filedialog import asksaveasfile
 import pyautogui
 from sample.pre_record.operations.key_insert import return_key_input
-from sample.pre_record.operations.hot_key_insert import (
-    return_hot_key_input,
-    display_hotkeys,
-)
+from sample.pre_record.operations.hot_key_insert import return_hot_key_input
 from sample.pre_record.operations.wait_seconds import return_wait
 from sample.pre_record.operations.text_input import return_write
 
@@ -193,14 +190,12 @@ def InsertHotkey():
     action = {}
 
     # gets input hotkeys
-    hotkeys = return_hot_key_input()
+    hotkeys, hotkeys_display = return_hot_key_input()
 
-    if hotkeys:
+    if hotkeys and hotkeys_display:
 
         # Saves action
         action["hotkey"] = hotkeys
-
-        hotkeys_display = display_hotkeys()
 
         # For User
         print(
