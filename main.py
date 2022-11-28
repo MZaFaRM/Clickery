@@ -1,21 +1,19 @@
 from sys import argv
 from setup import install
-from subprocess import check_call
-from sys import executable
 
 
 def main():
-    
+    # program checks tries to install all modules required to run the program
     try:
-        # Starting program
+        # imports the program
         from sample.core import initialise
-
+        # starts the program
         initialise(argv)
 
     except ModuleNotFoundError:
         # If not installed already install all packages
         install()
-        
+
         print("\nPlease re-run the program")
 
 

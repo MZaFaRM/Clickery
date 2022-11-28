@@ -118,9 +118,7 @@ def startup(argv):
 
         # Saves recorded actions to a assets/json/history.json
         SaveJSON()
-
-    # Saves recorded actions to assets/database/history.db in table HISTORY
-    SaveToDB()
+        
     try:
         # plays recorded
         play_recorded()
@@ -131,6 +129,9 @@ def startup(argv):
             "\n:cactus: [bold #8D72E1] FAILED [/bold #8D72E1] :cactus:\n\n[#082032]{  execution cancelled  }",
         )
         return
+    
+    # Saves recorded actions to assets/database/history.db in table HISTORY
+    SaveToDB()
 
     # If all goes well...
     newline_tab(1, "\n:Party_Popper: [bold #8D72E1] SUCCESS :Party_Popper: ")

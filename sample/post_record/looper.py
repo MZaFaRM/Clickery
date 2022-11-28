@@ -133,12 +133,10 @@ def LoopSave(parameters, window):
             }
             if LoopStart <= 0:
                 raise OSError
-            if (
-                LoopEnd > len(config.record)
-                or LoopStart > len(config.record)
-                or InsertAfter > len(config.record)
-            ):
-                raise AttributeError
+            for data in [LoopEnd, LoopStart, InsertAfter]:
+                if data > len(config.record):
+                    raise AttributeError
+                
             if InsertAfter < 0:
                 raise IndentationError
 

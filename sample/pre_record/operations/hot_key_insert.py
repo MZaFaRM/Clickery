@@ -5,7 +5,6 @@ from tkinter import font, messagebox
 keys_clicked = []
 keys_clicked_display = ""
 tyr = 1
-window = ""
 
 
 def display_hotkeys():
@@ -38,6 +37,7 @@ def _Inserted_hot_key_window():
 
     # window of 'key insert'
     global hot_keys
+    global window
 
     ContentColor = "#2C3639"
     ButtonColor = "#3F4E4F"
