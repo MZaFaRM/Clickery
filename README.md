@@ -105,7 +105,7 @@ Although, downloading is not necessary for successful execution of the software,
 
 [Guide](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/guide)
 
-For details on how to properly format your file input refer [format](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format) .
+For details on how to properly format your file input refer [format](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format).
 
 ## License
 
