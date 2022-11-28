@@ -25,7 +25,7 @@ py main.py
 
 #### Mode of Input
 
-After which you will be provided with two choice for manual input and file input, if choosing file input please refer the [```Guide\format```](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format) to understand how to properly format your json file.
+After which you will be provided with two choice for manual input and file input, if choosing file input please refer the [```Guide\format```](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format.md) to understand how to properly format your json file.
 
  *Note: only json files are supported for file input*
 
@@ -105,7 +105,7 @@ Although, downloading is not necessary for successful execution of the software,
 
 [Guide](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/guide)
 
-For details on how to properly format your file input, refer [format](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format).
+For details on how to properly format your file input, refer [format](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format.md).
 
 ## License
 
