@@ -118,3 +118,11 @@ Every successful execution from the last reset.py is saved in the [```assets/dat
 ## Modifying Input Speed
 
 Clicking speed, Dragging speed, Typing speed can be modified through [```sample/universal/config.py```](https://github.com/MZaFaRM/CLICKERY/blob/main/sample/universal/config.py).
+
+
+
+
+
+
+
+#
