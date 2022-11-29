@@ -21,7 +21,7 @@ After running the program you will be asked to prompted to input the the mode of
 
 ### File Input
 
-if you choose to proceed with ```file input``` please refer the [```format.md```][(Guide/format.md](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format.md)) to understand how to properly format your JSON file and jump to the [Post Recording Actions](guide.md#post-recording-actions) section.
+if you choose to proceed with ```file input``` please refer the [```format.md```](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format.md) to understand how to properly format your JSON file and jump to the [Post Recording Actions](guide.md#post-recording-actions) section.
 
 *Note: only json files are supported for file input*
 
