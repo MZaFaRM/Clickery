@@ -1,5 +1,4 @@
 from sys import argv
-from setup import install
 
 
 def main():
@@ -11,10 +10,8 @@ def main():
         initialise(argv)
 
     except ModuleNotFoundError:
-        # If not installed already install all packages
-        install()
 
-        print("\nPlease re-run the program")
+        print("\nPlease first run setup.py .")
 
 
 if __name__ == "__main__":

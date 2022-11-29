@@ -9,13 +9,13 @@
     "id": 2,
     "call": "2",
     "function": "LeftClickCursor()",
-    "description": "LEFT CLICK POSITION"
+    "description": "LEFT CLICK"
   },
   {
     "id": 3,
     "call": "3",
     "function": "RightClickCursor()",
-    "description": "RIGHT CLICK POSITION"
+    "description": "RIGHT CLICK"
   },
   {
     "id": 4,
