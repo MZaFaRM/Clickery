@@ -21,13 +21,17 @@ After running the program you will be asked to prompted to input the the mode of
 
 ### File Input
 
-if you choose to proceed with ```file input``` please refer the [```Guide\formatting your JSON file input```](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/formatting%20your%20JSON%20file%20input.md) to understand how to properly format your JSON file and jump to the [Post Recording Actions](guide.md#post-recording-actions) section.
+if you choose to proceed with ```file input``` please refer the [```format.md```][(Guide/format.md](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format.md)) to understand how to properly format your JSON file and jump to the [Post Recording Actions](guide.md#post-recording-actions) section.
 
 *Note: only json files are supported for file input*
 
+<details>
+<summary>
+
 ### Manual Input
 
-If you choose to proceed with the ```manual input``` provide the required calls to invoke the function responsible to record your request,
+If you choose to proceed with the ```manual input``` provide the required calls to invoke the function responsible to record your request.
+  </summary>
 
 - #### Move Cursor
 
@@ -78,6 +82,8 @@ Input ```0``` and enter all the keys you would like to input together **one by o
 - #### Take a Screenshot
 
 Input ```-``` and provide the location you would like to save your screenshot at.
+  
+ </details>
 
 ## Post Recording actions
 
