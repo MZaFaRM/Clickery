@@ -106,15 +106,15 @@ After recording and modifying the actions it can be started by inserting ```spac
 
 #### Things to be noted
 
-- A started excecution can be exited with ``ctrl+c``` ie. *Keyboard Interrupt*
+- A started excecution can be exited with ```ctrl+c``` ie. *Keyboard Interrupt*
 - It can also be exited by moving the cursor to the corner of the screen.
 - Other methods include the common methods to exit a program.
 
 ## Saving the input
 
-Every successful execution from the last reset.py is saved in the ```assets/database/history.db``` in table history, while the last recorded action is saved in the ```assets/json/[history.json```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/json/history.json). 
+Every successful execution from the last reset.py is saved in the [```assets/database/history.db```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/database/history.db) in table history, while the last recorded action is saved in the [```assets/json/history.json```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/json/history.json). 
 
 
 ## Modifying Input Speed
 
-Clicking speed, Dragging speed, Typing speed can be modified through ```sample/universal/config.py```.
+Clicking speed, Dragging speed, Typing speed can be modified through [```sample/universal/config.py```](https://github.com/MZaFaRM/CLICKERY/blob/main/sample/universal/config.py).
