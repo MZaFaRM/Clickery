@@ -14,7 +14,7 @@ This is an AUTOGUI software designed to make it easier to use AUTOGUI without co
 execute the given command in the terminal
 
 ```
-py install.py
+py setup.py
 ```
 
 which would install all the required libraries to run the project, then execute this command in the terminal to start the program.
