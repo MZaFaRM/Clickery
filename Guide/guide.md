@@ -43,7 +43,7 @@ Input ```2``` and the program would record that you want to click on the current
 
 - #### Right Click Position
 
-Input ```3``` and the program would record that you want to right click on the current location, useful to invoke pop ups. Similar to [Left Click Position](guide.md#guide.md#left-click-position) is it best when paired with [Move Cursor](guide.md#move-cursor) or [Wait for Image](guide.md#wait-for-image).
+Input ```3``` and the program would record that you want to right click on the current location, useful to invoke pop ups. Similar to [Left Click Position](guide.md#left-click-position) is it best when paired with [Move Cursor](guide.md#move-cursor) or [Wait for Image](guide.md#wait-for-image).
 
 - #### Drag Cursor
 
@@ -59,7 +59,7 @@ Input ```6``` and select the location of the image you want to wait to appear on
 
 - It automatically moves the cursor to the center of the image if found on screen.
 - As the name suggests it waits until the image appears on screen.
-- Combining it with [Left Click Position](guide.md#guide.md#left-click-position) / [Right Click Position](guide.md#guide.md#right-click-position) may be a good idea.
+- Combining it with [Left Click Position](guide.md#left-click-position) / [Right Click Position](guide.md#right-click-position) may be a good idea.
 
 - #### Insert Key
 
@@ -87,7 +87,7 @@ Input ```-``` and provide the location you would like to save your screenshot at
 
 ## Post Recording actions
 
-If you input ```esc``` all actions upto that point would be saved in ```history.json```, it could be further modifed by
+If you input ```esc``` all actions upto that point would be saved in [```history.json```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/json/history.json), it could be further modifed by
 
 ### Looping
 
@@ -112,7 +112,7 @@ After recording and modifying the actions it can be started by inserting ```spac
 
 ## Saving the input
 
-Every successful execution from the last reset.py is saved in the ```assets/database/history.db``` in table history, while the last recorded action is saved in the ```assets/json/history.json```. 
+Every successful execution from the last reset.py is saved in the ```assets/database/history.db``` in table history, while the last recorded action is saved in the ```assets/json/[history.json```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/json/history.json). 
 
 
 ## Modifying Input Speed
