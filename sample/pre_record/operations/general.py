@@ -4,6 +4,7 @@ from random import choices
 from sample.helpers.dir import folder
 import sample.universal.config as config
 from tkinter.filedialog import asksaveasfile
+import os
 import pyautogui
 from sample.pre_record.operations.key_insert import return_key_input
 from sample.pre_record.operations.hot_key_insert import return_hot_key_input
@@ -219,7 +220,10 @@ def TakeScreenshot():
 
         # 'file' is an io.TextWrapper
         # Take screenshot and save it to the given location
-        action["screenshot"] = file.name
+        location = file.name
+        file.close()
+        os.remove(location)
+        action["screenshot"] = location
 
         # For User
         print(" :Rose:  [#29C7AC BOLD]TAKE A[/#29C7AC BOLD] [italic #8D9EFF]screenshot")
