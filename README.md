@@ -103,7 +103,7 @@ Although, downloading is not necessary for successful execution of the software,
 
 ## Documentation
 
-[Guide](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/guide)
+Refer [Guide](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/guide.md) for usage instructions.
 
 For details on how to properly format your file input, refer [format](https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format.md).
 
