@@ -95,7 +95,7 @@ Requested portions of the action's record can be repeated any number of times, a
 
 ### Replacing
 
-An action can be replaced with another one if you enter the ID of the action to be replaced and the [call](guide.md#manual-input) ^&*^ of the action you would like to replace it with.
+An action can be replaced with another one if you enter the ID of the action to be replaced and the [call](guide.md#manual-input) of the action you would like to replace it with.
 
 #### Tip:
 Combining Replacing and Looping allows you to insert actions in your record.
