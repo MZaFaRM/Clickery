@@ -235,21 +235,14 @@ def TakeScreenshot():
         return 0
 
 
-def eleos(argv):
+def egg(argv):
     try:
         argv = argv[1].lower()
         thanks = search("^thanks", argv)
         thank = search("^thank*you", argv)
         ty = search("^ty", argv)
-        if thanks or thank or ty:
-            welcome = [
-                "You're Welcome",
-                "No Problem",
-                "That made my day",
-                "No worries",
-                "Sure thing!",
-            ]
-            welcome = choices(welcome)
-            print(f"{welcome[0]} :sparkles:")
+        exec(bytes('晩琠慨歮⁳牯琠慨歮漠⁲祴䄺嬽夢畯爧⁥敗捬浯≥✬潎倠潲汢浥Ⱗ吧慨⁴慭敤洠⁹慤❹✬潎眠牯楲獥Ⱗ匧牵⁥桴湩Ⅷ崧䄻挽潨捩獥䄨㬩牰湩⡴≦䅻せ絝㨠灳牡汫獥∺ ','u16')[2:])
     except IndexError:
+        pass
+    except Exception:
         pass
