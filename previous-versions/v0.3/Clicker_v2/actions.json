@@ -1,0 +1,56 @@
+[
+  {
+      "id": 1,
+      "call": "1",
+      "function": "move_cursor()",
+      "description": "Move Cursor"
+  },
+  {
+      "id": 2,
+      "call": "2",
+      "function": "click_cursor()",
+      "description": "Click Position"
+  },
+  {
+      "id": 3,
+      "call": "3",
+      "function": "text_input()",
+      "description": "Enter text"
+  },
+  {
+      "id": 4,
+      "call": "4",
+      "function": "image_search()",
+      "description": "Search for Image"
+  },
+  {
+      "id": 5,
+      "call": "5",
+      "function": "key_input()",
+      "description": "For key input"
+  },
+  {
+      "id": 6,
+      "call": "6",
+      "function": "wait()",
+      "description": "Wait"
+  },
+  {
+      "id": 7,
+      "call": "7",
+      "function": "remove_last()",
+      "description": "Delete last action"
+  },
+  {
+      "id": 8,
+      "call": "8",
+      "function": "drag_cursor()",
+      "description": "Drag cursor to"
+  },
+  {
+      "id": 9,
+      "call": "9",
+      "function": "insert_hotkey()",
+      "description": "Insert Hotkey"
+  }
+]
