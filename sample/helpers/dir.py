@@ -21,20 +21,22 @@ def folder(extension, Title="Select file"):
 
     return location
 
+
 class InputDialogueBox:
 
+    # Configure color of the dialogue boxes
     ContentColor = "#2C3639"
     ButtonColor = "#3F4E4F"
     TextColor = "#F9F2ED"
 
     def initialise_window(self, title=""):
-
+        # Creates and returns the window
         window = tkinter.Tk()
         window.title(title)
         return window
 
     def main_frame(self, window, heading=""):
-
+        # Creates a sub frame with the given window
         frame = tkinter.Frame(window)
         frame.pack()
         frame.configure(background=self.ContentColor)
@@ -42,14 +44,14 @@ class InputDialogueBox:
         sub_frame = tkinter.LabelFrame(frame, text=heading)
         sub_frame.grid(row=2, column=0, columnspan=3)
 
-        # button and heading style
+        # Button and heading style
         headf = font.Font(size=20, weight="bold")
-
+        # Applies button style
         sub_frame["font"] = headf
-
+        # children of sub frame
         for widget in sub_frame.winfo_children():
             widget.grid_configure(padx=10, pady=5)
-
+        # sub-frame position and colour
         sub_frame.grid(row=1, column=0, sticky="news", padx=20, pady=10, columnspan=3)
         sub_frame.configure(
             background=self.ContentColor,
@@ -58,7 +60,7 @@ class InputDialogueBox:
             highlightcolor="red",
             borderwidth=0,
         )
-
+        # returns sub frame and frame
         return sub_frame, frame
 
     def configure_button(self, button):
@@ -74,7 +76,7 @@ class InputDialogueBox:
             activeforeground=self.ButtonColor,
             borderwidth=0,
         )
-
+        # Creates a font style for button
         buttonf = font.Font(weight="bold", size=10)
 
         # configures button font
@@ -89,6 +91,5 @@ class InputDialogueBox:
 
         # doesn't allow window resizing
         window.resizable(False, False)
-
+        # keeps the window running
         window.mainloop()
-
