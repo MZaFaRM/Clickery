@@ -8,41 +8,46 @@ loop_final = []
 
 
 def LoopSave(parameters, window):
-
+    # Gets the global variable
     global loop_final
-
+    # Extracts input boxes from the input
     NumberOfLoops = parameters[0]
     LoopStart = parameters[1]
     LoopEnd = parameters[2]
     InsertAfter = parameters[3]
-
+    # gets data from those input boxes
     LoopCount = NumberOfLoops.get()
     LoopStart = LoopStart.get()
     LoopEnd = LoopEnd.get()
     InsertAfter = InsertAfter.get()
-
+    # if all fields filled
     if LoopCount and LoopStart and LoopEnd:
         try:
+            # convert all to int
             LoopCount = int(LoopCount)
             LoopStart = int(LoopStart)
             LoopEnd = int(LoopEnd)
             InsertAfter = int(InsertAfter)
+            # checks if input is logically sound
             if LoopStart > LoopEnd:
                 raise RuntimeError
+
+            if LoopStart <= 0:
+                raise OSError
+            for data in [LoopEnd, LoopStart, InsertAfter]:
+                # record is the record of all actions recorded upto this point
+                if data > len(config.record):
+                    raise AttributeError
+
+            if InsertAfter < 0:
+                raise IndentationError
+            # saves it to a dictionary for later use
             loop_final = {
                 "LoopCount": LoopCount,
                 "LoopStart": LoopStart,
                 "LoopEnd": LoopEnd,
                 "InsertAfter": InsertAfter,
             }
-            if LoopStart <= 0:
-                raise OSError
-            for data in [LoopEnd, LoopStart, InsertAfter]:
-                if data > len(config.record):
-                    raise AttributeError
-
-            if InsertAfter < 0:
-                raise IndentationError
 
             # quits window if all goes well
             window.quit()
@@ -77,13 +82,15 @@ def LoopSave(parameters, window):
 
 
 def loop_window():
-
+    # Ceates an object for the dialogue box
     tkwindow = InputDialogueBox()
-
+    # configures main window and main heading
     main_window = tkwindow.initialise_window(title="Insert loops")
     loop_frame, frame = tkwindow.main_frame(main_window, heading="LOOP MODIFICATIONS")
 
+    # Number of loops box
     NumberOfLoops_label = tkinter.Label(loop_frame, text="NUMBER OF LOOPS")
+    # It's position is set and colour configured
     NumberOfLoops_spinbox = tkinter.Spinbox(loop_frame, from_=0, to="infinity")
     NumberOfLoops_label.grid(row=0, column=0)
     NumberOfLoops_spinbox.grid(row=0, column=1)
@@ -95,8 +102,10 @@ def loop_window():
     )
     NumberOfLoops_spinbox.configure(justify="center")
 
+    # loop start box
     LoopStart_label = tkinter.Label(loop_frame, text="LOOP STARTS FROM")
     LoopStart_spinbox = tkinter.Spinbox(loop_frame, from_=1, to=len(config.record))
+    # color and position
     LoopStart_label.grid(row=1, column=0)
     LoopStart_spinbox.grid(row=1, column=1)
     LoopStart_spinbox.configure(
@@ -107,8 +116,11 @@ def loop_window():
     )
     LoopStart_spinbox.configure(justify="center")
 
+    # Loop end box
     LoopEnd_label = tkinter.Label(loop_frame, text="LOOP ENDS AT")
     LoopEnd_spinbox = tkinter.Spinbox(loop_frame, from_=0, to=len(config.record))
+
+    # Colour and position
     LoopEnd_label.grid(row=2, column=0)
     LoopEnd_spinbox.grid(row=2, column=1)
     LoopEnd_spinbox.configure(
@@ -119,8 +131,11 @@ def loop_window():
     )
     LoopEnd_spinbox.configure(justify="center")
 
+    # Insert After Box
     InsertAfter_label = tkinter.Label(loop_frame, text="INSERT LOOP AFTER")
     InsertAfter_spinbox = tkinter.Spinbox(loop_frame, from_=0, to=len(config.record))
+
+    # Color and postion
     InsertAfter_label.grid(row=3, column=0)
     InsertAfter_spinbox.grid(row=3, column=1)
     InsertAfter_spinbox.configure(
@@ -142,10 +157,12 @@ def loop_window():
         LoopEnd_spinbox,
         InsertAfter_spinbox,
     ]
+
+    # Creates button
     button = tkinter.Button(
         frame, text="CREATE LOOP", command=lambda: LoopSave(parameters, main_window)
     )
-
+    # Configures button
     tkwindow.configure_button(button)
-
+    # Configures window
     tkwindow.configure_window(main_window)

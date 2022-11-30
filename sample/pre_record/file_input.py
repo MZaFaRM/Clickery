@@ -1,9 +1,9 @@
 from json import load, JSONDecodeError
-from sample.helpers.dir import folder
-from sample.helpers.menu import newline_tab
 from rich import print
 
 import sample.universal.config as config
+from sample.helpers.dir import folder
+from sample.helpers.menu import newline_tab
 
 
 def file_input():
