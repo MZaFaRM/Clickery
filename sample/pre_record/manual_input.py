@@ -1,5 +1,4 @@
 from keyboard import read_key
-
 import sample.universal.config as config
 from sample.pre_record.operations.general import *
 
