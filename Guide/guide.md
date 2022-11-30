@@ -25,13 +25,9 @@ if you choose to proceed with ```file input``` please refer the [```format.md```
 
 *Note: only json files are supported for file input*
 
-<details>
-<summary>
-
 ### Manual Input
 
 If you choose to proceed with the ```manual input``` provide the required calls to invoke the function responsible to record your request.
-  </summary>
 
 - #### Move Cursor
 
@@ -83,7 +79,6 @@ Input ```0``` and enter all the keys you would like to input together **one by o
 
 Input ```-``` and provide the location you would like to save your screenshot at.
   
- </details>
 
 ## Post Recording actions
 
