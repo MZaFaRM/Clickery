@@ -51,27 +51,11 @@ def _perses(input):
         tyr = 0
         # filters 'key up' and 'key down'
 
-        key_clicked = input
+        key_clicked = key_input = str(input.name)
 
         # formats the 'input' to only have the key name
         InsertedKey.config(state="normal")
         InsertedKey.delete(0, "end")
-
-        # data parsing
-        key_clicked = str(key_clicked)
-
-        key_input = ""
-
-        for cr in key_clicked:
-
-            key_input += cr
-
-            if key_input == "KeyboardEvent(":
-                key_input = ""
-            if cr == " ":
-                key_input = key_input.rstrip()
-                key_clicked = key_input
-                break
 
         # for visuals key is capitalised
         # letter input are not capitalized

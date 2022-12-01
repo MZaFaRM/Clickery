@@ -112,10 +112,7 @@ def KeyInput():
 
     if key:
 
-        # Saves action
-        action["key"] = key
-
-        if len(key) == 2:
+        if len(key) == 1:
             # For User
             print(
                 f" :Rose:  [#29C7AC BOLD]HIT KEY[/#29C7AC BOLD][italic #F0A500] {key}\t"
@@ -125,6 +122,9 @@ def KeyInput():
             print(
                 f" :Rose:  [#29C7AC BOLD]HIT KEY[/#29C7AC BOLD][italic #F0A500] {key.upper()}\t"
             )
+            
+        # Saves action
+        action["key"] = key.replace(" ", "")
 
         return action
 

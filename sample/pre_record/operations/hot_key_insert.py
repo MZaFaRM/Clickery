@@ -102,30 +102,26 @@ def _perses(input):
         hot_keys.config(state="normal")
 
         # data parsing
-        current_key = str(current_key)
-        key_input = ""
+        key_input = str(current_key.name)
+        
+        key_input = key_input.replace(" ", "")
+        
+        # If first key
+        if not keys_clicked_display:
+            # for visuals key is capitalised
+            # letter input are not capitalized
+            if len(key_input) == 1:
+                keys_clicked_display += str(key_input)
+            else:
+                keys_clicked_display += str(key_input).upper()
+        
+        # If not first key
+        elif len(key_input) == 1:
+            # For User visuals
+            keys_clicked_display += " + " + str(key_input)
+        else:
+            keys_clicked_display += " + " + str(key_input).upper()
 
-        for cr in current_key:
-            key_input += cr
-            if key_input == "KeyboardEvent(":
-                key_input = ""
-            if cr == " ":
-                key_input = key_input.rstrip()
-                if not keys_clicked_display:
-                    # for visuals key is capitalised
-                    # letter input are not capitalized
-                    if len(key_input) == 1:
-                        keys_clicked_display += str(key_input)
-                    else:
-                        keys_clicked_display += str(key_input).upper()
-                    break
-
-                if len(key_input) == 1:
-                    # For User visuals
-                    keys_clicked_display += " + " + str(key_input)
-                else:
-                    keys_clicked_display += " + " + str(key_input).upper()
-                break
         # data withoutout visual addition added to list
         keys_clicked.append(key_input)
         # all data in text box removed
