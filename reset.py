@@ -41,15 +41,14 @@ def clear_all():
     print("Clearing Json .")
 
     # to clear Json history
-    json = open(r"assets\json\history.json", "w")
-    json.write("[]")
-    json.close()
+    with open(r"assets\json\history.json", "w") as json:
+        json.write("[]")
     
     print("Json history cleared.")
     
     # to clear images history
-    images = open(r"assets\images\images.png", "w")
-    images.close()
+    with open(r"assets\images\images.png", "w"):
+        pass
     
     print("Image file cleared.")
 
