@@ -25,9 +25,7 @@ def initialise(argv):
     try:
         startup(argv)
     except KeyboardInterrupt:
-        richPrint(
-            "\n\n:cactus: [bold #8D72E1] FAILED [/bold #8D72E1] :cactus:\n\n[#082032]{  keyboard interrupt  }"
-        )
+        error("Keyboard Interrupt")
         pass
 
 
@@ -53,7 +51,7 @@ def startup(argv):
     if keyboardinput in ["ctrl", "right ctrl"]:
         status = file_input()
         if not status:
-            menu.print("\n:cactus: [bold #8D72E1] FAILED  :cactus:")
+            error("Input Error")
             return
     # For manual input
     elif keyboardinput in ["right shift", "shift"]:
@@ -64,8 +62,7 @@ def startup(argv):
     # If actions record is empty the process quits
     if not len(config.record):
         menu.PrintRecorded()
-        menu.print(":cactus: [bold #8D72E1] FAILED [/bold #8D72E1] :cactus:")
-        menu.print("\n[#082032]{  No actions input  }")
+        error("No Actions Input")
         return
 
     # Adds ids and prints everything that is recorded
@@ -106,8 +103,7 @@ def startup(argv):
 
         # If actions record is empty the process quits
         if not len(config.record):
-            menu.print("\n:cactus: [bold #8D72E1] FAILED [/bold #8D72E1] :cactus:")
-            menu.print("\n[#082032]{  no actions input  }")
+            error("No Actions Input")
             return
 
         # Saves recorded actions to a assets/json/history.json
@@ -118,8 +114,7 @@ def startup(argv):
         play_recorded()
     # Execution of actions can be stopped by moving the cursor to the corner of the screen
     except pyautogui.FailSafeException:
-        menu.print("\n:cactus: [bold #8D72E1] FAILED [/bold #8D72E1] :cactus:")
-        menu.print("\n[#082032]{  execution cancelled  }")
+        error("Execution Cancelled")
         return
 
     # Saves recorded actions to assets/database/history.db in table HISTORY
@@ -264,6 +259,12 @@ def DetectImage(path):
         if image_location:
             pyautogui.moveTo(image_location)
             return
+        
+def error(error=""):
+    text = Align(":cactus: [bold #8D72E1] FAILED [/] :cactus:", align="center")
+    error = "[#082032]" + error
+    richPrint(Panel(text, subtitle=error, subtitle_align="right"))
+    
 
 
 if __name__ == "sample.core":
