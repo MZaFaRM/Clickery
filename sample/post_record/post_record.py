@@ -1,6 +1,9 @@
 from keyboard import read_key
 from tabulate import tabulate
 from rich import print
+from rich.align import Align
+from rich.panel import Panel
+from rich.console import Group
 import sample.post_record.replacer as replace
 import sample.post_record.looper as loop
 from sample.pre_record.operations.general import *
@@ -73,8 +76,29 @@ def print_menu_replace():
         single_item["CALL"] = '"' + item["call"] + '"'
         menu_items.append(single_item)
         single_item = {}
+    
+    panel_group = Group(
+        Align("\nUsage:", align="center"),
+        Align(
+            "[#ECDBBA]Hover over the screen and press the apropriate call",
+            align="center",
+        ),
+        Align("[#ECDBBA]to perform the related operation", align="center"),
+        Align("\n[#400D51]Supported Operations:", align="center"),
+        Align(tabulate(menu_items, "keys", "rounded_grid"), align="center"),
+        "\n",
+    )
 
-    print(tabulate(menu_items, "keys", "rounded_grid"), end="\n\n")
+    print(
+        Panel(
+            panel_group,
+            title="[#FF731D]Replace Menu",
+            expand=True,
+            highlight=True,
+        )
+    )
+    print()
+    print()
 
 
 def looper():

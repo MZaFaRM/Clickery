@@ -1,9 +1,12 @@
 import pyautogui
 
-from rich import print
+from rich import print as richPrint
 from time import sleep
 from keyboard import read_key, send
 from PIL import Image
+from rich.align import Align
+from rich import get_console
+from rich.panel import Panel
 
 
 import sample.universal.config as config
@@ -13,14 +16,8 @@ from sample.pre_record.manual_input import manual_input
 from sample.pre_record.operations.general import egg
 from sample.post_record.post_record import looper, replacer
 from sample.helpers.dir import clarity
-from sample.helpers.menu import (
-    newline_tab,
-    print_menu,
-    add_id,
-    SaveJSON,
-    SaveToDB,
-    PrintRecorded,
-)
+
+import sample.helpers.menu as menu
 
 
 def initialise(argv):
@@ -28,20 +25,22 @@ def initialise(argv):
     try:
         startup(argv)
     except KeyboardInterrupt:
-        newline_tab(
-            1,
-            "\n:cactus: [bold #8D72E1] FAILED [/bold #8D72E1] :cactus:\n\n[#082032]{  keyboard interrupt  }",
+        richPrint(
+            "\n\n:cactus: [bold #8D72E1] FAILED [/bold #8D72E1] :cactus:\n\n[#082032]{  keyboard interrupt  }"
         )
         pass
 
 
 def startup(argv):
     egg(argv)
-    
+
     # The main part of the code
     # Initialisation
-    print("\n\tPress [italic #F0A500]CTRL[/italic #F0A500] for File input...")
-    print("\t\tOr Press [italic #F0A500]SHIFT[/italic #F0A500] for  Manual input...\n")
+    print()
+    Input_type = """\nPress [italic #F0A500]CTRL[/italic #F0A500] for File input...
+    Or Press [italic #F0A500]SHIFT[/italic #F0A500] for  Manual input...\n"""
+
+    menu.print(Input_type, action="Pre-Menu")
 
     keyboardinput = ""
 
@@ -54,26 +53,24 @@ def startup(argv):
     if keyboardinput in ["ctrl", "right ctrl"]:
         status = file_input()
         if not status:
-            newline_tab(1, "\n:cactus: [bold #8D72E1] FAILED  :cactus:")
+            menu.print("\n:cactus: [bold #8D72E1] FAILED  :cactus:")
             return
     # For manual input
     elif keyboardinput in ["right shift", "shift"]:
-
-        print_menu()
+        print()
+        menu.print_menu()
         manual_input()
 
     # If actions record is empty the process quits
     if not len(config.record):
-        PrintRecorded()
-        newline_tab(
-            1,
-            "\n:cactus: [bold #8D72E1] FAILED [/bold #8D72E1] :cactus:\n\n[#082032]{  No actions input  }",
-        )
+        menu.PrintRecorded()
+        menu.print(":cactus: [bold #8D72E1] FAILED [/bold #8D72E1] :cactus:")
+        menu.print("\n[#082032]{  No actions input  }")
         return
 
     # Adds ids and prints everything that is recorded
-    add_id()
-    PrintRecorded()
+    menu.add_id()
+    menu.PrintRecorded()
 
     result = 1
 
@@ -81,7 +78,7 @@ def startup(argv):
     while len(config.record):
 
         if result:
-            replace_menu()
+            post_record_menu()
         else:
             result = 1
 
@@ -104,51 +101,46 @@ def startup(argv):
 
         if AfterRecord in ["space"]:
             # Saves recorded actions to a file
-            SaveJSON()
+            menu.SaveJSON()
             break
 
         # If actions record is empty the process quits
         if not len(config.record):
-            newline_tab(
-                1,
-                "\n:cactus: [bold #8D72E1] FAILED [/bold #8D72E1] :cactus:\n\n[#082032]{  no actions input  }",
-            )
+            menu.print("\n:cactus: [bold #8D72E1] FAILED [/bold #8D72E1] :cactus:")
+            menu.print("\n[#082032]{  no actions input  }")
             return
 
         # Saves recorded actions to a assets/json/history.json
-        SaveJSON()
-        
+        menu.SaveJSON()
+
     try:
         # plays recorded
         play_recorded()
     # Execution of actions can be stopped by moving the cursor to the corner of the screen
     except pyautogui.FailSafeException:
-        newline_tab(
-            1,
-            "\n:cactus: [bold #8D72E1] FAILED [/bold #8D72E1] :cactus:\n\n[#082032]{  execution cancelled  }",
-        )
+        menu.print("\n:cactus: [bold #8D72E1] FAILED [/bold #8D72E1] :cactus:")
+        menu.print("\n[#082032]{  execution cancelled  }")
         return
-    
+
     # Saves recorded actions to assets/database/history.db in table HISTORY
-    SaveToDB()
+    menu.SaveToDB()
 
     # If all goes well...
-    newline_tab(1, "\n:Party_Popper: [bold #8D72E1] SUCCESS :Party_Popper: ")
+    richPrint()
+    text = Align(":Party_Popper: [bold #8D72E1] SUCCESS :Party_Popper: ", align="center")
+    richPrint(Panel(text, subtitle="[#001253]The end", subtitle_align="right"))
 
 
-def replace_menu():
-    # The replace menu...
+def post_record_menu():
+    # The post record menu...
+    print()
+    
+    MENU = """\nPress [italic #083AA9]CTRL[/italic #083AA9] to repeat a set of actions...
+ Or Press [italic #083AA9]SHIFT[/italic #083AA9] to replace any action...
+  Or Press [italic #083AA9]SPACE[/italic #083AA9] to start execution...\n"""
 
-    print(
-        "\n\tPress [italic #083AA9]CTRL[/italic #083AA9] to repeat a set of actions..."
-    )
-    print(
-        "\t\tOr Press [italic #083AA9]SHIFT[/italic #083AA9] to replace any action..."
-    )
-    print(
-        "\t\t\tOr Press [italic #083AA9]SPACE[/italic #083AA9] to start execution...\n"
-    )
-
+    menu.print(MENU, action="Post-Menu")
+    print()
 
 def play_recorded():
 
@@ -165,51 +157,53 @@ def play_recorded():
                     config.Move_Speed,
                     pyautogui.easeOutQuad,
                 )
-                print(f" :palm_tree:  [#829460 BOLD]MOVED TO[/#829460 BOLD] {position}")
+                menu.print(
+                    f" :palm_tree:  [#829460 BOLD]MOVED TO[/#829460 BOLD] {position}"
+                )
 
             # For left Clicking
             if key == "l-click":
-                
-                pyautogui.click(button='left')
-                                
+
+                pyautogui.click(button="left")
+
                 current_position = {}
 
                 # Saves position
                 x, y = pyautogui.position()
                 current_position["x"] = x
                 current_position["y"] = y
-                
-                print(
-                    f" :palm_tree:  [#829460 BOLD]LEFT CLICKED AT[/#829460 BOLD]{current_position}"
+
+                menu.print(
+                    f" :palm_tree:  [#829460 BOLD]LEFT CLICKED AT [/#829460 BOLD]{current_position}"
                 )
-                
+
             # For right Clicking
             if key == "r-click":
-                
-                pyautogui.click(button='right')
-                
+
+                pyautogui.click(button="right")
+
                 current_position = {}
 
                 # Saves position
                 x, y = pyautogui.position()
                 current_position["x"] = x
                 current_position["y"] = y
-                
-                print(
+
+                menu.print(
                     f" :palm_tree:  [#829460 BOLD]RIGHT CLICKED AT [/#829460 BOLD]{current_position}"
                 )
 
             # For dragging with cursor
             if key == "drag":
                 pyautogui.dragTo(position["x"], position["y"], config.Drag_Speed)
-                print(
+                menu.print(
                     f" :palm_tree:  [#829460 BOLD]DRAGGED TO[/#829460 BOLD] {position}"
                 )
 
             # For text display
             if key == "write":
                 pyautogui.write(action["write"], interval=config.Type_Speed)
-                print(
+                menu.print(
                     f" :palm_tree:  [#829460 BOLD]WROTE[/#829460 BOLD] [italic #8D9EFF]{action['write']} \t"
                 )
 
@@ -219,14 +213,14 @@ def play_recorded():
                     r"assets\images\images.png"
                 )
                 DetectImage(r"assets\images\images.png")
-                print(
+                menu.print(
                     f" :palm_tree:  [#829460 BOLD]FOUND[/#829460 BOLD] [italic #8D9EFF]{action['image']}"
                 )
 
             # For wait
             if key == "sleep":
                 sleep(action["sleep"])
-                print(
+                menu.print(
                     f" :palm_tree:  [#829460 BOLD]WAITED FOR[/#829460 BOLD] [italic #8D9EFF]{action['sleep']}s"
                 )
 
@@ -237,7 +231,7 @@ def play_recorded():
                 for current_key in action["hotkey"]:
                     pyautogui.keyUp(current_key)
 
-                print(
+                menu.print(
                     f" :palm_tree:  [#829460 BOLD]INSERTED HOTKEYS[/#829460 BOLD] [italic #F0A500]{action['hotkey']}"
                 )
 
@@ -248,18 +242,18 @@ def play_recorded():
 
                 if len(key) == 2:
                     # For User
-                    print(
+                    menu.print(
                         f" :palm_tree:  [#829460 BOLD]INSERTED KEY[/#829460 BOLD][italic #F0A500] {key}\t"
                     )
                 else:
                     # For User
-                    print(
+                    menu.print(
                         f" :palm_tree:  [#829460 BOLD]INSERTED KEY[/#829460 BOLD][italic #F0A500] {key.upper()}\t"
                     )
 
             if key == "screenshot":
                 pyautogui.screenshot(action["screenshot"])
-                print(
+                menu.print(
                     " :palm_tree:  [#829460 BOLD]TOOK A[/#829460 BOLD] [italic #8D9EFF]screenshot"
                 )
 

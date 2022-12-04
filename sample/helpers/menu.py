@@ -1,11 +1,18 @@
 from tabulate import tabulate
 import sample.universal.config as config
-from json import dump
+from json import dump, dumps
 import sqlite3
-from rich import print
+from rich import print as richPrint
+from rich.align import Align
+from rich.bar import Bar
+from rich.panel import Panel
+from rich.json import JSON
+from rich.console import Group
+from rich.progress_bar import ProgressBar
 
 
 def print_menu():
+    
     # Menu for manual input
     menu_items = []
     single_item = {}
@@ -19,29 +26,37 @@ def print_menu():
         single_item = {}
 
     # for user
-    newline_tab(1, sentence="[#F0EBCE italic]Initialized...:dizzy::dizzy::dizzy:")
-    newline_tab(1, sentence="Usage:")
-    newline_tab(
-        0, sentence="[#ECDBBA]\tHover over the screen and press the apropriate call"
+    initiation = "[#F0EBCE italic]Initialized...:dizzy::dizzy::dizzy:"
+    panel_group = Group(initiation, ProgressBar(total=3, completed=3))
+    print(Panel(panel_group))
+
+    panel_group = Group(
+        Align("\nUsage:", align="center"),
+        Align(
+            "[#ECDBBA]Hover over the screen and press the apropriate call",
+            align="center",
+        ),
+        Align("[#ECDBBA]to perform the related operation", align="center"),
+        Align("\n[#400D51]Supported Operations:", align="center"),
+        Align(tabulate(menu_items, "keys", "rounded_grid"), align="center"),
+        "\n",
     )
-    newline_tab(1, sentence="\t\t[#ECDBBA]to perform the related operation")
+    
+    richPrint()
 
-    newline_tab(1, sentence="Supported Operations:")
-
-    # menu table printed
-    print(tabulate(menu_items, "keys", "rounded_grid"), end="\n\n")
-
-    newline_tab(
-        1, sentence="Finally, [italic #F0A500]ESC[/italic #F0A500] to Start operation"
+    print(
+        Panel(
+            panel_group,
+            title="[#FF731D]Main Menu",
+            subtitle="Finally, [italic #F0A500]ESC[/italic #F0A500] to Start operation",
+            expand=True,
+            highlight=True,
+        )
     )
+    richPrint()
+    richPrint()
+
     # starts recording
-
-
-def newline_tab(n, sentence=""):
-    # a text formatting function
-    print(sentence)
-    for i in range(n):
-        print()
 
 
 def SaveJSON():
@@ -81,5 +96,46 @@ def SaveToDB():
 
 def PrintRecorded():
     # prints all recorded actions
-    print(f"\n[#FFCCB3]Recorded actions:[/#FFCCB3]\n")
-    print(config.record)
+    richPrint()
+    text = JSON(dumps(config.record), indent=4)
+    text = Align(text, align="center")
+    text = Panel(
+        text,
+        title="[#FFCCB3]Recorded actions:",
+        highlight=True,
+        subtitle="[#001253]Step 2",
+        subtitle_align="right",
+    )
+    richPrint(text)
+
+
+def print(text="", action="Align"):
+    if action == "Align":
+        richPrint(Align(text, align="center"))
+    elif action == "Bar":
+        richPrint(Bar(100, 0, 100))
+    elif action == "Table":
+        richPrint(text, highlight=True)
+    elif action == "Pre-Menu":
+        richPrint(
+            Panel(
+                Align(text, align="center"),
+                title="[#DC3535]Mode Of Input",
+                title_align="center",
+                subtitle="[#001253]Step 1",
+                highlight=True,
+                subtitle_align="right",
+            )
+        )
+
+    elif action == "Post-Menu":
+        richPrint(
+            Panel(
+                Align(text, align="center"),
+                title="[#C147E9]Action Modifications",
+                title_align="center",
+                subtitle="[#001253]Step 3",
+                highlight=True,
+                subtitle_align="right",
+            )
+        )

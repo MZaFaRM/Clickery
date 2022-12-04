@@ -1,9 +1,17 @@
 from json import load, JSONDecodeError
 from rich import print
+from rich.progress_bar import ProgressBar
+from rich.console import Group
 
 import sample.universal.config as config
 from sample.helpers.dir import folder
-from sample.helpers.menu import newline_tab
+
+from rich.layout import Layout
+from rich.panel import Panel
+from rich.align import Align
+from rich.live import Live
+import time
+from rich.console import Console
 
 
 def file_input():
@@ -16,40 +24,51 @@ def file_input():
 
 
 def test_file(location):
+    
+    print()
 
-    # Validate file
+    steps_for_verification = [
+        {
+            "output": "[italic #B6E2A1]File opened...:dizzy::dizzy::dizzy:",
+            "action": "open(location)",
+        },
+        {
+            "output": "[italic #B6E2A1]File successfully parsed...:dizzy::dizzy::dizzy:",
+            "action": "load(open(location))",
+        },
+        {
+            "output": "[italic #B6E2A1]File Successfully Initialized...:dizzy::dizzy::dizzy:",
+            "action": "file_format(load(open(location)))",
+        },
+    ]
+
     try:
-        f = open(location)
-        print("[italic #B6E2A1]File opened...:dizzy::dizzy::dizzy:")
-
-        # checks for json format and assignes it to config.record
-        config.record = load(f)
-        print("[italic #B6E2A1]File successfully parsed...:dizzy::dizzy::dizzy:")
-
-        # calls 'file_format' to check for 'record' format
-        file_format(config.record)
-        print("[italic #B6E2A1]File Successfully Initialized...:dizzy::dizzy::dizzy:")
-
-        return 1
+        for i, step in enumerate(steps_for_verification, start=1):
+            eval(step["action"])
+            panel_group = Group(step["output"], ProgressBar(total=3, completed=3))
+            print(Panel(panel_group))
+            
+        config.record = file_format(load(open(location)))
+        
+        return config.record
 
     # Possible exceptions
     except FileNotFoundError:
-        print(
-            ":x: [italic #CC3636]No file provided...",
-        )
+        print(Panel(Align("[#CC3636]No File Provided...", align="center")))
     except JSONDecodeError:
         print(
-            ":x: [italic #CC3636]JSON Decode Error, please check your json file...",
+            Panel(Align("[#CC3636]JSON Decode Error, Please Check Your JSON File..."))
         )
     except UnicodeDecodeError:
-        print(
-            ":x: [italic #CC3636]Error parsing file..."
-        )
+        print(Panel(Align("[#CC3636]Error Parsing File...")))
     except ValueError:
         print(
-            ":x: [italic #CC3636]Format error, check out the documentation on how to format your json file..."
+            Panel(
+                Align(
+                    "[#CC3636]Format Error, Check Out The Documentation On How To Format Your JSON File...\nhttps://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format.md"
+                )
+            )
         )
-        newline_tab(1, "https://github.com/MZaFaRM/CLICKERY/blob/main/Guide/format.md")
 
 
 def file_format(record):
@@ -71,4 +90,4 @@ def file_format(record):
         for key, value in item.items():
             if key not in actions:
                 raise ValueError
-    return 1
+    return record

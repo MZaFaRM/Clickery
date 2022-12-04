@@ -1,4 +1,4 @@
-from rich import print
+from sample.helpers.menu import print
 from re import search
 from random import choices
 from sample.helpers.dir import folder
