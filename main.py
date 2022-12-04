@@ -6,6 +6,7 @@ def main():
     try:
         # imports the program
         from sample.core import initialise
+
         # starts the program
         initialise(argv)
 

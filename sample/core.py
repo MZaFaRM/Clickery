@@ -19,6 +19,21 @@ from sample.helpers.dir import clarity
 
 import sample.helpers.menu as menu
 
+richPrint(Align("[#F9ED69]            ,---.'|                                ,--.                                      ", align="center"))
+richPrint(Align("[#F9ED69]               ,--,                                                                          ", align="center"))
+richPrint(Align("[#F9ED69]  ,----..   |   | :       ,---,   ,----..      ,--/  /|     ,---,. ,-.----.                  ", align="center"))
+richPrint(Align("[#F9ED69] /   /   \  :   : |    ,`--.' |  /   /   \  ,---,': / '   ,'  .' | \    /  \           ,---, ", align="center"))
+richPrint(Align("[#F08A5D]|   :     : |   ' :    |   :  : |   :     : :   : '/ /  ,---.'   | ;   :    \         /_ ./| ", align="center"))
+richPrint(Align("[#F08A5D].   |  ;. / ;   ; '    :   |  ' .   |  ;. / |   '   ,   |   |   .' |   | .\ :   ,---, |  ' : ", align="center"))
+richPrint(Align("[#F08A5D].   ; /--`  '   | |__  |   :  | .   ; /--`  '   |  /    :   :  |-, .   : |: |  /___/ \.  : | ", align="center"))
+richPrint(Align("[#F08A5D];   | ;     |   | :.'| '   '  ; ;   | ;     |   ;  ;    :   |  ;/| |   |  \ :   .  \  \ ,' ' ", align="center"))
+richPrint(Align("[#B83B5E]|   : |     '   :    ; |   |  | |   : |     :   '   \   |   :   .' |   : .  /    \  ;  `  ,' ", align="center"))
+richPrint(Align("[#B83B5E].   | '___  |   |  ./  '   :  ; .   | '___  |   |    '  |   |  |-, ;   | |  \     \  \    '  ", align="center"))
+richPrint(Align("[#B83B5E]'   ; : .'| ;   : ;    |   |  ' '   ; : .'| '   : |.  \ '   :  ;/| |   | ;\  \     '  \   |  ", align="center"))
+richPrint(Align("[#B83B5E]'   | '/  : |   ,/     '   :  | '   | '/  : |   | '_\.' |   |    \ :   ' | \.'      \  ;  ;  ", align="center"))
+richPrint(Align("[#6A2C70] \   \ .'              '---'     \   \ .'   ;   |,'     |   | ,'   |   |.'            \  ' ; ", align="center"))
+richPrint(Align("[#6A2C70]|   :    /  '---'      ;   |.'  |   :    /  '   : |     |   :   .' :   : :-'         :  \  \ ", align="center"))
+richPrint(Align("[#6A2C70]  `---`                           `---`     '---'       `----'     `---'               `--`  ", align="center"))
 
 def initialise(argv):
     # Starts execution and handles keyboard interruption
