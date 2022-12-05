@@ -37,7 +37,7 @@ def print_menu():
             align="center",
         ),
         Align("[#ECDBBA]to perform the related operation", align="center"),
-        Align("\n[#400D51]Supported Operations:", align="center"),
+        Align("\n[#FF7777]Supported Operations:", align="center"),
         Align(tabulate(menu_items, "keys", "rounded_grid"), align="center"),
         "\n",
     )
@@ -102,7 +102,7 @@ def PrintRecorded():
         text,
         title="[#FFCCB3]Recorded actions:",
         highlight=True,
-        subtitle="[#001253]Step 2",
+        subtitle="[#6D9886]Step 2",
         subtitle_align="right",
     )
     richPrint(text)
@@ -121,7 +121,7 @@ def print(text="", action="Align"):
                 Align(text, align="center"),
                 title="[#DC3535]Mode Of Input",
                 title_align="center",
-                subtitle="[#001253]Step 1",
+                subtitle="[#6D9886]Step 1",
                 highlight=True,
                 subtitle_align="right",
             )
@@ -133,7 +133,7 @@ def print(text="", action="Align"):
                 Align(text, align="center"),
                 title="[#C147E9]Action Modifications",
                 title_align="center",
-                subtitle="[#001253]Step 3",
+                subtitle="[#6D9886]Step 3",
                 highlight=True,
                 subtitle_align="right",
             )

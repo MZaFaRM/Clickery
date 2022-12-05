@@ -157,12 +157,12 @@ def Pop(id=0):
             delete = config.record.pop()
 
         except IndexError:
-            print(":Cross_Mark:  [#064663 italic]No actions to remove")
+            print(":Cross_Mark:  [#D2001A italic]No actions to remove")
             return
     else:
         delete = config.record.pop(id - 1)
 
-    print(f":Wilted_Flower: [#082032 italic] {delete} removed")
+    print(f":Wilted_Flower: [#7D9D9C italic] {delete} removed")
 
 
 def DragCursor():

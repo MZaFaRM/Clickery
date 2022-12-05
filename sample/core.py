@@ -145,16 +145,16 @@ def startup(argv):
     # If all goes well...
     richPrint()
     text = Align(":Party_Popper: [bold #8D72E1] SUCCESS :Party_Popper: ", align="center")
-    richPrint(Panel(text, subtitle="[#001253]The end", subtitle_align="right"))
+    richPrint(Panel(text, subtitle="[#6D9886]The End", subtitle_align="right"))
 
 
 def post_record_menu():
     # The post record menu...
     print()
     
-    MENU = """\nPress [italic #083AA9]CTRL[/italic #083AA9] to repeat a set of actions...
- Or Press [italic #083AA9]SHIFT[/italic #083AA9] to replace any action...
-  Or Press [italic #083AA9]SPACE[/italic #083AA9] to start execution...\n"""
+    MENU = """\nPress [italic #332FD0]CTRL[/] to repeat a set of actions...
+        Or Press [italic #332FD0]SHIFT[/] to replace any action...
+                Or Press [italic #332FD0]SPACE[/] to start execution...\n"""
 
     menu.print(MENU, action="Post-Menu")
     print()
@@ -326,7 +326,7 @@ def DetectImage(path):
 def error(error=""):
     richPrint()
     text = Align(":cactus: [bold #8D72E1] FAILED [/] :cactus:", align="center")
-    error = "[#082032]" + error
+    error = "[#6D9886]" + error
     richPrint(Panel(text, subtitle=error, subtitle_align="right"))
     
 
