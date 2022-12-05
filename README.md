@@ -61,12 +61,6 @@ Given below are all the libraries required to run the project
 ## Configurations
 
 Typing speed, Clicking speed, Dragging speed can be modified from [```sample\universal\config.py```](https://github.com/MZaFaRM/CLICKERY/blob/main/sample/universal/config.py).
-## Navigation
-
- Checkout [```\structure```](https://github.com/MZaFaRM/CLICKERY/tree/main/structure) for help in navigating through the project directory.
- 
- 
- ![Directory Structure](https://github.com/MZaFaRM/CLICKERY/blob/main/structure/structure.dot.svg)
  
 ## Database
 
