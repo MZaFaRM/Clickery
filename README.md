@@ -96,10 +96,9 @@ Although, downloading is not necessary for successful execution of the software,
 
 ## Screenshots
 
-<img width="960" alt="Clickery_2" src="https://user-images.githubusercontent.com/98420006/204109098-2293428f-6807-495e-aeec-723ad2aac875.png">
+<img width="960" alt="homescreen" src="https://user-images.githubusercontent.com/98420006/205715641-21171833-8abd-4c17-9d9a-d96016bddc88.png">
 
-<img width="960" alt="Clickery" src="https://user-images.githubusercontent.com/98420006/204109092-a2f0f8bf-0a0a-4f59-a683-99f43ac544d7.png">
-
+<img width="960" alt="working" src="https://user-images.githubusercontent.com/98420006/205715673-2ba17353-46e0-4c36-a853-cf2ff98cb03b.png">
 
 ## Documentation
 
