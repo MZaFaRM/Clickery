@@ -66,6 +66,7 @@ def startup(argv):
     if keyboardinput in ["ctrl", "right ctrl"]:
         status = file_input()
         if not status:
+            menu.PrintRecorded()
             error("Input Error")
             return
     # For manual input
