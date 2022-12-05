@@ -1,4 +1,4 @@
-from keyboard import read_key
+from keyboard import read_key, send
 
 import sample.universal.config as config
 from sample.pre_record.operations.general import *
@@ -19,6 +19,9 @@ def manual_input():
         if not flag:
 
             flag = 1
+            
+            # Due to an error
+            send(keyboardinput)
 
             # Checks user input and saves action
             for item in config.actions_list:

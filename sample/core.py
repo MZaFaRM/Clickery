@@ -311,7 +311,7 @@ def play_recorded():
                     
                     pyautogui.screenshot(action["screenshot"])
                     recorded.add_row(
-                        ":palm_tree:",  "[#829460 BOLD]TOOK A[/#829460 BOLD] [italic #8D9EFF]screenshot", f"{i}"
+                        ":palm_tree:",  f"[#829460 BOLD]SCREENSHOT SAVED AT[/#829460 BOLD] [italic #8D9EFF]{action['screenshot']}", f"{i}"
                     )
 
 

@@ -1,4 +1,4 @@
-from sample.helpers.menu import print as menu_print
+from rich import print
 from re import search
 from random import choices
 from sample.helpers.dir import folder
@@ -10,6 +10,7 @@ from sample.pre_record.operations.key_insert import return_key_input
 from sample.pre_record.operations.hot_key_insert import return_hot_key_input
 from sample.pre_record.operations.wait_seconds import return_wait
 from sample.pre_record.operations.text_input import return_write
+from rich.align import Align
 
 
 def WaitForImage():
@@ -27,9 +28,9 @@ def WaitForImage():
         action["image"] = location
 
         # For user
-        print(
-            f" :Rose:  [#29C7AC BOLD]SEARCH FOR[/#29C7AC BOLD] [italic #8D9EFF]{action['image']}"
-        )
+        print(Align(
+            f" :Rose:  [#29C7AC BOLD]SEARCH FOR[/#29C7AC BOLD] [italic #8D9EFF]{action['image']}", align="center"
+        ))
 
         return action
 
@@ -52,7 +53,7 @@ def MoveCursor():
     action["move"] = current_position
 
     # For user
-    menu_print(f" :Rose:  [#29C7AC BOLD]MOVE TO[/#29C7AC BOLD] {current_position}")
+    print(Align(f" :Rose:  [#29C7AC BOLD]MOVE TO[/#29C7AC BOLD] {current_position}", align="center"))
 
     return action
 
@@ -66,7 +67,7 @@ def LeftClickCursor():
     action["l-click"] = 1
 
     # For user
-    menu_print(f" :Rose:  [#29C7AC BOLD]LEFT CLICK AT[/] [italic #8D9EFF]position")
+    print(Align(f" :Rose:  [#29C7AC BOLD]LEFT CLICK AT[/] [italic #8D9EFF]position", align="center"))
 
     return action
 
@@ -80,7 +81,7 @@ def RightClickCursor():
     action["r-click"] = 1
 
     # For user
-    menu_print(f" :Rose:  [#29C7AC BOLD]RIGHT CLICK AT[/] [italic #8D9EFF]position")
+    print(Align(f" :Rose:  [#29C7AC BOLD]RIGHT CLICK AT[/] [italic #8D9EFF]position", align="center"))
 
     return action
 
@@ -94,9 +95,9 @@ def TextInput():
     if text:
         action["write"] = text
         # For user
-        menu_print(
-            f" :Rose:  [#29C7AC BOLD]WRITE[/#29C7AC BOLD] [italic #8D9EFF]{action['write']} \t"
-        )
+        print(Align(
+            f" :Rose:  [#29C7AC BOLD]WRITE[/#29C7AC BOLD] [italic #8D9EFF]{action['write']}", align="center"
+        ))
         return action
 
     return 0
@@ -112,17 +113,8 @@ def KeyInput():
 
     if key:
 
-        if len(key) == 1:
-            # For User
-            menu_print(
-                f" :Rose:  [#29C7AC BOLD]HIT KEY[/#29C7AC BOLD][italic #F0A500] {key}\t"
-            )
-        else:
-            # For User
-            menu_print(
-                f" :Rose:  [#29C7AC BOLD]HIT KEY[/#29C7AC BOLD][italic #F0A500] {key.upper()}\t"
-            )
-
+        print(Align(f" :Rose:  [#29C7AC BOLD]HIT KEY[/#29C7AC BOLD][italic #F0A500] {key}", align="center"))
+                  
         # Saves action
         action["key"] = key.replace(" ", "")
 
@@ -140,9 +132,9 @@ def Wait():
         action["sleep"] = time
 
         # For user
-        menu_print(
-            f" :Rose:  [#29C7AC BOLD]WAIT FOR[/#29C7AC BOLD] [italic #8D9EFF]{action['sleep']}s"
-        )
+        print(Align(
+            f" :Rose:  [#29C7AC BOLD]WAIT FOR[/#29C7AC BOLD] [italic #8D9EFF]{action['sleep']}s", align="center"
+        ))
 
         return action
     else:
@@ -157,12 +149,12 @@ def Pop(id=0):
             delete = config.record.pop()
 
         except IndexError:
-            menu_print(":Cross_Mark:  [#D2001A italic]No actions to remove")
+            print(Align(":Cross_Mark:  [#D2001A italic]No actions to remove", align="center"))
             return
     else:
         delete = config.record.pop(id - 1)
 
-    menu_print(f":Wilted_Flower: [#7D9D9C italic] {delete} removed")
+    print(Align(f":Wilted_Flower: [#7D9D9C italic] {delete} removed", align="center"))
 
 
 def DragCursor():
@@ -180,7 +172,7 @@ def DragCursor():
     action["drag"] = current_position
 
     # For user
-    menu_print(f" :Rose:  [#29C7AC BOLD]DRAG TO[/#29C7AC BOLD] {current_position}")
+    print(Align(f" :Rose:  [#29C7AC BOLD]DRAG TO[/#29C7AC BOLD] {current_position}", align="center"))
 
     return action
 
@@ -199,9 +191,9 @@ def InsertHotkey():
         action["hotkey"] = hotkeys
 
         # For User
-        menu_print(
-            f" :Rose:  [#29C7AC BOLD]INSERT HOTKEYS[/#29C7AC BOLD][italic #F0A500] {hotkeys_display}"
-        )
+        print(Align(
+            f" :Rose:  [#29C7AC BOLD]INSERT HOTKEYS[/#29C7AC BOLD][italic #F0A500] {hotkeys_display}", align="center"
+        ))
 
         return action
 
@@ -226,7 +218,7 @@ def TakeScreenshot():
         action["screenshot"] = location
 
         # For User
-        menu_print(" :Rose:  [#29C7AC BOLD]TAKE A[/#29C7AC BOLD] [italic #8D9EFF]screenshot")
+        print(Align(f" :Rose:  [#29C7AC BOLD]SAVE A SCREENSHOT AT[/#29C7AC BOLD] [italic #8D9EFF]{location}", align="center"))
 
         # Saving to config
         return action
@@ -252,7 +244,7 @@ def egg(argv):
             
         response = choices(response)
         
-        menu_print(f"{response[0]} ✨")
+        print(f"{response[0]} ✨")
     except IndexError:
         pass
     except Exception:
