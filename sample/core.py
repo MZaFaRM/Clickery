@@ -157,7 +157,6 @@ def post_record_menu():
                 Or Press [italic #332FD0]SPACE[/] to start execution...\n"""
 
     menu.print(MENU, action="Post-Menu")
-    print()
 
 def play_recorded():
     

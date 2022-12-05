@@ -5,7 +5,7 @@ from sample.pre_record.operations.general import *
 
 
 def manual_input():
-
+    
     # Used since a key press is being recorded twice (key down, key up)
     flag = 0
 

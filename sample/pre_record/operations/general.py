@@ -1,4 +1,4 @@
-from sample.helpers.menu import print
+from sample.helpers.menu import print as menu_print
 from re import search
 from random import choices
 from sample.helpers.dir import folder
@@ -52,7 +52,7 @@ def MoveCursor():
     action["move"] = current_position
 
     # For user
-    print(f" :Rose:  [#29C7AC BOLD]MOVE TO[/#29C7AC BOLD] {current_position}")
+    menu_print(f" :Rose:  [#29C7AC BOLD]MOVE TO[/#29C7AC BOLD] {current_position}")
 
     return action
 
@@ -66,7 +66,7 @@ def LeftClickCursor():
     action["l-click"] = 1
 
     # For user
-    print(f" :Rose:  [#29C7AC BOLD]LEFT CLICK AT[/] [italic #8D9EFF]position")
+    menu_print(f" :Rose:  [#29C7AC BOLD]LEFT CLICK AT[/] [italic #8D9EFF]position")
 
     return action
 
@@ -80,7 +80,7 @@ def RightClickCursor():
     action["r-click"] = 1
 
     # For user
-    print(f" :Rose:  [#29C7AC BOLD]RIGHT CLICK AT[/] [italic #8D9EFF]position")
+    menu_print(f" :Rose:  [#29C7AC BOLD]RIGHT CLICK AT[/] [italic #8D9EFF]position")
 
     return action
 
@@ -94,7 +94,7 @@ def TextInput():
     if text:
         action["write"] = text
         # For user
-        print(
+        menu_print(
             f" :Rose:  [#29C7AC BOLD]WRITE[/#29C7AC BOLD] [italic #8D9EFF]{action['write']} \t"
         )
         return action
@@ -114,12 +114,12 @@ def KeyInput():
 
         if len(key) == 1:
             # For User
-            print(
+            menu_print(
                 f" :Rose:  [#29C7AC BOLD]HIT KEY[/#29C7AC BOLD][italic #F0A500] {key}\t"
             )
         else:
             # For User
-            print(
+            menu_print(
                 f" :Rose:  [#29C7AC BOLD]HIT KEY[/#29C7AC BOLD][italic #F0A500] {key.upper()}\t"
             )
 
@@ -140,7 +140,7 @@ def Wait():
         action["sleep"] = time
 
         # For user
-        print(
+        menu_print(
             f" :Rose:  [#29C7AC BOLD]WAIT FOR[/#29C7AC BOLD] [italic #8D9EFF]{action['sleep']}s"
         )
 
@@ -157,12 +157,12 @@ def Pop(id=0):
             delete = config.record.pop()
 
         except IndexError:
-            print(":Cross_Mark:  [#D2001A italic]No actions to remove")
+            menu_print(":Cross_Mark:  [#D2001A italic]No actions to remove")
             return
     else:
         delete = config.record.pop(id - 1)
 
-    print(f":Wilted_Flower: [#7D9D9C italic] {delete} removed")
+    menu_print(f":Wilted_Flower: [#7D9D9C italic] {delete} removed")
 
 
 def DragCursor():
@@ -180,7 +180,7 @@ def DragCursor():
     action["drag"] = current_position
 
     # For user
-    print(f" :Rose:  [#29C7AC BOLD]DRAG TO[/#29C7AC BOLD] {current_position}")
+    menu_print(f" :Rose:  [#29C7AC BOLD]DRAG TO[/#29C7AC BOLD] {current_position}")
 
     return action
 
@@ -199,7 +199,7 @@ def InsertHotkey():
         action["hotkey"] = hotkeys
 
         # For User
-        print(
+        menu_print(
             f" :Rose:  [#29C7AC BOLD]INSERT HOTKEYS[/#29C7AC BOLD][italic #F0A500] {hotkeys_display}"
         )
 
@@ -226,7 +226,7 @@ def TakeScreenshot():
         action["screenshot"] = location
 
         # For User
-        print(" :Rose:  [#29C7AC BOLD]TAKE A[/#29C7AC BOLD] [italic #8D9EFF]screenshot")
+        menu_print(" :Rose:  [#29C7AC BOLD]TAKE A[/#29C7AC BOLD] [italic #8D9EFF]screenshot")
 
         # Saving to config
         return action
@@ -252,7 +252,7 @@ def egg(argv):
             
         response = choices(response)
         
-        print(f"{response[0]} ✨")
+        menu_print(f"{response[0]} ✨")
     except IndexError:
         pass
     except Exception:

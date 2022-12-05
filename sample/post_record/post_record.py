@@ -1,6 +1,5 @@
 from keyboard import read_key
 from tabulate import tabulate
-from rich import print
 from rich.align import Align
 from rich.panel import Panel
 from rich.console import Group
@@ -9,6 +8,8 @@ import sample.post_record.looper as loop
 from sample.pre_record.operations.general import *
 import sample.universal.config as config
 from sample.helpers.menu import add_id, PrintRecorded
+from sample.helpers.menu import print as menu_print
+from rich import print
 
 
 def replacer():
@@ -23,6 +24,7 @@ def replacer():
     # For getting user input
     print_menu_replace()
     keyboardinput = read_key()
+    
 
     # Stop recording
     if keyboardinput == "esc":
@@ -84,22 +86,20 @@ def print_menu_replace():
             align="center",
         ),
         Align("[#ECDBBA]to perform the related operation", align="center"),
-        Align("\n[#400D51]Supported Operations:", align="center"),
+        Align("\n[#FF7777]Supported Operations:", align="center"),
         Align(tabulate(menu_items, "keys", "rounded_grid"), align="center"),
         "\n",
     )
 
-    print(
+    menu_print(
         Panel(
             panel_group,
             title="[#FF731D]Replace Menu",
-            expand=True,
             highlight=True,
         )
     )
-    print()
-    print()
 
+    print()
 
 def looper():
     
