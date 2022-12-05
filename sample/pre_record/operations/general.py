@@ -66,7 +66,7 @@ def LeftClickCursor():
     action["l-click"] = 1
 
     # For user
-    print(f" :Rose:  [#29C7AC BOLD]LEFT CLICK AT POSITION[/#29C7AC BOLD]")
+    print(f" :Rose:  [#29C7AC BOLD]LEFT CLICK AT[/] [italic #8D9EFF]position")
 
     return action
 
@@ -80,7 +80,7 @@ def RightClickCursor():
     action["r-click"] = 1
 
     # For user
-    print(f" :Rose:  [#29C7AC BOLD]RIGHT CLICK AT POSITION[/#29C7AC BOLD]")
+    print(f" :Rose:  [#29C7AC BOLD]RIGHT CLICK AT[/] [italic #8D9EFF]position")
 
     return action
 
@@ -122,7 +122,7 @@ def KeyInput():
             print(
                 f" :Rose:  [#29C7AC BOLD]HIT KEY[/#29C7AC BOLD][italic #F0A500] {key.upper()}\t"
             )
-            
+
         # Saves action
         action["key"] = key.replace(" ", "")
 
@@ -241,7 +241,18 @@ def egg(argv):
         thanks = search("^thanks", argv)
         thank = search("^thank*you", argv)
         ty = search("^ty", argv)
-        exec(bytes('晩琠慨歮⁳牯琠慨歮漠⁲祴䄺嬽夢畯爧⁥敗捬浯≥✬潎倠潲汢浥Ⱗ吧慨⁴慭敤洠⁹慤❹✬潎眠牯楲獥Ⱗ匧牵⁥桴湩Ⅷ崧䄻挽潨捩獥䄨㬩牰湩⡴≦䅻せ絝㨠灳牡汫獥∺ ','u16')[2:])
+        if thanks or thank or ty:
+            response = [
+                "You're Welcome",
+                "No Problem",
+                "That made my day",
+                "No worries",
+                "Sure thing!",
+            ]
+            
+        response = choices(response)
+        
+        print(f"{response[0]} ✨")
     except IndexError:
         pass
     except Exception:

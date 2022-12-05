@@ -7,6 +7,7 @@ from PIL import Image
 from rich.align import Align
 from rich import get_console
 from rich.panel import Panel
+from rich.progress_bar import ProgressBar
 
 
 import sample.universal.config as config
@@ -19,9 +20,15 @@ from sample.helpers.dir import clarity
 
 import sample.helpers.menu as menu
 
-richPrint(Align("[#F9ED69]            ,---.'|                                ,--.                                      ", align="center"))
-richPrint(Align("[#F9ED69]               ,--,                                                                          ", align="center"))
-richPrint(Align("[#F9ED69]  ,----..   |   | :       ,---,   ,----..      ,--/  /|     ,---,. ,-.----.                  ", align="center"))
+import time
+
+from rich.live import Live
+from rich.table import Table
+
+richPrint()
+richPrint(Align("[#F9ED69]            ,---.'|                                ,--.                           |          ", align="center"))
+richPrint(Align("[#F9ED69]               ,--,                                                              - -         ", align="center"))
+richPrint(Align("[#F9ED69]  ,----..   |   | :       ,---,   ,----..      ,--/  /|     ,---,. ,-.----.       |          ", align="center"))
 richPrint(Align("[#F9ED69] /   /   \  :   : |    ,`--.' |  /   /   \  ,---,': / '   ,'  .' | \    /  \           ,---, ", align="center"))
 richPrint(Align("[#F08A5D]|   :     : |   ' :    |   :  : |   :     : :   : '/ /  ,---.'   | ;   :    \         /_ ./| ", align="center"))
 richPrint(Align("[#F08A5D].   |  ;. / ;   ; '    :   |  ' .   |  ;. / |   '   ,   |   |   .' |   | .\ :   ,---, |  ' : ", align="center"))
@@ -50,7 +57,7 @@ def startup(argv):
     # The main part of the code
     # Initialisation
     print()
-    Input_type = """\nPress [italic #F0A500]CTRL[/italic #F0A500] for File input...
+    Input_type = """\nPress [italic #F0A500]ENTER[/italic #F0A500] for File input...
     Or Press [italic #F0A500]SHIFT[/italic #F0A500] for  Manual input...\n"""
 
     menu.print(Input_type, action="Pre-Menu")
@@ -58,12 +65,11 @@ def startup(argv):
     keyboardinput = ""
 
     # Stores keyboard input
-    while keyboardinput not in ["ctrl", "right ctrl", "right shift", "shift"]:
+    while keyboardinput not in ["enter", "right shift", "shift"]:
         keyboardinput = read_key()
-        send("ctrl")
-        send("right ctrl")
     # For file input
-    if keyboardinput in ["ctrl", "right ctrl"]:
+    if keyboardinput == "enter":
+        send("enter")
         status = file_input()
         if not status:
             menu.PrintRecorded()
@@ -154,119 +160,160 @@ def post_record_menu():
     print()
 
 def play_recorded():
+    
+    recorded = Table(expand=True, box=None, highlight=True)
+    recorded.add_column(justify="center")
+    recorded.add_column(justify="center")
+    recorded.add_column(justify="center")
+    
+    i = 0
+    
+    with Live(recorded, refresh_per_second=4):
 
-    # Does what is recorded
-    for action in config.record:
-        for key, value in action.items():
+        # Does what is recorded
+        for action in config.record:
+            for key, value in action.items():
 
-            position = value
-            # For moving
-            if key == "move":
-                pyautogui.moveTo(
-                    position["x"],
-                    position["y"],
-                    config.Move_Speed,
-                    pyautogui.easeOutQuad,
-                )
-                menu.print(
-                    f" :palm_tree:  [#829460 BOLD]MOVED TO[/#829460 BOLD] {position}"
-                )
-
-            # For left Clicking
-            if key == "l-click":
-
-                pyautogui.click(button="left")
-
-                current_position = {}
-
-                # Saves position
-                x, y = pyautogui.position()
-                current_position["x"] = x
-                current_position["y"] = y
-
-                menu.print(
-                    f" :palm_tree:  [#829460 BOLD]LEFT CLICKED AT [/#829460 BOLD]{current_position}"
-                )
-
-            # For right Clicking
-            if key == "r-click":
-
-                pyautogui.click(button="right")
-
-                current_position = {}
-
-                # Saves position
-                x, y = pyautogui.position()
-                current_position["x"] = x
-                current_position["y"] = y
-
-                menu.print(
-                    f" :palm_tree:  [#829460 BOLD]RIGHT CLICKED AT [/#829460 BOLD]{current_position}"
-                )
-
-            # For dragging with cursor
-            if key == "drag":
-                pyautogui.dragTo(position["x"], position["y"], config.Drag_Speed)
-                menu.print(
-                    f" :palm_tree:  [#829460 BOLD]DRAGGED TO[/#829460 BOLD] {position}"
-                )
-
-            # For text display
-            if key == "write":
-                pyautogui.write(action["write"], interval=config.Type_Speed)
-                menu.print(
-                    f" :palm_tree:  [#829460 BOLD]WROTE[/#829460 BOLD] [italic #8D9EFF]{action['write']} \t"
-                )
-
-            # For screen search
-            if key == "image":
-                Image.open(action["image"]).convert("RGB").save(
-                    r"assets\images\images.png"
-                )
-                DetectImage(r"assets\images\images.png")
-                menu.print(
-                    f" :palm_tree:  [#829460 BOLD]FOUND[/#829460 BOLD] [italic #8D9EFF]{action['image']}"
-                )
-
-            # For wait
-            if key == "sleep":
-                sleep(action["sleep"])
-                menu.print(
-                    f" :palm_tree:  [#829460 BOLD]WAITED FOR[/#829460 BOLD] [italic #8D9EFF]{action['sleep']}s"
-                )
-
-            # For hotkey input
-            if key == "hotkey":
-                for current_key in action["hotkey"]:
-                    pyautogui.keyDown(current_key)
-                for current_key in action["hotkey"]:
-                    pyautogui.keyUp(current_key)
-
-                menu.print(
-                    f" :palm_tree:  [#829460 BOLD]INSERTED HOTKEYS[/#829460 BOLD] [italic #F0A500]{action['hotkey']}"
-                )
-
-            # For key input
-            if key == "key":
-                pyautogui.press(action["key"])
-                key = action["key"]
-
-                if len(key) == 2:
-                    # For User
-                    menu.print(
-                        f" :palm_tree:  [#829460 BOLD]INSERTED KEY[/#829460 BOLD][italic #F0A500] {key}\t"
+                position = value
+                # For moving
+                if key == "move":
+                    
+                    i += 1
+                    
+                    pyautogui.moveTo(
+                        position["x"],
+                        position["y"],
+                        config.Move_Speed,
+                        pyautogui.easeOutQuad,
                     )
-                else:
-                    # For User
-                    menu.print(
-                        f" :palm_tree:  [#829460 BOLD]INSERTED KEY[/#829460 BOLD][italic #F0A500] {key.upper()}\t"
+                    recorded.add_row(
+                        ":palm_tree:",  f"[#829460 BOLD]MOVED TO[/#829460 BOLD] {position}", f"{i}"
+                    )
+                    
+
+                # For left Clicking
+                if key == "l-click":
+                    
+                    i += 1
+
+                    pyautogui.click(button="left")
+
+                    current_position = {}
+
+                    # Saves position
+                    x, y = pyautogui.position()
+                    current_position["x"] = x
+                    current_position["y"] = y
+
+                    recorded.add_row(
+                        ":palm_tree:",  f"[#829460 BOLD]LEFT CLICKED AT [/#829460 BOLD]{current_position}", f"{i}"
                     )
 
-            if key == "screenshot":
-                pyautogui.screenshot(action["screenshot"])
-                menu.print(
-                    " :palm_tree:  [#829460 BOLD]TOOK A[/#829460 BOLD] [italic #8D9EFF]screenshot"
-                )
+                # For right Clicking
+                if key == "r-click":
+                    
+                    i += 1
+
+                    pyautogui.click(button="right")
+
+                    current_position = {}
+
+                    # Saves position
+                    x, y = pyautogui.position()
+                    current_position["x"] = x
+                    current_position["y"] = y
+
+                    recorded.add_row(
+                        ":palm_tree:",  f"[#829460 BOLD]RIGHT CLICKED AT [/#829460 BOLD]{current_position}", f"{i}"
+                    )
+
+                # For dragging with cursor
+                if key == "drag":
+                    
+                    i += 1
+                    
+                    pyautogui.dragTo(position["x"], position["y"], config.Drag_Speed)
+                    recorded.add_row(
+                        ":palm_tree:",  f"[#829460 BOLD]DRAGGED TO[/#829460 BOLD] {position}", f"{i}"
+                    )
+
+                # For text display
+                if key == "write":
+                    
+                    i += 1
+                    
+                    pyautogui.write(action["write"], interval=config.Type_Speed)
+                    recorded.add_row(
+                        ":palm_tree:",  f"[#829460 BOLD]WROTE[/#829460 BOLD] [italic #8D9EFF]{action['write']}", f"{i}"
+                    )
+
+                # For screen search
+                if key == "image":
+                    
+                    i += 1
+                    
+                    try:
+                        Image.open(action["image"]).convert("RGB").save(
+                            r"assets\images\images.png"
+                        )
+                    except FileNotFoundError:
+                        error("Image to wait for not found")
+                    DetectImage(r"assets\images\images.png")
+                    recorded.add_row(
+                        ":palm_tree:",  f"[#829460 BOLD]FOUND[/#829460 BOLD] [italic #8D9EFF]{action['image']}", f"{i}"
+                    )
+
+                # For wait
+                if key == "sleep":
+                    
+                    i += 1
+                    
+                    sleep(action["sleep"])
+                    recorded.add_row(
+                        ":palm_tree:",  f"[#829460 BOLD]WAITED FOR[/#829460 BOLD] [italic #8D9EFF]{action['sleep']}s", f"{i}"
+                    )
+
+                # For hotkey input
+                if key == "hotkey":
+                    
+                    i += 1
+                    
+                    for current_key in action["hotkey"]:
+                        pyautogui.keyDown(current_key)
+                    for current_key in action["hotkey"]:
+                        pyautogui.keyUp(current_key)
+
+                    recorded.add_row(
+                        ":palm_tree:",  f"[#829460 BOLD]INSERTED HOTKEYS[/#829460 BOLD] [italic #F0A500]{action['hotkey']}", f"{i}"
+                    )
+
+                # For key input
+                if key == "key":
+                    
+                    i += 1
+                    
+                    pyautogui.press(action["key"])
+                    key = action["key"]
+
+                    if len(key) == 2:
+                        # For User
+                        recorded.add_row(
+                            ":palm_tree:",  f"[#829460 BOLD]INSERTED KEY[/#829460 BOLD][italic #F0A500] {key}", f"{i}"
+                        )
+                    else:
+                        # For User
+                        recorded.add_row(
+                            ":palm_tree:",  f"[#829460 BOLD]INSERTED KEY[/#829460 BOLD][italic #F0A500] {key.upper()}", f"{i}"
+                        )
+
+                if key == "screenshot":
+                    
+                    i += 1
+                    
+                    pyautogui.screenshot(action["screenshot"])
+                    recorded.add_row(
+                        ":palm_tree:",  "[#829460 BOLD]TOOK A[/#829460 BOLD] [italic #8D9EFF]screenshot", f"{i}"
+                    )
 
 
 def DetectImage(path):
@@ -277,6 +324,7 @@ def DetectImage(path):
             return
         
 def error(error=""):
+    richPrint()
     text = Align(":cactus: [bold #8D72E1] FAILED [/] :cactus:", align="center")
     error = "[#082032]" + error
     richPrint(Panel(text, subtitle=error, subtitle_align="right"))

@@ -54,7 +54,6 @@ def print_menu():
         )
     )
     richPrint()
-    richPrint()
 
     # starts recording
 
