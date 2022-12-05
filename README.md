@@ -96,9 +96,10 @@ Although, downloading is not necessary for successful execution of the software,
 
 ## Screenshots
 
-<img width="960" alt="homescreen" src="https://user-images.githubusercontent.com/98420006/205715641-21171833-8abd-4c17-9d9a-d96016bddc88.png">
+<img width="960" alt="homescreen" src="https://user-images.githubusercontent.com/98420006/205716839-640ca13c-61e9-4c49-8995-d77bf1d2a77f.png">
 
-<img width="960" alt="working" src="https://user-images.githubusercontent.com/98420006/205715673-2ba17353-46e0-4c36-a853-cf2ff98cb03b.png">
+<img width="960" alt="working" src="https://user-images.githubusercontent.com/98420006/205716852-fe659427-6604-45b2-83c2-d86ec36486ca.png">
+
 
 ## Documentation
 
