@@ -214,7 +214,7 @@ def TakeScreenshot():
         # Take screenshot and save it to the given location
         location = file.name
         file.close()
-        os.remove(location)
+        # os.remove(location)
         action["screenshot"] = location
 
         # For User
