@@ -10,7 +10,6 @@ from sample.pre_record.operations.key_insert import return_key_input
 from sample.pre_record.operations.hot_key_insert import return_hot_key_input
 from sample.pre_record.operations.wait_seconds import return_wait
 from sample.pre_record.operations.text_input import return_write
-from rich.align import Align
 from rich.table import Table
 
 
