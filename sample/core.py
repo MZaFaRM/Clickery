@@ -2,7 +2,7 @@ import pyautogui
 
 from rich import print as richPrint
 from time import sleep
-from keyboard import read_key, send, press, release
+from keyboard import read_key, send, press, release, wait
 from PIL import Image
 from rich.align import Align
 from rich.panel import Panel
@@ -277,6 +277,21 @@ def play_recorded():
                 # For User
                 recorded.add_row(
                     ":palm_tree:",  f"[#829460 BOLD]INSERTED KEY[/#829460 BOLD][italic #F0A500] {key}", f"{i}"
+                )
+                
+            # For key input
+            elif key == "wait-key":
+                
+                i += 1
+                
+                # waits for the given key
+                wait(action["wait-key"])
+                
+                key = action["wait-key"]
+                
+                # For User
+                recorded.add_row(
+                    ":palm_tree:",  f"[#829460 BOLD]WAITED FOR[/#829460 BOLD][italic #F0A500] {key}", f"{i}"
                 )
                     
             elif key == "screenshot":

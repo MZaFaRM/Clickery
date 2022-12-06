@@ -11,6 +11,7 @@ from sample.pre_record.operations.key_insert import return_key_input
 from sample.pre_record.operations.hot_key_insert import return_hot_key_input
 from sample.pre_record.operations.wait_seconds import return_wait
 from sample.pre_record.operations.text_input import return_write
+from sample.pre_record.operations.wait_for_key import return_wait_key
 from rich.table import Table
 
 
@@ -116,6 +117,26 @@ def KeyInput():
                   
         # Saves action
         action["key"] = normalize_name(key)
+
+        return action
+
+    return 0
+
+def WaitForKey():
+
+    # Declares dictionaries
+    action = {}
+
+    # Gets key to input
+    key = return_wait_key()
+
+    if key:
+        
+        # For user
+        align_text("HIT KEY", f"[italic #F0A500]{key}")
+                  
+        # Saves action
+        action["wait-key"] = normalize_name(key)
 
         return action
 
