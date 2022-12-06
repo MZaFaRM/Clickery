@@ -5,10 +5,7 @@ from time import sleep
 from keyboard import read_key
 from PIL import Image
 from rich.align import Align
-from rich import get_console
 from rich.panel import Panel
-from rich.progress_bar import ProgressBar
-
 
 import sample.universal.config as config
 
@@ -20,9 +17,6 @@ from sample.helpers.dir import clarity
 
 import sample.helpers.menu as menu
 
-import time
-
-from rich.live import Live
 from rich.table import Table
 
 richPrint()
