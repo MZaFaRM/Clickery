@@ -6,6 +6,7 @@ from keyboard import read_key, send, press, release, wait
 from PIL import Image
 from rich.align import Align
 from rich.panel import Panel
+import time
 
 import sample.universal.config as config
 
@@ -270,6 +271,7 @@ def play_recorded():
                 i += 1
                 
                 # Clicks key
+                time.sleep(0.3)
                 send(action["key"])
                 
                 key = action["key"]

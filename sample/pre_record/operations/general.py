@@ -133,7 +133,7 @@ def WaitForKey():
     if key:
         
         # For user
-        align_text("HIT KEY", f"[italic #F0A500]{key}")
+        align_text("WAIT FOR KEY", f"[italic #F0A500]{key}")
                   
         # Saves action
         action["wait-key"] = normalize_name(key)

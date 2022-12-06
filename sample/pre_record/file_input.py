@@ -81,6 +81,7 @@ def file_format(record):
         "key",
         "screenshot",
         "id",
+        "wait-key"
     ]
     for item in record:
         for key, value in item.items():
