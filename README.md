@@ -92,7 +92,8 @@ Although, downloading is not necessary for successful execution of the software,
 
 <img width="960" alt="homescreen" src="https://user-images.githubusercontent.com/98420006/205716839-640ca13c-61e9-4c49-8995-d77bf1d2a77f.png">
 
-<img width="960" alt="working" src="https://user-images.githubusercontent.com/98420006/205716852-fe659427-6604-45b2-83c2-d86ec36486ca.png">
+
+<img width="960" alt="working" src="https://user-images.githubusercontent.com/98420006/205962224-f0971a03-3155-4465-b6cf-b67ffd6dd8c7.png">
 
 
 ## Documentation
