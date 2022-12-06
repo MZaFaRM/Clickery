@@ -11,6 +11,7 @@ from sample.pre_record.operations.hot_key_insert import return_hot_key_input
 from sample.pre_record.operations.wait_seconds import return_wait
 from sample.pre_record.operations.text_input import return_write
 from rich.align import Align
+from rich.table import Table
 
 
 def WaitForImage():
@@ -28,9 +29,7 @@ def WaitForImage():
         action["image"] = location
 
         # For user
-        print(Align(
-            f" :Rose:  [#29C7AC BOLD]SEARCH FOR[/#29C7AC BOLD] [italic #8D9EFF]{action['image']}", align="center"
-        ))
+        align_text("SEARCH FOR", f"[italic #8D9EFF]{action['image']}")
 
         return action
 
@@ -51,9 +50,9 @@ def MoveCursor():
 
     # Saves action
     action["move"] = current_position
-
+    
     # For user
-    print(Align(f" :Rose:  [#29C7AC BOLD]MOVE TO[/#29C7AC BOLD] {current_position}", align="center"))
+    align_text(description="MOVE TO", parameter=current_position)
 
     return action
 
@@ -67,7 +66,7 @@ def LeftClickCursor():
     action["l-click"] = 1
 
     # For user
-    print(Align(f" :Rose:  [#29C7AC BOLD]LEFT CLICK AT[/] [italic #8D9EFF]position", align="center"))
+    align_text(description="LEFT CLICK AT", parameter="[italic #8D9EFF]position")
 
     return action
 
@@ -81,7 +80,7 @@ def RightClickCursor():
     action["r-click"] = 1
 
     # For user
-    print(Align(f" :Rose:  [#29C7AC BOLD]RIGHT CLICK AT[/] [italic #8D9EFF]position", align="center"))
+    align_text(description="RIGHT CLICK AT", parameter="[italic #8D9EFF]position")
 
     return action
 
@@ -95,9 +94,8 @@ def TextInput():
     if text:
         action["write"] = text
         # For user
-        print(Align(
-            f" :Rose:  [#29C7AC BOLD]WRITE[/#29C7AC BOLD] [italic #8D9EFF]{action['write']}", align="center"
-        ))
+        align_text("WRITE", f"[italic #8D9EFF]{action['write']}")
+
         return action
 
     return 0
@@ -112,8 +110,9 @@ def KeyInput():
     key = return_key_input()
 
     if key:
-
-        print(Align(f" :Rose:  [#29C7AC BOLD]HIT KEY[/#29C7AC BOLD][italic #F0A500] {key}", align="center"))
+        
+        # For user
+        align_text("HIT KEY", f"[italic #F0A500]{key}")
                   
         # Saves action
         action["key"] = key.replace(" ", "")
@@ -130,11 +129,9 @@ def Wait():
     time = return_wait()
     if time != "-":
         action["sleep"] = time
-
+        
         # For user
-        print(Align(
-            f" :Rose:  [#29C7AC BOLD]WAIT FOR[/#29C7AC BOLD] [italic #8D9EFF]{action['sleep']}s", align="center"
-        ))
+        align_text("WAIT FOR", f"[italic #8D9EFF]{action['sleep']}s")
 
         return action
     else:
@@ -149,12 +146,13 @@ def Pop(id=0):
             delete = config.record.pop()
 
         except IndexError:
-            print(Align(":Cross_Mark:  [#D2001A italic]No actions to remove", align="center"))
+            align_text("[#D2001A italic]No actions to remove", "", ":cross_mark:")
+
             return
     else:
         delete = config.record.pop(id - 1)
-
-    print(Align(f":Wilted_Flower: [#7D9D9C italic] {delete} removed", align="center"))
+        
+    align_text(f"[#7D9D9C italic]{delete}", "removed", ":wilted_flower:", description_style=False)
 
 
 def DragCursor():
@@ -172,7 +170,7 @@ def DragCursor():
     action["drag"] = current_position
 
     # For user
-    print(Align(f" :Rose:  [#29C7AC BOLD]DRAG TO[/#29C7AC BOLD] {current_position}", align="center"))
+    align_text("DRAG TO", current_position)
 
     return action
 
@@ -191,9 +189,7 @@ def InsertHotkey():
         action["hotkey"] = hotkeys
 
         # For User
-        print(Align(
-            f" :Rose:  [#29C7AC BOLD]INSERT HOTKEYS[/#29C7AC BOLD][italic #F0A500] {hotkeys_display}", align="center"
-        ))
+        align_text("INSERT HOTKEYS", f"[italic #F0A500]{hotkeys_display}")
 
         return action
 
@@ -218,7 +214,7 @@ def TakeScreenshot():
         action["screenshot"] = location
 
         # For User
-        print(Align(f" :Rose:  [#29C7AC BOLD]SAVE A SCREENSHOT AT[/#29C7AC BOLD] [italic #8D9EFF]{location}", align="center"))
+        align_text("SAVE A SCREENSHOT AT", f"[italic #8D9EFF]{location}")
 
         # Saving to config
         return action
@@ -249,3 +245,27 @@ def egg(argv):
         pass
     except Exception:
         pass
+
+def align_text(description="", parameter="", emoji=":rose:", description_style=True):
+    
+    global index
+    
+    try:
+        index += 1
+    except NameError:
+        index = 1
+    
+    recorded = Table(expand=True, box=None, highlight=True)
+    recorded.add_column(justify="right")
+    recorded.add_column(justify="center")
+    recorded.add_column(justify="left")
+    
+    if description_style:
+        description = "[#29C7AC BOLD]" + str(description) + "[/] " + str(parameter)
+    else:
+        description = str(description) + " " + str(parameter)
+
+    
+    recorded.add_row(emoji, description, str(index))
+    
+    print(recorded)

@@ -5,7 +5,7 @@ from rich.panel import Panel
 from rich.console import Group
 import sample.post_record.replacer as replace
 import sample.post_record.looper as loop
-from sample.pre_record.operations.general import *
+import sample.pre_record.operations.general as general
 import sample.universal.config as config
 from sample.helpers.menu import add_id, PrintRecorded
 from sample.helpers.menu import print as menu_print
@@ -42,11 +42,11 @@ def replacer():
             if item["function"] == "Pop()":
                 # replace ID does't correspond to the index therefore it must be decremented by one before use
                 # decrementing done by 'Pop' function
-                Pop(replace.replace_id)
+                general.Pop(replace.replace_id)
                 break
 
             # actions is the dictionary of the action
-            action = eval(item["function"])
+            action = eval(f"general.{item['function']}")
 
             if action:
                 # replaced the element at ReplaceIndex with action
@@ -55,7 +55,7 @@ def replacer():
 
     if not Hades:
         # Executed if the user input is not present in replace functions list
-        print(":Cross_Mark: [#DC3535] Invalid Input")
+        print(Align(":Cross_Mark: [#DC3535] Invalid Input", align="center"))
 
     # re-adds id after modification
     add_id()

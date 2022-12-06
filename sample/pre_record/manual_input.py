@@ -1,7 +1,9 @@
 from keyboard import read_key, send
+from pyautogui import keyUp
 
 import sample.universal.config as config
-from sample.pre_record.operations.general import *
+import sample.pre_record.operations.general as general
+import keyboard
 
 
 def manual_input():
@@ -20,14 +22,13 @@ def manual_input():
 
             flag = 1
             
-            # Due to an error
-            send(keyboardinput)
+            keyUp(keyboardinput)
 
             # Checks user input and saves action
             for item in config.actions_list:
                 if item["call"] == keyboardinput:
 
-                    action = eval(item["function"])
+                    action = eval(f"general.{item['function']}")
 
                     if item["function"] != "Pop()":
 
