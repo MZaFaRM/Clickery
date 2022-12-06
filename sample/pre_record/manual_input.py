@@ -1,9 +1,8 @@
-from keyboard import read_key, send
+from keyboard import read_key
 from pyautogui import keyUp
 
 import sample.universal.config as config
 import sample.pre_record.operations.general as general
-import keyboard
 
 
 def manual_input():
