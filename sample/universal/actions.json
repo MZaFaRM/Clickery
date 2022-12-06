@@ -32,38 +32,38 @@
     {
         "id": 6,
         "call": "6",
-        "function": "WaitForImage()",
-        "description": "WAIT FOR IMAGE"
-    },
-    {
-        "id": 7,
-        "call": "7",
-        "function": "WaitForKey()",
-        "description": "WAIT FOR KEY INPUT"
-    },
-    {
-        "id": 8,
-        "call": "8",
-        "function": "KeyInput()",
-        "description": "INSERT KEY"
-    },
-    {
-        "id": 9,
-        "call": "9",
         "function": "Wait()",
         "description": "WAIT TIME"
     },
     {
+        "id": 7,
+        "call": "7",
+        "function": "WaitForImage()",
+        "description": "WAIT FOR IMAGE"
+    },
+    {
+        "id": 8,
+        "call": "8",
+        "function": "WaitForKey()",
+        "description": "WAIT FOR KEY INPUT"
+    },
+    {
+        "id": 9,
+        "call": "9",
+        "function": "KeyInput()",
+        "description": "INSERT KEY"
+    },
+    {
         "id": 10,
         "call": "0",
-        "function": "Pop()",
-        "description": "DELETE LAST ACTION"
+        "function": "InsertHotkey()",
+        "description": "INSERT HOTKEY"
     },
     {
         "id": 11,
         "call": "-",
-        "function": "InsertHotkey()",
-        "description": "INSERT HOTKEY"
+        "function": "Pop()",
+        "description": "DELETE LAST ACTION"
     },
     {
         "id": 12,
