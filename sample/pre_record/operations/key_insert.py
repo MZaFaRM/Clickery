@@ -1,6 +1,5 @@
 from keyboard import hook, unhook_all
 from sample.helpers.dir import InputDialogueBox
-from tkinter import font
 import tkinter
 
 
