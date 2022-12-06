@@ -6,12 +6,8 @@ from rich.console import Group
 import sample.universal.config as config
 from sample.helpers.dir import folder
 
-from rich.layout import Layout
 from rich.panel import Panel
 from rich.align import Align
-from rich.live import Live
-import time
-from rich.console import Console
 
 
 def file_input():
