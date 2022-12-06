@@ -4,6 +4,7 @@ from random import choices
 from sample.helpers.dir import folder
 import sample.universal.config as config
 from tkinter.filedialog import asksaveasfile
+from keyboard import normalize_name
 import os
 import pyautogui
 from sample.pre_record.operations.key_insert import return_key_input
@@ -114,7 +115,7 @@ def KeyInput():
         align_text("HIT KEY", f"[italic #F0A500]{key}")
                   
         # Saves action
-        action["key"] = key.replace(" ", "")
+        action["key"] = normalize_name(key)
 
         return action
 
@@ -188,7 +189,7 @@ def InsertHotkey():
         action["hotkey"] = hotkeys
 
         # For User
-        align_text("INSERT HOTKEYS", f"[italic #F0A500]{hotkeys_display}")
+        align_text("INSERT HOTKEYS", f"[italic #F0A500]{hotkeys}")
 
         return action
 

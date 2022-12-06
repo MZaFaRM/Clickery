@@ -2,7 +2,7 @@ import pyautogui
 
 from rich import print as richPrint
 from time import sleep
-from keyboard import read_key
+from keyboard import read_key, send, press, release
 from PIL import Image
 from rich.align import Align
 from rich.panel import Panel
@@ -257,9 +257,9 @@ def play_recorded():
                 i += 1
                 
                 for current_key in action["hotkey"]:
-                    pyautogui.keyDown(current_key)
+                    press(current_key)
                 for current_key in action["hotkey"]:
-                    pyautogui.keyUp(current_key)
+                    release(current_key)
                 recorded.add_row(
                     ":palm_tree:",  f"[#829460 BOLD]INSERTED HOTKEYS[/#829460 BOLD] [italic #F0A500]{action['hotkey']}", f"{i}"
                 )
@@ -269,18 +269,15 @@ def play_recorded():
                 
                 i += 1
                 
-                pyautogui.press(action["key"])
+                # Clicks key
+                send(action["key"])
+                
                 key = action["key"]
-                if len(key) == 2:
-                    # For User
-                    recorded.add_row(
-                        ":palm_tree:",  f"[#829460 BOLD]INSERTED KEY[/#829460 BOLD][italic #F0A500] {key}", f"{i}"
-                    )
-                else:
-                    # For User
-                    recorded.add_row(
-                        ":palm_tree:",  f"[#829460 BOLD]INSERTED KEY[/#829460 BOLD][italic #F0A500] {key.upper()}", f"{i}"
-                    )
+                
+                # For User
+                recorded.add_row(
+                    ":palm_tree:",  f"[#829460 BOLD]INSERTED KEY[/#829460 BOLD][italic #F0A500] {key}", f"{i}"
+                )
                     
             elif key == "screenshot":
                 
@@ -309,6 +306,34 @@ def error(error=""):
     text = Align(":cactus: [bold #8D72E1] FAILED [/] :cactus:", align="center")
     error = "[#6D9886]" + error
     richPrint(Panel(text, subtitle=error, subtitle_align="right"))
+    
+    
+def release_all():
+    keys = ['\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&', "'", '(',
+')', '*', '+', ',', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6', '7',
+'8', '9', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`',
+'a', 'b', 'c', 'd', 'e','f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
+'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}', '~',
+'accept', 'add', 'alt', 'altleft', 'altright', 'apps', 'backspace',
+'browserback', 'browserfavorites', 'browserforward', 'browserhome',
+'browserrefresh', 'browsersearch', 'browserstop', 'capslock', 'clear',
+'convert', 'ctrl', 'ctrlleft', 'ctrlright', 'decimal', 'del', 'delete',
+'divide', 'down', 'end', 'enter', 'esc', 'escape', 'execute', 'f1', 'f10',
+'f11', 'f12', 'f13', 'f14', 'f15', 'f16', 'f17', 'f18', 'f19', 'f2', 'f20',
+'f21', 'f22', 'f23', 'f24', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9',
+'final', 'fn', 'hanguel', 'hangul', 'hanja', 'help', 'home', 'insert', 'junja',
+'kana', 'kanji', 'launchapp1', 'launchapp2', 'launchmail',
+'launchmediaselect', 'left', 'modechange', 'multiply', 'nexttrack',
+'nonconvert', 'num0', 'num1', 'num2', 'num3', 'num4', 'num5', 'num6',
+'num7', 'num8', 'num9', 'numlock', 'pagedown', 'pageup', 'pause', 'pgdn',
+'pgup', 'playpause', 'prevtrack', 'print', 'printscreen', 'prntscrn',
+'prtsc', 'prtscr', 'return', 'right', 'scrolllock', 'select', 'separator',
+'shift', 'shiftleft', 'shiftright', 'sleep', 'space', 'stop', 'subtract', 'tab',
+'up', 'volumedown', 'volumemute', 'volumeup', 'win', 'winleft', 'winright', 'yen',
+'command', 'option', 'optionleft', 'optionright']
+    
+    for key in keys:
+        pyautogui.keyUp(key)
     
 
 

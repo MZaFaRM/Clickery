@@ -1,4 +1,5 @@
 from keyboard import hook, unhook_all
+from keyboard import normalize_name
 import tkinter
 from sample.helpers.dir import InputDialogueBox
 
@@ -104,16 +105,13 @@ def _perses(input):
         # data parsing
         key_input = str(current_key.name)
         
-        key_input = key_input.replace(" ", "")
+        key_input = normalize_name(key_input)
         
         # If first key
         if not keys_clicked_display:
             # for visuals key is capitalised
             # letter input are not capitalized
-            if len(key_input) == 1:
-                keys_clicked_display += str(key_input)
-            else:
-                keys_clicked_display += str(key_input).upper()
+            keys_clicked_display += str(key_input).upper()
         
         # If not first key
         elif len(key_input) == 1:
