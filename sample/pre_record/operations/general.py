@@ -167,13 +167,13 @@ def Pop(id=0):
             delete = config.record.pop()
 
         except IndexError:
-            align_text("[#D2001A italic]No actions to remove", "", ":cross_mark:")
+            align_text("[#D2001A italic]No actions to remove", "", ":cross_mark:", increment="None")
 
             return
     else:
         delete = config.record.pop(id - 1)
         
-    align_text(f"[#7D9D9C italic]{delete}", "removed", ":wilted_flower:", description_style=False)
+    align_text(f"[#7D9D9C italic]{delete}", "removed", ":wilted_flower:", description_style=False, increment="Negative")
 
 
 def DragCursor():
@@ -267,7 +267,7 @@ def egg(argv):
     except Exception:
         pass
 
-def align_text(description="", parameter="", emoji=":rose:", description_style=True):
+def align_text(description="", parameter="", emoji=":rose:", description_style=True, increment="True"):
     
     global index
     
@@ -275,6 +275,15 @@ def align_text(description="", parameter="", emoji=":rose:", description_style=T
         index += 1
     except NameError:
         index = 1
+        
+    id = index
+        
+    if increment == "None":
+        index -= 1
+        id = ""
+    elif increment == "Negative":
+        index -= 2
+        id = ""
     
     recorded = Table(expand=True, box=None, highlight=True)
     recorded.add_column(justify="right")
@@ -287,6 +296,6 @@ def align_text(description="", parameter="", emoji=":rose:", description_style=T
         description = str(description) + " " + str(parameter)
 
     
-    recorded.add_row(emoji, description, str(index))
+    recorded.add_row(emoji, description, str(id))
     
     print(recorded)
