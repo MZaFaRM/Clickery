@@ -5,6 +5,8 @@ from sample.helpers.dir import folder
 import sample.universal.config as config
 from tkinter.filedialog import asksaveasfile
 from keyboard import normalize_name
+from playsound import playsound
+from threading import Thread
 import os
 import pyautogui
 from sample.pre_record.operations.key_insert import return_key_input
@@ -284,6 +286,9 @@ def align_text(description="", parameter="", emoji=":rose:", description_style=T
     elif increment == "Negative":
         index -= 2
         id = ""
+    else:
+        thread = Thread(target = recording_action)
+        thread.start()
     
     recorded = Table(expand=True, box=None, highlight=True)
     recorded.add_column(justify="right")
@@ -299,3 +304,6 @@ def align_text(description="", parameter="", emoji=":rose:", description_style=T
     recorded.add_row(emoji, description, str(id))
     
     print(recorded)
+    
+def recording_action():
+	playsound(r"assets\sounds\the-rustle-of-a-bush-106001.mp3")

@@ -7,6 +7,8 @@ from PIL import Image
 from rich.align import Align
 from rich.panel import Panel
 import time
+from threading import Thread
+from playsound import playsound
 
 import sample.universal.config as config
 
@@ -309,6 +311,13 @@ def play_recorded():
                 continue
                 
             richPrint(recorded)
+            thread = Thread(target=playing_sound)
+            thread.start()
+            
+
+
+def playing_sound():
+	playsound(r"assets\sounds\play-recorded.mp3")
                 
                 
 def DetectImage(path):
