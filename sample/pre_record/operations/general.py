@@ -281,13 +281,17 @@ def align_text(description="", parameter="", emoji=":rose:", description_style=T
     id = index
         
     if increment == "None":
+        thread = Thread(target = recording_action, args=("none", ))
+        thread.start()
         index -= 1
         id = ""
     elif increment == "Negative":
+        thread = Thread(target = recording_action, args=("pop", ))
+        thread.start()
         index -= 2
         id = ""
     else:
-        thread = Thread(target = recording_action)
+        thread = Thread(target = recording_action, args=("", ))
         thread.start()
     
     recorded = Table(expand=True, box=None, highlight=True)
@@ -305,5 +309,13 @@ def align_text(description="", parameter="", emoji=":rose:", description_style=T
     
     print(recorded)
     
-def recording_action():
-	playsound(r"assets\sounds\the-rustle-of-a-bush-106001.mp3")
+def recording_action(function=""):
+    
+    if function == "pop":
+	    playsound(r"assets\sounds\the-rustle-of-a-bush-106001.mp3")
+
+    elif function == "none":
+	    playsound(r"assets\sounds\mixkit-small-wood-plank-pile-drop-3141.wav")
+     
+    else:
+	    playsound(r"assets\sounds\mixkit-tree-branch-brake-2943.wav")

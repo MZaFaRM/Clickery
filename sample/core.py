@@ -317,7 +317,7 @@ def play_recorded():
 
 
 def playing_sound():
-	playsound(r"assets\sounds\play-recorded.mp3")
+	playsound(r"assets\sounds\mixkit-twig-breaking-2945.wav")
                 
                 
 def DetectImage(path):
