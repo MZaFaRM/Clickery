@@ -40,27 +40,27 @@ if you choose to proceed with ```file input``` please refer the [```format.md```
 
 If you choose to proceed with the ```manual input``` provide the required calls to invoke the function responsible to record your request.
 
-- #### Move Cursor
+#### Move Cursor
 
 Hover over the location you want to move the cursor to and input ```1``` to record the action of moving the cursor to that location.
 
-- #### Left Click Position
+#### Left Click Position
 
 Input ```2``` and the program would record that you want to click on the current location. It is best suited to use when it is paired to use with [Move Cursor](guide.md#move-cursor) or [Wait for Image](guide.md#wait-for-image).
 
-- #### Right Click Position
+#### Right Click Position
 
 Input ```3``` and the program would record that you want to right click on the current location, useful to invoke pop ups. Similar to [Left Click Position](guide.md#left-click-position) is it best when paired with [Move Cursor](guide.md#move-cursor) or [Wait for Image](guide.md#wait-for-image).
 
-- #### Drag Cursor
+ Drag Cursor
 
 Hover over the location you want to drag the cursor to and input ```4``` to record the action of moving the cursor to that location. The cursor would click and hold it's current location and move to the drag location to finally release it.
 
-- #### Enter Text
+Enter Text
 
 Input ```5``` and enter the text you want to insert in the dailogue box that appears.
 
-- #### Wait For Image
+#### Wait For Image
 
 Input ```6``` and select the location of the image you want to wait to appear on screen, this function contains a number of additional features that you might find helpful.
 
@@ -68,25 +68,25 @@ Input ```6``` and select the location of the image you want to wait to appear on
 - As the name suggests it waits until the image appears on screen.
 - Combining it with [Left Click Position](guide.md#left-click-position) / [Right Click Position](guide.md#right-click-position) may be a good idea.
 
-- #### Insert Key
+#### Insert Key
 
 Input ```7``` and enter the key you would like to insert from you keyboard, clicking on the submit button then would record your action of inserting that key.
 
 For entering multiple keys together refer [Hotkeys Input](guide.md#insert-hotkey).
 
-- #### Wait Time
+#### Wait Time
 
 Input ```8``` and enter the number of seconds you would like to wait, for it to be recorded.
 
-- #### Delete Last Action / Delete Action
+#### Delete Last Action / Delete Action
 
 Input ```9``` and the last action you recorded would be removed while in Manual Input, although in [Replace Action](guide.md#replacing) section ie. after you have recorded all your actions, the element with the ID you input would be removed.
 
-- #### Insert Hotkey
+#### Insert Hotkey
 
 Input ```0``` and enter all the keys you would like to input together **one by one** after which click on submit, useful for doing actions like ```ctrl+C``` , ```ctrl+w```.
 
-- #### Take a Screenshot
+#### Take a Screenshot
 
 Input ```-``` and provide the location you would like to save your screenshot at.
   
