@@ -9,10 +9,7 @@
 This is an AUTOGUI software designed to make it easier to use AUTOGUI without coding.
 
 
-
-# Guide
-
-## Getting started
+# Getting started
 
 execute the given command in the terminal
 
@@ -26,20 +23,16 @@ which would install all the required libraries to run the project, then execute 
 py main.py
 ```
 
-## Mode of Input
+# Mode of Input
 
 After running the program you will be asked to prompted to input the the mode of input 
 
-### File Input
+## File Input
 
-For file input your json file must be formatted in the said way for it to be read by the program, nonetheless it is not recommended to write this from scratch and it is wise to copy paste it from ```history.json``` or ```history.db```.
+For file input your json file must be formatted in the said way for it to be read by the program, nonetheless it is not recommended to write this from scratch It is always better to first record your actions, through manual input and copy paste it from ```history.json``` or ```history.db``` later,  Irrespective of which you can manually write a file through these steps if you wish to do so.
 
-This is a guide on how to properly format your file for file input.
 
-## A Reminder
-
-It is always better to first record your actions, through manual input and save it in a different file for later use. Irrespective of which you can manually write a file through these steps if you wish to do so.
-## General guidelines
+#### General guidelines
 Your file input must be a list of dictionaries, where each dictionary represents an action, each dictionary may or may not contain an ID with it.
 
 #### Move Cursor
@@ -93,7 +86,7 @@ The key must be ```hotkey``` and the value must be the list of keys you would li
 The key must be ```screenshot``` and the value must be the location of where you would like to save your screenshot.
 
 
-## Example
+### Example
 ```
 [
     {'move': {'x': 1008, 'y': 863}, 'id': 1},
@@ -111,7 +104,7 @@ The key must be ```screenshot``` and the value must be the location of where you
 
 *Note: only json files are supported for file input*
 
-### Manual Input
+## Manual Input
 
 If you choose to proceed with the ```manual input``` provide the required calls to invoke the function responsible to record your request.
 
@@ -166,22 +159,22 @@ Input ```0``` and enter all the keys you would like to input together **one by o
 Input ```-``` and provide the location you would like to save your screenshot at.
   
 
-## Post Recording actions
+# Post Recording actions
 
 If you input ```esc``` all actions upto that point would be saved in [```history.json```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/json/history.json), it could be further modifed by
 
-### Looping
+## Looping
 
 Requested portions of the action's record can be repeated any number of times, after requesting for it in the dialogue box that appears after you input ```ctrl``` key.
 
-### Replacing
+## Replacing
 
 An action can be replaced with another one if you enter the ID of the action to be replaced and the [call](guide.md#manual-input) of the action you would like to replace it with.
 
 #### Tip:
 Combining Replacing and Looping allows you to insert actions in your record.
 
-## Finalization
+# Finalization
 
 After recording and modifying the actions it can be started by inserting ```space``` key.
 
@@ -191,16 +184,16 @@ After recording and modifying the actions it can be started by inserting ```spac
 - It can also be exited by moving the cursor to the corner of the screen.
 - Other methods include the common methods to exit a program.
 
-## Saving the input
+# Saving the input
 
 Every successful execution from the last reset.py is saved in the [```assets/database/history.db```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/database/history.db) in table history, while the last recorded action is saved in the [```assets/json/history.json```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/json/history.json). 
 
 
-## Modifying Input Speed
+# Modifying Input Speed
 
 Clicking speed, Dragging speed, Typing speed can be modified through [```sample/universal/config.py```](https://github.com/MZaFaRM/CLICKERY/blob/main/sample/universal/config.py).
 
-## Developing
+# Developing
 
 #### Built with
 Python version - Python [```3.11.0```](https://www.python.org/downloads/)
@@ -216,11 +209,11 @@ Given below are all the libraries required to run the project
 - pyclean ```2.2.0```
 
 
-## Configurations
+# Configurations
 
 Typing speed, Clicking speed, Dragging speed can be modified from [```sample\universal\config.py```](https://github.com/MZaFaRM/CLICKERY/blob/main/sample/universal/config.py).
  
-## Database
+# Database
 
 This project uses ```sqlite3``` as the database to store all the successful executions starting from the last ```reset.py```,
 
@@ -240,13 +233,13 @@ https://www.sqlite.org/download.html
 Although, downloading is not necessary for successful execution of the software, not doing so may make certain features inaccessible.
 
 
-## Additional Features
+# Additional Features
 
 - The very last successful execution is saved at [```assets\json\history.json```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/json/history.json).
 - All successful actions starting from the last ```reset.py``` is saved in a database, refer [Database](README.md#database) section for details.
 
 
-## Screenshots
+# Screenshots
 
 <img width="960" alt="homescreen" src="https://user-images.githubusercontent.com/98420006/205716839-640ca13c-61e9-4c49-8995-d77bf1d2a77f.png">
 
@@ -255,12 +248,12 @@ Although, downloading is not necessary for successful execution of the software,
 
 
 
-## License
+# License
 
 #### MIT License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/MZaFaRM/CLICKERY/blob/main/LICENSE)
 *Copyright (c) 2022 Muhammed Zafar M. M.*
 
-## Feedback
+# Feedback
 
 If you have any feedback, please reach out to me at muhammedzafar.mm@gmail.com
 
