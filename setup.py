@@ -11,4 +11,3 @@ if __name__ == "__main__":
     install()
 
 # recommended to run this file if it is the first time running the program
-# although main do 'try' to take care of this if you haven't already run setup.py

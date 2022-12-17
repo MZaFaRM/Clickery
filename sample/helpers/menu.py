@@ -61,7 +61,7 @@ def print_menu():
 def SaveJSON():
     # saves recorded actions to json
     add_id()
-    with open(r"assets\json\history.json", "w") as save:
+    with open(r"assets\history\history.json", "w") as save:
         dump(config.record, save, indent=4)
 
 
@@ -80,7 +80,7 @@ def add_id():
 
 def SaveToDB():
     # Connects to the database
-    history = sqlite3.connect(r"assets\database\history.db")
+    history = sqlite3.connect(r"assets\history\history.db")
     # Sets cursor
     cursor = history.cursor()
     # Converts the dictionary into an string

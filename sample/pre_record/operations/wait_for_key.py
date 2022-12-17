@@ -42,7 +42,7 @@ def return_wait_key():
 def _perses(input):
     # input is given by the hook function
     # function returns a "KeyboardEvent(<key>(shift) <state>(up))"
-    # therefore parses key to be clicked [shift]
+    # therefore parses key to be "shift"
     global key_clicked
     global tyr
 

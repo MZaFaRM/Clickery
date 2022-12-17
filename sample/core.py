@@ -172,6 +172,8 @@ def play_recorded():
             # For moving
             if key == "move":
                 
+                richPrint("[#7D9D9C italic]Moving to location...")
+                
                 i += 1
                 
                 pyautogui.moveTo(
@@ -180,12 +182,17 @@ def play_recorded():
                     config.Move_Speed,
                     pyautogui.easeOutQuad,
                 )
+
+                print("\033[A                    \033[A")
+                
                 recorded.add_row(
                     ":palm_tree:",  f"[#829460 BOLD]MOVED TO[/#829460 BOLD] {position}", f"{i}"
                 )
                 
             # For left Clicking
             elif key == "l-click":
+                
+                richPrint(" [#7D9D9C italic]Inserting left click...")
                 
                 i += 1
                 pyautogui.click(button="left")
@@ -194,11 +201,16 @@ def play_recorded():
                 x, y = pyautogui.position()
                 current_position["x"] = x
                 current_position["y"] = y
+
+                print("\033[A                        \033[A")
+
                 recorded.add_row(
                     ":palm_tree:",  f"[#829460 BOLD]LEFT CLICKED AT [/#829460 BOLD]{current_position}", f"{i}"
                 )
             # For right Clicking
             elif key == "r-click":
+                
+                richPrint(" [#7D9D9C italic]Inserting right click...")
                 
                 i += 1
                 pyautogui.click(button="right")
@@ -207,6 +219,7 @@ def play_recorded():
                 x, y = pyautogui.position()
                 current_position["x"] = x
                 current_position["y"] = y
+                print("\033[A                         \033[A")
                 recorded.add_row(
                     ":palm_tree:",  f"[#829460 BOLD]RIGHT CLICKED AT [/#829460 BOLD]{current_position}", f"{i}"
                 )
@@ -214,18 +227,24 @@ def play_recorded():
             # For dragging with cursor
             elif key == "drag":
                 
+                richPrint(" [#7D9D9C italic]Dragging cursor to location...")
+                
                 i += 1
                 
                 pyautogui.dragTo(position["x"], position["y"], config.Drag_Speed)
+                print("\033[A                               \033[A")
                 recorded.add_row(
                     ":palm_tree:",  f"[#829460 BOLD]DRAGGED TO[/#829460 BOLD] {position}", f"{i}"
                 )
             # For text display
             elif key == "write":
                 
+                richPrint(" [#7D9D9C italic]Writing given text...")
+                
                 i += 1
                 
                 pyautogui.write(action["write"], interval=config.Type_Speed)
+                print("\033[A                     \033[A")
                 recorded.add_row(
                     ":palm_tree:",  f"[#829460 BOLD]WROTE[/#829460 BOLD] [italic #8D9EFF]{action['write']}", f"{i}"
                 )
@@ -234,13 +253,18 @@ def play_recorded():
                 
                 i += 1
                 
+                richPrint(" [#7D9D9C italic]Searching for given image...")
+                
                 try:
                     Image.open(action["image"]).convert("RGB").save(
                         r"assets\images\images.png"
                     )
                 except FileNotFoundError:
                     error("Image to wait for not found")
+                    return
+                
                 DetectImage(r"assets\images\images.png")
+                print("\033[A                          \033[A")
                 recorded.add_row(
                     ":palm_tree:",  f"[#829460 BOLD]FOUND[/#829460 BOLD] [italic #8D9EFF]{action['image']}", f"{i}"
                 )
@@ -248,14 +272,19 @@ def play_recorded():
             # For wait
             elif key == "sleep":
                 
+                richPrint(" [#7D9D9C italic]Waiting for given time...")
+                
                 i += 1
                 
                 sleep(action["sleep"])
+                print("\033[A                          \033[A")
                 recorded.add_row(
                     ":palm_tree:",  f"[#829460 BOLD]WAITED FOR[/#829460 BOLD] [italic #8D9EFF]{action['sleep']}s", f"{i}"
                 )
             # For hotkey input
             elif key == "hotkey":
+                
+                richPrint(" [#7D9D9C italic]Inserting given hotkey...")
                 
                 i += 1
                 
@@ -263,6 +292,7 @@ def play_recorded():
                     press(current_key)
                 for current_key in action["hotkey"]:
                     release(current_key)
+                print("\033[A                          \033[A")
                 recorded.add_row(
                     ":palm_tree:",  f"[#829460 BOLD]INSERTED HOTKEYS[/#829460 BOLD] [italic #F0A500]{action['hotkey']}", f"{i}"
                 )
@@ -272,9 +302,12 @@ def play_recorded():
                 
                 i += 1
                 
+                richPrint(" [#7D9D9C italic]Inserting given key...")
+                
                 # Clicks key
                 time.sleep(0.3)
                 send(action["key"])
+                print("\033[A                       \033[A")
                 
                 key = action["key"]
                 
@@ -286,10 +319,13 @@ def play_recorded():
             # For key input
             elif key == "wait-key":
                 
+                richPrint(" [#7D9D9C italic]Waiting for given key input...")
+                
                 i += 1
                 
                 # waits for the given key
                 wait(action["wait-key"])
+                print("\033[A                              \033[A")
                 
                 key = action["wait-key"]
                 
@@ -300,9 +336,12 @@ def play_recorded():
                     
             elif key == "screenshot":
                 
+                richPrint(" [#7D9D9C italic]Taking a screenshot...")
+                
                 i += 1
                 
                 pyautogui.screenshot(action["screenshot"])
+                print("\033[A                       \033[A")
                 recorded.add_row(
                     ":palm_tree:",  f"[#829460 BOLD]SCREENSHOT SAVED AT[/#829460 BOLD] [italic #8D9EFF]{action['screenshot']}", f"{i}"
                 )
@@ -317,7 +356,7 @@ def play_recorded():
 
 
 def playing_sound():
-	playsound(r"assets\sounds\mixkit-twig-breaking-2945.wav")
+	playsound(r"assets\sounds\mixkit-arrow-whoosh-1491.wav")
                 
                 
 def DetectImage(path):

@@ -9,7 +9,7 @@ def clear_all():
     print("Cleaning database .")
 
     # Connects to the database
-    history = sqlite3.connect(r"assets\database\history.db")
+    history = sqlite3.connect(r"assets\history\history.db")
 
     # Sets cursor
     cursor = history.cursor()
@@ -41,7 +41,7 @@ def clear_all():
     print("Clearing Json .")
 
     # to clear Json history
-    with open(r"assets\json\history.json", "w") as json:
+    with open(r"assets\history\history.json", "w") as json:
         json.write("[]")
     
     print("Json history cleared.")
