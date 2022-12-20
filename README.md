@@ -101,18 +101,19 @@ To take a screenshot of the current screen, use the key `screenshot` and specify
 
 ```
 [
-    {'move': {'x': 1008, 'y': 863}, 'id': 1},
-    {'l-click': 1, 'id': 2},
-    {'r-click': 1, 'id': 3},
-    {'drag': {'x': 1007, 'y': 864}, 'id': 4},
-    {'write': 'He110 W0r1D', 'id': 5},
-    {'image': 'C:/Users/images/image-to-search.png', 'id': 6},
-    {'key': 'shift', 'id': 7},
-    {'sleep': 3, 'id': 8},
-    {'hotkey': ['ctrl', 'x'], 'id': 9},
-    {'screenshot': ''C:/Users/images/Screenshot.png'', 'id': 10},
-    {'wait_key': 'shift', 'id': 6},
+  { "move": { "x": 1008, "y": 863 }, "id": 1 },
+  { "l-click": 1, "id": 2 },
+  { "r-click": 1, "id": 3 },
+  { "drag": { "x": 1007, "y": 864 }, "id": 4 },
+  { "write": "He110 W0r1D", "id": 5 },
+  { "sleep": 3, "id": 6 },
+  { "image": "C:/Users/images/image-to-search.png", "id": 7 },
+  { "wait_key": "shift", "id": 8 },
+  { "key": "shift", "id": 9 },
+  { "hotkey": ["ctrl", "x"], "id": 10 },
+  { "screenshot": "C:/Users/images/Screenshot.png", "id": 11 }
 ]
+
 ```
 
 *Note: only json files are supported for file input*
