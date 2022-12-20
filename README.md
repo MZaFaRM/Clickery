@@ -176,46 +176,43 @@ To delete the last recorded action in manual input mode, input `-`. In the `Repl
 To take a screenshot and save it to a specified location, input `=`. Enter the desired save location in the dialogue box that appears.
   
 
-# Post Recording actions
+# Post-Recording Actions
 
-If you input ```esc``` all actions upto that point would be saved in [```history.json```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/json/history.json), it could be further modifed by
+If you input `esc`, all actions up to that point will be saved in [`history.json`](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/json/history.json). These actions can be further modified by:
 
-## Looping
+## LOOP
 
-Requested portions of the action's record can be repeated any number of times, after requesting for it in the dialogue box that appears after you input ```ctrl``` key.
+Requested portions of the recorded actions can be repeated any number of times by entering the desired number of loops in the dialogue box that appears after you input the `ctrl` key.
 
-## Replacing
+## REPLACE
 
-An action can be replaced with another one if you enter the ID of the action to be replaced and the [call](guide.md#manual-input) of the action you would like to replace it with.
+An action can be replaced with another one by entering the ID of the action to be replaced and the [call](guide.md#manual-input) of the action you would like to use as the replacement.
 
 #### Tip:
-Combining Replacing and Looping allows you to insert actions in your record.
+Combining Replacing and Looping allows you to insert actions into your recorded sequence.
 
 # Finalization
 
-After recording and modifying the actions it can be started by inserting ```space``` key.
+After recording and modifying the actions, they can be started by pressing the `space` key.
 
-#### Things to be noted
+#### Things to Note:
 
-- A started excecution can be exited with ```ctrl+c``` ie. *Keyboard Interrupt*
+- A started execution can be exited with `ctrl+c` (Keyboard Interrupt).
 - It can also be exited by moving the cursor to the corner of the screen.
-- Other methods include the common methods to exit a program.
+- Other methods commonly used for exiting a program can also be used.
 
-# Saving the input
+# Saving the Input
 
-Every successful execution from the last reset.py is saved in the [```assets/database/history.db```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/database/history.db) in table history, while the last recorded action is saved in the [```assets/json/history.json```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/json/history.json). 
+Every successful execution from the last `reset.py` is saved in the [`assets/database/history.db`](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/database/history.db) in the `history` table, while the last recorded action is saved in the [`assets/json/history.json`](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/json/history.json). 
 
 
 # Modifying Input Speed
 
-Clicking speed, Dragging speed, Typing speed can be modified through [```sample/universal/config.py```](https://github.com/MZaFaRM/CLICKERY/blob/main/sample/universal/config.py).
+The input speed for clicking, dragging, and typing can be modified through the configuration file located at [```sample/universal/config.py```](https://github.com/MZaFaRM/CLICKERY/blob/main/sample/universal/config.py).
 
-# Developing
+# Development
 
-#### Built with
-Python version - Python [```3.11.0```](https://www.python.org/downloads/)
-
-Given below are all the libraries required to run the project
+This project was built with Python version [```3.11.0```](https://www.python.org/downloads/). The following libraries are required to run the project:
 
 - keyboard ```0.13.5```
 - Pillow ```9.3.0```
@@ -225,58 +222,58 @@ Given below are all the libraries required to run the project
 - opencv-python ```4.6.0.66```
 - pyclean ```2.2.0```
 
-# File Reference
+
+# File Reference Guide
 
 ## setup.py
 
-This python file helps in downloading ans installing all the required libraries to run the program successfully.
+This Python file is responsible for downloading and installing all of the necessary libraries required to run the program successfully.
 
 ## reset.py
 
-This python file helps in clearing the history, database, pycache files, converted images etc.
+This Python file is used to clear various elements such as history, database, pycache files, and converted images, ensuring that the program is running optimally.
 
 ## requirements.txt
 
-Used by `setup.py` to get the list of libraries
+This file is utilized by `setup.py` to obtain a comprehensive list of the libraries required for the program to function correctly.
 
 ## main.py
 
-The main program, execute it only after `setup.py` .
+This is the primary program file, which should only be executed after `setup.py` has been successfully run.
 
 ## sample
 
-Containes all the sub program files
+This directory contains a variety of subprogram files, including:
 
-    ### helpers
-        
-        files that handles dialogue boxes, saving recorded input, clarity of dialogue boxes etc.
-        
-    ### post_record
-    
-        files that handles `loop` and `replace`
-        
-    ### pre_record
-        
-        files that helps in recording user requests
-        
-    ### universal
-    
-        constant data and configurations, possible user requests
-        
-    ### core.py
-    
-        the second main file helps in overall working of the program
+### helpers
 
+These files are responsible for managing dialogue boxes, saving recorded input, and improving the clarity of dialogue boxes.
 
-# Configurations
+### post_record
 
-Typing speed, Clicking speed, Dragging speed can be modified from [```sample\universal\config.py```](https://github.com/MZaFaRM/CLICKERY/blob/main/sample/universal/config.py).
- 
+These files handle functions such as `LOOP` and `REPLACE`
+
+### pre_record
+
+These files assist in the process of recording user requests.
+
+### universal
+
+This directory contains important data such as constant configurations and a list of possible user requests.
+
+### core.py
+
+This is the second main file and plays a crucial role in the overall functioning of the program.
+
+# Configuration
+
+The typing speed, clicking speed, and dragging speed for this project can be modified within the [```sample\universal\config.py```](https://github.com/MZaFaRM/CLICKERY/blob/main/sample/universal/config.py) file.
+
 # Database
 
-This project uses ```sqlite3``` as the database to store all the successful executions starting from the last ```reset.py```,
+This project utilizes ```sqlite3``` as its database to store all successful executions starting from the last execution of the ```reset.py``` script. The schema for the database, which can be found at [```assets\database\history.db```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/database/history.db), is as follows:
 
-schema of the database used in the project located at [```assets\database\history.db```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/database/history.db) is
+
 ```
 CREATE TABLE history (
     actions_id INTEGER NOT NULL,
@@ -285,11 +282,9 @@ CREATE TABLE history (
 );
 ```
 
-[```sqlite3```](https://www.sqlite.org/index.html) can be downloaded from
 
-https://www.sqlite.org/download.html
+Should you wish to download ```sqlite3```, you may do so from the [official website](https://www.sqlite.org/index.html). While downloading is not necessary for the proper functioning of the software, certain features may not be available if you choose not to do so.
 
-Although, downloading is not necessary for successful execution of the software, not doing so may make certain features inaccessible.
 
 
 # Additional Features
