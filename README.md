@@ -1,6 +1,6 @@
 ![Clickery](https://user-images.githubusercontent.com/98420006/208743882-d486969b-1079-4b74-8cae-447bda40c47c.png)
 
-# Clickerly
+# CLICKERY
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
@@ -8,11 +8,11 @@
 ![edX](https://img.shields.io/badge/edX-%2302262B.svg?style=for-the-badge&logo=edX&logoColor=white)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-Clickerly is an AUTOGUI software designed to make it easier to use AUTOGUI without coding.
+Clickery is an AUTOGUI software designed to make it easier to use AUTOGUI without coding.
 
 ## Getting Started
 
-To get started with Clickerly, execute the following command in the terminal:
+To get started with Clickery, execute the following command in the terminal:
 
 ```
 py setup.py
