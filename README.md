@@ -2,9 +2,6 @@
 
 # CLICKERY
 
-![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
-![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
-![OpenCV](https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white)
 ![edX](https://img.shields.io/badge/edX-%2302262B.svg?style=for-the-badge&logo=edX&logoColor=white)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
@@ -214,6 +211,9 @@ The input speed for clicking, dragging, and typing can be modified through the c
 
 # Development
 
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![OpenCV](https://img.shields.io/badge/opencv-%23white.svg?style=for-the-badge&logo=opencv&logoColor=white)
+
 This project was built with Python version [```3.11.0```](https://www.python.org/downloads/). The following libraries are required to run the project:
 
 - keyboard ```0.13.5```
@@ -272,6 +272,8 @@ This is the second main file and plays a crucial role in the overall functioning
 The typing speed, clicking speed, and dragging speed for this project can be modified within the [```sample\universal\config.py```](https://github.com/MZaFaRM/CLICKERY/blob/main/sample/universal/config.py) file.
 
 # Database
+
+![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
 
 This project utilizes ```sqlite3``` as its database to store all successful executions starting from the last execution of the ```reset.py``` script. The schema for the database, which can be found at [```assets\database\history.db```](https://github.com/MZaFaRM/CLICKERY/blob/main/assets/database/history.db), is as follows:
 
