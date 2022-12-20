@@ -1,4 +1,6 @@
-# CLICKERLY
+![Clickery](https://user-images.githubusercontent.com/98420006/208743882-d486969b-1079-4b74-8cae-447bda40c47c.png)
+
+# Clickerly
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![SQLite](https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white)
@@ -6,62 +8,78 @@
 ![edX](https://img.shields.io/badge/edX-%2302262B.svg?style=for-the-badge&logo=edX&logoColor=white)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
+Clickerly is an AUTOGUI software designed to make it easier to use AUTOGUI without coding.
 
-This is an AUTOGUI software designed to make it easier to use AUTOGUI without coding.
+## Getting Started
 
+To get started with Clickerly, execute the following command in the terminal:
 
-# Getting started
-
-execute the given command in the terminal
 
 ```
 py setup.py
 ```
 
-which would install all the required libraries to run the project, then execute this command in the terminal to start the program.
+This will install all the required libraries to run the project. Then, execute the following command to start the program:
+
 
 ```
 py main.py
 ```
 
-# Mode of Input
 
-After running the program you will be asked to prompted to input the the mode of input 
+## Mode of Input
 
-## File Input
+After running the program, you will be prompted to choose the mode of input.
 
-For file input your json file must be formatted in the said way for it to be read by the program, nonetheless it is not recommended to write this from scratch It is always better to first record your actions, through manual input and copy paste it from ```history.json``` or ```history.db``` later,  Irrespective of which you can manually write a file through these steps if you wish to do so.
+### File Input
 
+For file input, your JSON file must be formatted in the specified way in order to be read by the program. It is not recommended to write this file from scratch; it is always better to first record your actions through manual input and copy and paste them from `history.json` or `history.db` later. However, you can manually write a file following these guidelines if desired.
 
-#### General guidelines
-Your file input must be a list of dictionaries, where each dictionary represents an action, each dictionary may or may not contain an ID with it.
+#### General Guidelines
 
-#### Move Cursor
+Your file input must be a list of dictionaries, where each dictionary represents an action. Each dictionary may or may not contain an ID.
+
+##### Move Cursor
+
 ```{'move': {'x': 935, 'y': 697}}```
 
-The key must be ```move``` and the ```x``` and ```y``` positions must be mentioned as shown in the example. The top-left corner of the screen being the ```(0,0)``` region, ```x``` increases going right and ```y``` increases going down.
+The key must be `move`, and the `x` and `y` positions must be specified as shown in the example. The top-left corner of the screen is the `(0,0)` region, with `x` increasing as you go right and `y` increasing as you go down.
 
-#### Left Click Position
+##### Left Click Position
+
 ```{'l-click': 1}```
 
-The key must be ```l-click``` but the value can be anything, since it is ignored by program.
+The key must be `l-click`, but the value can be anything, as it is ignored by the program.
 
-#### Right Click Position
+##### Right Click Position
+
 ```{'r-click': 1}```
 
-The key must be ```r-click``` but the value can be anything, since it is ignored by program.
+The key must be `r-click`, but the value can be anything, as it is ignored by the program.
 
-#### Drag Cursor
+##### Drag Cursor
+
 ```{'drag': {'x': 1031, 'y': 955}}```
 
-The key must be ```drag``` and the ```x``` and ```y``` positions must be mentioned as shown in the example. The top-left corner of the screen being the ```(0,0)``` region, ```x``` increases going right and ```y``` increases going down.
+The key must be `drag`, and the `x` and `y` positions must be specified as shown in the example. The top-left corner of the screen is the `(0,0)``` region, ```x``` increases going right and ```y``` increases going down.
 
 #### Enter Text 
 ```{'write': 'Hello World'}```
 
 The key must be ```write``` and the value must be the text you would like to write.
 
+#### Wait Time
+```{'sleep': 1}```
+
+The key must be ```sleep``` and the value must be the time you would like to wait for in seconds.
+
+
 #### Wait For Image 
+```{'image': 'C:/Users/images/image-to-search.png'}```
+
+The key must be ```image``` and the value must be the address of the image you would like to search for / wait to appear / move to.
+
+#### Wait For key-input
 ```{'image': 'C:/Users/images/image-to-search.png'}```
 
 The key must be ```image``` and the value must be the address of the image you would like to search for / wait to appear / move to.
@@ -71,10 +89,7 @@ The key must be ```image``` and the value must be the address of the image you w
 
 The key must be ```key``` and the value must be the key you want to insert in lowercase without whitespaces.
 
-#### Wait Time
-```{'sleep': 1}```
 
-The key must be ```sleep``` and the value must be the time you would like to wait for in seconds.
 
 #### Insert Hotkey
 ```{'hotkey': ['ctrl', 'C']}```
