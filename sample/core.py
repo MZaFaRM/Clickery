@@ -317,17 +317,17 @@ def play_recorded():
                 )
                 
             # For key input
-            elif key == "wait-key":
+            elif key == "wait_key":
                 
                 richPrint(" [#7D9D9C italic]Waiting for given key input...")
                 
                 i += 1
                 
                 # waits for the given key
-                wait(action["wait-key"])
+                wait(action["wait_key"])
                 print("\033[A                              \033[A")
                 
-                key = action["wait-key"]
+                key = action["wait_key"]
                 
                 # For User
                 recorded.add_row(
