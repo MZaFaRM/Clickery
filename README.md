@@ -209,6 +209,48 @@ Given below are all the libraries required to run the project
 - opencv-python ```4.6.0.66```
 - pyclean ```2.2.0```
 
+# File Reference
+
+## setup.py
+
+This python file helps in downloading ans installing all the required libraries to run the program successfully.
+
+## reset.py
+
+This python file helps in clearing the history, database, pycache files, converted images etc.
+
+## requirements.txt
+
+Used by `setup.py` to get the list of libraries
+
+## main.py
+
+The main program, execute it only after `setup.py` .
+
+## sample
+
+Containes all the sub program files
+
+    ### helpers
+        
+        files that handles dialogue boxes, saving recorded input, clarity of dialogue boxes etc.
+        
+    ### post_record
+    
+        files that handles `loop` and `replace`
+        
+    ### pre_record
+        
+        files that helps in recording user requests
+        
+    ### universal
+    
+        constant data and configurations, possible user requests
+        
+    ### core.py
+    
+        the second main file helps in overall working of the program
+
 
 # Configurations
 
