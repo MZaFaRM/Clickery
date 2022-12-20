@@ -138,7 +138,7 @@ def WaitForKey():
 		align_text("WAIT FOR KEY", f"[italic #F0A500]{key}")
 				  
 		# Saves action
-		action["wait-key"] = normalize_name(key)
+		action["wait_key"] = normalize_name(key)
 
 		return action
 
