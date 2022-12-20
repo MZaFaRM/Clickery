@@ -14,7 +14,6 @@ Clickerly is an AUTOGUI software designed to make it easier to use AUTOGUI witho
 
 To get started with Clickerly, execute the following command in the terminal:
 
-
 ```
 py setup.py
 ```
@@ -39,25 +38,25 @@ For file input, your JSON file must be formatted in the specified way in order t
 
 Your file input must be a list of dictionaries, where each dictionary represents an action. Each dictionary may or may not contain an ID.
 
-##### Move Cursor
+#### Move Cursor
 
 ```{'move': {'x': 935, 'y': 697}}```
 
 The key must be `move`, and the `x` and `y` positions must be specified as shown in the example. The top-left corner of the screen is the `(0,0)` region, with `x` increasing as you go right and `y` increasing as you go down.
 
-##### Left Click Position
+#### Left Click Position
 
 ```{'l-click': 1}```
 
 The key must be `l-click`, but the value can be anything, as it is ignored by the program.
 
-##### Right Click Position
+#### Right Click Position
 
 ```{'r-click': 1}```
 
 The key must be `r-click`, but the value can be anything, as it is ignored by the program.
 
-##### Drag Cursor
+#### Drag Cursor
 
 ```{'drag': {'x': 1031, 'y': 955}}```
 
@@ -71,38 +70,35 @@ The key must be ```write``` and the value must be the text you would like to wri
 #### Wait Time
 ```{'sleep': 1}```
 
-The key must be ```sleep``` and the value must be the time you would like to wait for in seconds.
-
+To pause the program for a specified amount of time, use the key `sleep` and specify the desired time in seconds as the value.
 
 #### Wait For Image 
 ```{'image': 'C:/Users/images/image-to-search.png'}```
 
-The key must be ```image``` and the value must be the address of the image you would like to search for / wait to appear / move to.
+To pause the program until a specified image appears on the screen, use the key `image` and specify the file path of the image as the value.
 
-#### Wait For key-input
-```{'image': 'C:/Users/images/image-to-search.png'}```
+#### Wait For Key Input
+```{'wait_for_key': 1}```
 
-The key must be ```image``` and the value must be the address of the image you would like to search for / wait to appear / move to.
+To pause the program until the user presses a key on the keyboard, use the key `wait_for_key`. The value can be anything, as it is ignored by the program.
 
 #### Insert Key 
 ```{'key': 'shift'}```
 
-The key must be ```key``` and the value must be the key you want to insert in lowercase without whitespaces.
-
-
+To insert a single key into the program, use the key `key` and specify the desired key in lowercase and without whitespace as the value.
 
 #### Insert Hotkey
 ```{'hotkey': ['ctrl', 'C']}```
 
-The key must be ```hotkey``` and the value must be the list of keys you would like to enter in lowercase.
+To insert a combination of keys as a hotkey, use the key `hotkey` and specify a list of the keys in lowercase as the value.
 
 #### Screenshot
 ```{'screenshot': 'C:/Users/images/Screenshot.png'}```
 
-The key must be ```screenshot``` and the value must be the location of where you would like to save your screenshot.
-
+To take a screenshot of the current screen, use the key `screenshot` and specify the desired file path and filename as the value.
 
 ### Example
+
 ```
 [
     {'move': {'x': 1008, 'y': 863}, 'id': 1},
@@ -114,65 +110,70 @@ The key must be ```screenshot``` and the value must be the location of where you
     {'key': 'shift', 'id': 7},
     {'sleep': 3, 'id': 8},
     {'hotkey': ['ctrl', 'x'], 'id': 9},
-    {'screenshot': ''C:/Users/images/Screenshot.png'', 'id': 10}
+    {'screenshot': ''C:/Users/images/Screenshot.png'', 'id': 10},
+    {'wait_key': 'shift', 'id': 6},
 ]
 ```
 
 *Note: only json files are supported for file input*
 
-## Manual Input
+# Manual Input
 
-If you choose to proceed with the ```manual input``` provide the required calls to invoke the function responsible to record your request.
+To record actions using manual input, follow these instructions:
 
-#### Move Cursor
+#### MOVE CURSOR
 
-Hover over the location you want to move the cursor to and input ```1``` to record the action of moving the cursor to that location.
+To record the action of moving the cursor to a specific location, hover over the location and input `1`.
 
-#### Left Click Position
+#### LEFT CLICK
 
-Input ```2``` and the program would record that you want to click on the current location. It is best suited to use when it is paired to use with [Move Cursor](guide.md#move-cursor) or [Wait for Image](guide.md#wait-for-image).
+To record a left click at the current cursor position, input `2`. It is best used in conjunction with the `MOVE CURSOR` or `WAIT FOR IMAGE` actions.
 
-#### Right Click Position
+#### RIGHT CLICK
 
-Input ```3``` and the program would record that you want to right click on the current location, useful to invoke pop ups. Similar to [Left Click Position](guide.md#left-click-position) is it best when paired with [Move Cursor](guide.md#move-cursor) or [Wait for Image](guide.md#wait-for-image).
+To record a right click at the current cursor position, input `3`. Like the `LEFT CLICK` action, it is most effective when used with `MOVE CURSOR` or `WAIT FOR IMAGE`.
 
- Drag Cursor
+#### DRAG CURSOR
 
-Hover over the location you want to drag the cursor to and input ```4``` to record the action of moving the cursor to that location. The cursor would click and hold it's current location and move to the drag location to finally release it.
+To record the action of dragging the cursor to a specific location, hover over the location and input `4`. The cursor will click and hold at its current position, move to the specified location, and then release.
 
-Enter Text
+#### ENTER TEXT
 
-Input ```5``` and enter the text you want to insert in the dailogue box that appears.
+To record the action of entering text, input `5` and enter the desired text in the dialogue box that appears.
 
-#### Wait For Image
+#### WAIT TIME
 
-Input ```6``` and select the location of the image you want to wait to appear on screen, this function contains a number of additional features that you might find helpful.
+To record a waiting period, input `6` and enter the number of seconds to wait.
 
-- It automatically moves the cursor to the center of the image if found on screen.
-- As the name suggests it waits until the image appears on screen.
-- Combining it with [Left Click Position](guide.md#left-click-position) / [Right Click Position](guide.md#right-click-position) may be a good idea.
+#### WAIT FOR IMAGE
 
-#### Insert Key
+To record a waiting period until a specific image appears on screen, input `7` and select the location of the image. This action has several additional features:
 
-Input ```7``` and enter the key you would like to insert from you keyboard, clicking on the submit button then would record your action of inserting that key.
+- Automatically moves the cursor to the center of the image if found on screen
+- Waits until the image appears on screen
+- Can be used in conjunction with `LEFT CLICK` or `RIGHT CLICK` for additional functionality
 
-For entering multiple keys together refer [Hotkeys Input](guide.md#insert-hotkey).
+#### WAIT FOR KEY INPUT
 
-#### Wait Time
+To record a waiting period until a specific key is pressed, input `8` and enter the desired key.
 
-Input ```8``` and enter the number of seconds you would like to wait, for it to be recorded.
+#### INSERT KEY
 
-#### Delete Last Action / Delete Action
+To record the action of inserting a specific key from the keyboard, input `9` and enter the desired key.
 
-Input ```9``` and the last action you recorded would be removed while in Manual Input, although in [Replace Action](guide.md#replacing) section ie. after you have recorded all your actions, the element with the ID you input would be removed.
+To insert multiple keys at once, use the `INSERT HOTKEY` action.
 
-#### Insert Hotkey
+#### INSERT HOTKEY
 
-Input ```0``` and enter all the keys you would like to input together **one by one** after which click on submit, useful for doing actions like ```ctrl+C``` , ```ctrl+w```.
+To record the action of inserting multiple keys at once, input `0` and enter each key individually, then click `Submit`. This is useful for actions such as `Ctrl+C` or `Ctrl+W`.
 
-#### Take a Screenshot
+#### DELETE LAST ACTION
 
-Input ```-``` and provide the location you would like to save your screenshot at.
+To delete the last recorded action in manual input mode, input `-`. In the `Replace Action` section (after all actions have been recorded), this action will delete the element with the specified ID.
+
+#### TAKE A SCREENSHOT
+
+To take a screenshot and save it to a specified location, input `=`. Enter the desired save location in the dialogue box that appears.
   
 
 # Post Recording actions
