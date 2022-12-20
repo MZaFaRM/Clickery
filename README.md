@@ -188,7 +188,8 @@ Requested portions of the recorded actions can be repeated any number of times b
 An action can be replaced with another one by entering the ID of the action to be replaced and the [call](guide.md#manual-input) of the action you would like to use as the replacement.
 
 #### Tip:
-Combining Replacing and Looping allows you to insert actions into your recorded sequence.
+
+*Combining Replacing and Looping allows you to insert actions into your recorded sequence.*
 
 # Finalization
 
