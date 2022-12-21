@@ -96,17 +96,17 @@ To take a screenshot of the current screen, use the key `screenshot` and specify
 
 | Action                     | Syntax                                                              |
 |----------------------------|---------------------------------------------------------------------|
-| MOVE CURSOR                | `{'move': {'x': 935, 'y': 697}}`                                  |
-| LEFT CLICK                 | `{'l-click': 1}`                                                    |
-| RIGHT CLICK                | `{'r-click': 1}`                                                    |
-| DRAG CURSOR                | `{'drag': {'x': 1031, 'y': 955}}`                                  |
-| ENTER TEXT                 | `{'write': 'Hello World'}`                                          |
-| WAIT TIME                  | `{'sleep': 1}`                                                      |
-| WAIT FOR IMAGE             | `{'image': 'C:/Users/images/image-to-search.png'}`                 |
-| WAIT FOR KEY INPUT         | `{'wait_key': 1}`                                                   |
-| INSERT KEY                 | `{'key': 'shift'}`                                                  |
-| INSERT HOTKEY              | `{'hotkey': ['ctrl', 'C']}`                                         |
-| TAKE A SCREENSHOT          | `{'screenshot': 'C:/Users/images/Screenshot.png'}`                 |
+| **MOVE CURSOR**                | `{'move': {'x': 935, 'y': 697}}`                                  |
+| **LEFT CLICK**                 | `{'l-click': 1}`                                                    |
+| **RIGHT CLICK**                | `{'r-click': 1}`                                                    |
+| **DRAG CURSOR**                | `{'drag': {'x': 1031, 'y': 955}}`                                  |
+| **ENTER TEXT**                 | `{'write': 'Hello World'}`                                          |
+| **WAIT TIME**                  | `{'sleep': 1}`                                                      |
+| **WAIT FOR IMAGE**             | `{'image': 'C:/Users/images/image-to-search.png'}`                 |
+| **WAIT FOR KEY INPUT**         | `{'wait_key': 1}`                                                   |
+| **INSERT KEY**                 | `{'key': 'shift'}`                                                  |
+| **INSERT HOTKEY**              | `{'hotkey': ['ctrl', 'C']}`                                         |
+| **TAKE A SCREENSHOT**          | `{'screenshot': 'C:/Users/images/Screenshot.png'}
 
 ### Example
 
