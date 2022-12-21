@@ -48,7 +48,8 @@ Your file input must be a list of dictionaries, where each dictionary represents
 | **WAIT FOR KEY INPUT**         | `{'wait_key': 1}`                                                   |
 | **INSERT KEY**                 | `{'key': 'shift'}`                                                  |
 | **INSERT HOTKEY**              | `{'hotkey': ['ctrl', 'C']}`                                         |
-| **TAKE A SCREENSHOT**          | `{'screenshot': 'C:/Users/images/Screenshot.png'}/`                 |
+| **TAKE A SCREENSHOT**          | `{'screenshot': 'C:/Users/images/Screenshot.png'}/`                 
+
 
 ##### MOVE CURSOR
 
@@ -133,6 +134,23 @@ To take a screenshot of the current screen, use the key `screenshot` and specify
 # Manual Input
 
 To record actions using manual input, follow these instructions:
+
+
+| id | description         | call      |
+|----|--------------------|-----------|
+| 1  | MOVE CURSOR        | `1`       |
+| 2  | LEFT CLICK         | `2`       |
+| 3  | RIGHT CLICK        | `3`       |
+| 4  | DRAG CURSOR        | `4`       |
+| 5  | ENTER TEXT         | `5`       |
+| 6  | WAIT TIME          | `6`       |
+| 7  | WAIT FOR IMAGE     | `7`       |
+| 8  | WAIT FOR KEY INPUT | `8`       |
+| 9  | INSERT KEY         | `9`       |
+| 10 | INSERT HOTKEY      | `0`       |
+| 11 | DELETE LAST ACTION | `-`       |
+| 12 | TAKE A SCREENSHOT  | `=`       |
+
 
 #### MOVE CURSOR
 
