@@ -106,7 +106,7 @@ To take a screenshot of the current screen, use the key `screenshot` and specify
 | **WAIT FOR KEY INPUT**         | `{'wait_key': 1}`                                                   |
 | **INSERT KEY**                 | `{'key': 'shift'}`                                                  |
 | **INSERT HOTKEY**              | `{'hotkey': ['ctrl', 'C']}`                                         |
-| **TAKE A SCREENSHOT**          | `{'screenshot': 'C:/Users/images/Screenshot.png'}
+| **TAKE A SCREENSHOT**          | `{'screenshot': 'C:/Users/images/Screenshot.png'}/`
 
 ### Example
 
