@@ -35,64 +35,6 @@ For file input, your JSON file must be formatted in the specified way in order t
 
 Your file input must be a list of dictionaries, where each dictionary represents an action. Each dictionary may or may not contain an ID.
 
-#### MOVE CURSOR
-
-```{'move': {'x': 935, 'y': 697}}```
-
-The key must be `move`, and the `x` and `y` positions must be specified as shown in the example. The top-left corner of the screen is the `(0,0)` region, with `x` increasing as you go right and `y` increasing as you go down.
-
-#### LEFT CLICK
-
-```{'l-click': 1}```
-
-The key must be `l-click`, but the value can be anything, as it is ignored by the program.
-
-#### RIGHT CLICK
-
-```{'r-click': 1}```
-
-The key must be `r-click`, but the value can be anything, as it is ignored by the program.
-
-#### DRAG CURSOR
-
-```{'drag': {'x': 1031, 'y': 955}}```
-
-The key must be `drag`, and the `x` and `y` positions must be specified as shown in the example. The top-left corner of the screen is the `(0,0)` region, with `x` increasing going right and `y` increasing going down.
-
-#### ENTER TEXT 
-```{'write': 'Hello World'}```
-
-The key must be `write` and the value must be the text you would like to write.
-
-#### WAIT TIME
-```{'sleep': 1}```
-
-To pause the program for a specified amount of time, use the key `sleep` and specify the desired time in seconds as the value.
-
-#### WAIT FOR IMAGE 
-```{'image': 'C:/Users/images/image-to-search.png'}```
-
-To pause the program until a specified image appears on the screen, use the key `image` and specify the file path of the image as the value.
-
-#### WAIT FOR KEY INPUT
-```{'wait_key': 1}```
-
-To pause the program until the user presses a key on the keyboard, use the key `wait_key`. The value can be anything, as it is ignored by the program.
-
-#### INSERT KEY 
-```{'key': 'shift'}```
-
-To insert a single key into the program, use the key `key` and specify the desired key in lowercase and without whitespace as the value.
-
-#### INSERT HOTKEY
-```{'hotkey': ['ctrl', 'C']}```
-
-To insert a combination of keys as a hotkey, use the key `hotkey` and specify a list of the keys in lowercase as the value.
-
-#### TAKE A SCREENSHOT
-```{'screenshot': 'C:/Users/images/Screenshot.png'}```
-
-To take a screenshot of the current screen, use the key `screenshot` and specify the desired file path and filename as the value.
 
 | Action                     | Syntax                                                              |
 |----------------------------|---------------------------------------------------------------------|
@@ -106,7 +48,66 @@ To take a screenshot of the current screen, use the key `screenshot` and specify
 | **WAIT FOR KEY INPUT**         | `{'wait_key': 1}`                                                   |
 | **INSERT KEY**                 | `{'key': 'shift'}`                                                  |
 | **INSERT HOTKEY**              | `{'hotkey': ['ctrl', 'C']}`                                         |
-| **TAKE A SCREENSHOT**          | `{'screenshot': 'C:/Users/images/Screenshot.png'}/`
+| **TAKE A SCREENSHOT**          | `{'screenshot': 'C:/Users/images/Screenshot.png'}/`                 |
+
+##### MOVE CURSOR
+
+```{'move': {'x': 935, 'y': 697}}```
+
+The key must be `move`, and the `x` and `y` positions must be specified as shown in the example. The top-left corner of the screen is the `(0,0)` region, with `x` increasing as you go right and `y` increasing as you go down.
+
+##### LEFT CLICK
+
+```{'l-click': 1}```
+
+The key must be `l-click`, but the value can be anything, as it is ignored by the program.
+
+##### RIGHT CLICK
+
+```{'r-click': 1}```
+
+The key must be `r-click`, but the value can be anything, as it is ignored by the program.
+
+##### DRAG CURSOR
+
+```{'drag': {'x': 1031, 'y': 955}}```
+
+The key must be `drag`, and the `x` and `y` positions must be specified as shown in the example. The top-left corner of the screen is the `(0,0)` region, with `x` increasing going right and `y` increasing going down.
+
+##### ENTER TEXT 
+```{'write': 'Hello World'}```
+
+The key must be `write` and the value must be the text you would like to write.
+
+##### WAIT TIME
+```{'sleep': 1}```
+
+To pause the program for a specified amount of time, use the key `sleep` and specify the desired time in seconds as the value.
+
+##### WAIT FOR IMAGE 
+```{'image': 'C:/Users/images/image-to-search.png'}```
+
+To pause the program until a specified image appears on the screen, use the key `image` and specify the file path of the image as the value.
+
+##### WAIT FOR KEY INPUT
+```{'wait_key': 1}```
+
+To pause the program until the user presses a key on the keyboard, use the key `wait_key`. The value can be anything, as it is ignored by the program.
+
+##### INSERT KEY 
+```{'key': 'shift'}```
+
+To insert a single key into the program, use the key `key` and specify the desired key in lowercase and without whitespace as the value.
+
+##### INSERT HOTKEY
+```{'hotkey': ['ctrl', 'C']}```
+
+To insert a combination of keys as a hotkey, use the key `hotkey` and specify a list of the keys in lowercase as the value.
+
+##### TAKE A SCREENSHOT
+```{'screenshot': 'C:/Users/images/Screenshot.png'}```
+
+To take a screenshot of the current screen, use the key `screenshot` and specify the desired file path and filename as the value.
 
 ### Example
 
