@@ -322,7 +322,9 @@ CREATE TABLE history (
 
 Should you wish to download ```sqlite3```, you may do so from the [official website](https://www.sqlite.org/index.html). While downloading is not necessary for the proper functioning of the software, certain features may not be available if you choose not to do so.
 
+# Video demonstration
 
+<iframe width="640" height="360" src="https://www.youtube.com/embed/r1WOPfG9GS8" title="Clickery - AUTO GUI Program" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Additional Features
 
