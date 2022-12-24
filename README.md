@@ -324,7 +324,8 @@ Should you wish to download ```sqlite3```, you may do so from the [official webs
 
 # Video demonstration
 
-<iframe width="640" height="360" src="https://www.youtube.com/embed/r1WOPfG9GS8" title="Clickery - AUTO GUI Program" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[![Clickery - AUTO GUI Program](https://img.youtube.com/vi/r1WOPfG9GS8/0.jpg)](https://www.youtube.com/watch?v=r1WOPfG9GS8)
+
 
 # Additional Features
 
