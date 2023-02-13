@@ -44,6 +44,7 @@ def initialise(argv) -> None:
         startup(argv)
     except KeyboardInterrupt:
         error("Keyboard Interrupt")
+        pass
 
 
 def startup(argv) -> None:
@@ -186,7 +187,7 @@ def play_recorded() -> None:
                 print("\033[A                    \033[A")
                 
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]MOVED TO[/#829460 BOLD] {position}", i
+                    ":palm_tree:",  f"[#829460 BOLD]MOVED TO[/#829460 BOLD] {position}", f"{i}"
                 )
                 
             # For left Clicking
@@ -205,7 +206,7 @@ def play_recorded() -> None:
                 print("\033[A                        \033[A")
 
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]LEFT CLICKED AT [/#829460 BOLD]{current_position}", i
+                    ":palm_tree:",  f"[#829460 BOLD]LEFT CLICKED AT [/#829460 BOLD]{current_position}", f"{i}"
                 )
             # For right Clicking
             elif key == "r-click":
@@ -221,7 +222,7 @@ def play_recorded() -> None:
                 current_position["y"] = y
                 print("\033[A                         \033[A")
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]RIGHT CLICKED AT [/#829460 BOLD]{current_position}", i
+                    ":palm_tree:",  f"[#829460 BOLD]RIGHT CLICKED AT [/#829460 BOLD]{current_position}", f"{i}"
                 )
                 
             # For dragging with cursor
@@ -234,7 +235,7 @@ def play_recorded() -> None:
                 pyautogui.dragTo(position["x"], position["y"], config.Drag_Speed)
                 print("\033[A                               \033[A")
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]DRAGGED TO[/#829460 BOLD] {position}", i
+                    ":palm_tree:",  f"[#829460 BOLD]DRAGGED TO[/#829460 BOLD] {position}", f"{i}"
                 )
             # For text display
             elif key == "write":
@@ -246,7 +247,7 @@ def play_recorded() -> None:
                 pyautogui.write(action["write"], interval=config.Type_Speed)
                 print("\033[A                     \033[A")
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]WROTE[/#829460 BOLD] [italic #8D9EFF]{action['write']}", i
+                    ":palm_tree:",  f"[#829460 BOLD]WROTE[/#829460 BOLD] [italic #8D9EFF]{action['write']}", f"{i}"
                 )
             # For screen search
             elif key == "image":
@@ -266,7 +267,7 @@ def play_recorded() -> None:
                 DetectImage(r"assets\images\images.png")
                 print("\033[A                          \033[A")
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]FOUND[/#829460 BOLD] [italic #8D9EFF]{action['image']}", i
+                    ":palm_tree:",  f"[#829460 BOLD]FOUND[/#829460 BOLD] [italic #8D9EFF]{action['image']}", f"{i}"
                 )
                 
             # For wait
@@ -279,7 +280,7 @@ def play_recorded() -> None:
                 sleep(action["sleep"])
                 print("\033[A                          \033[A")
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]WAITED FOR[/#829460 BOLD] [italic #8D9EFF]{action['sleep']}s", i
+                    ":palm_tree:",  f"[#829460 BOLD]WAITED FOR[/#829460 BOLD] [italic #8D9EFF]{action['sleep']}s", f"{i}"
                 )
             # For hotkey input
             elif key == "hotkey":
@@ -294,7 +295,7 @@ def play_recorded() -> None:
                     release(current_key)
                 print("\033[A                          \033[A")
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]INSERTED HOTKEYS[/#829460 BOLD] [italic #F0A500]{action['hotkey']}", i
+                    ":palm_tree:",  f"[#829460 BOLD]INSERTED HOTKEYS[/#829460 BOLD] [italic #F0A500]{action['hotkey']}", f"{i}"
                 )
                 
             # For key input
@@ -313,7 +314,7 @@ def play_recorded() -> None:
                 
                 # For User
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]INSERTED KEY[/#829460 BOLD][italic #F0A500] {key}", i
+                    ":palm_tree:",  f"[#829460 BOLD]INSERTED KEY[/#829460 BOLD][italic #F0A500] {key}", f"{i}"
                 )
                 
             # For key input
@@ -331,7 +332,7 @@ def play_recorded() -> None:
                 
                 # For User
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]WAITED FOR[/#829460 BOLD][italic #F0A500] {key}", i
+                    ":palm_tree:",  f"[#829460 BOLD]WAITED FOR[/#829460 BOLD][italic #F0A500] {key}", f"{i}"
                 )
                     
             elif key == "screenshot":
@@ -343,7 +344,7 @@ def play_recorded() -> None:
                 pyautogui.screenshot(action["screenshot"])
                 print("\033[A                       \033[A")
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]SCREENSHOT SAVED AT[/#829460 BOLD] [italic #8D9EFF]{action['screenshot']}", i
+                    ":palm_tree:",  f"[#829460 BOLD]SCREENSHOT SAVED AT[/#829460 BOLD] [italic #8D9EFF]{action['screenshot']}", f"{i}"
                 )
                 
             else:
