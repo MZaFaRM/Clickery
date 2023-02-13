@@ -1,4 +1,4 @@
-![Clickery](https://user-images.githubusercontent.com/98420006/217025811-6f9313c3-5e2a-4b46-802c-bfe09e2f8162.png)
+![Clickery](https://github.com/MZaFaRM/Clickery/blob/main/assets/images/Clickery.png)
 
 # CLICKERY
 
