@@ -1,54 +1,52 @@
-import pyautogui
+import pyautogui, time
 
-from rich import print as richPrint
+from rich import print as rich_print
 from time import sleep
 from keyboard import read_key, send, press, release, wait
 from PIL import Image
 from rich.align import Align
 from rich.panel import Panel
-import time
 from threading import Thread
 from playsound import playsound
 
 import sample.universal.config as config
 
-from sample.pre_record.file_input import file_input
-from sample.pre_record.manual_input import manual_input
-from sample.pre_record.operations.general import egg
-from sample.post_record.post_record import looper, replacer
-from sample.helpers.dir import clarity
+from .pre_record.file_input import file_input
+from .pre_record.manual_input import manual_input
+from .pre_record.operations.general import egg
+from .post_record.post_record import looper, replacer
+from .helpers.dir import clarity
 
 import sample.helpers.menu as menu
 
 from rich.table import Table
 
-richPrint()
-richPrint(Align("[#F9ED69]            ,---.'|                                ,--.                           |          ", align="center"))
-richPrint(Align("[#F9ED69]               ,--,                                                              - -         ", align="center"))
-richPrint(Align("[#F9ED69]  ,----..   |   | :       ,---,   ,----..      ,--/  /|     ,---,. ,-.----.       |          ", align="center"))
-richPrint(Align("[#F9ED69] /   /   \  :   : |    ,`--.' |  /   /   \  ,---,': / '   ,'  .' | \    /  \           ,---, ", align="center"))
-richPrint(Align("[#F08A5D]|   :     : |   ' :    |   :  : |   :     : :   : '/ /  ,---.'   | ;   :    \         /_ ./| ", align="center"))
-richPrint(Align("[#F08A5D].   |  ;. / ;   ; '    :   |  ' .   |  ;. / |   '   ,   |   |   .' |   | .\ :   ,---, |  ' : ", align="center"))
-richPrint(Align("[#F08A5D].   ; /--`  '   | |__  |   :  | .   ; /--`  '   |  /    :   :  |-, .   : |: |  /___/ \.  : | ", align="center"))
-richPrint(Align("[#F08A5D];   | ;     |   | :.'| '   '  ; ;   | ;     |   ;  ;    :   |  ;/| |   |  \ :   .  \  \ ,' ' ", align="center"))
-richPrint(Align("[#B83B5E]|   : |     '   :    ; |   |  | |   : |     :   '   \   |   :   .' |   : .  /    \  ;  `  ,' ", align="center"))
-richPrint(Align("[#B83B5E].   | '___  |   |  ./  '   :  ; .   | '___  |   |    '  |   |  |-, ;   | |  \     \  \    '  ", align="center"))
-richPrint(Align("[#B83B5E]'   ; : .'| ;   : ;    |   |  ' '   ; : .'| '   : |.  \ '   :  ;/| |   | ;\  \     '  \   |  ", align="center"))
-richPrint(Align("[#B83B5E]'   | '/  : |   ,/     '   :  | '   | '/  : |   | '_\.' |   |    \ :   ' | \.'      \  ;  ;  ", align="center"))
-richPrint(Align("[#6A2C70] \   \ .'              '---'     \   \ .'   ;   |,'     |   | ,'   |   |.'            \  ' ; ", align="center"))
-richPrint(Align("[#6A2C70]|   :    /  '---'      ;   |.'  |   :    /  '   : |     |   :   .' :   : :-'         :  \  \ ", align="center"))
-richPrint(Align("[#6A2C70]  `---`                           `---`     '---'       `----'     `---'               `--`  ", align="center"))
+rich_print()
+rich_print(Align("[#F9ED69]            ,---.'|                                ,--.                           |          ", align="center"))
+rich_print(Align("[#F9ED69]               ,--,                                                              - -         ", align="center"))
+rich_print(Align("[#F9ED69]  ,----..   |   | :       ,---,   ,----..      ,--/  /|     ,---,. ,-.----.       |          ", align="center"))
+rich_print(Align("[#F9ED69] /   /   \  :   : |    ,`--.' |  /   /   \  ,---,': / '   ,'  .' | \    /  \           ,---, ", align="center"))
+rich_print(Align("[#F08A5D]|   :     : |   ' :    |   :  : |   :     : :   : '/ /  ,---.'   | ;   :    \         /_ ./| ", align="center"))
+rich_print(Align("[#F08A5D].   |  ;. / ;   ; '    :   |  ' .   |  ;. / |   '   ,   |   |   .' |   | .\ :   ,---, |  ' : ", align="center"))
+rich_print(Align("[#F08A5D].   ; /--`  '   | |__  |   :  | .   ; /--`  '   |  /    :   :  |-, .   : |: |  /___/ \.  : | ", align="center"))
+rich_print(Align("[#F08A5D];   | ;     |   | :.'| '   '  ; ;   | ;     |   ;  ;    :   |  ;/| |   |  \ :   .  \  \ ,' ' ", align="center"))
+rich_print(Align("[#B83B5E]|   : |     '   :    ; |   |  | |   : |     :   '   \   |   :   .' |   : .  /    \  ;  `  ,' ", align="center"))
+rich_print(Align("[#B83B5E].   | '___  |   |  ./  '   :  ; .   | '___  |   |    '  |   |  |-, ;   | |  \     \  \    '  ", align="center"))
+rich_print(Align("[#B83B5E]'   ; : .'| ;   : ;    |   |  ' '   ; : .'| '   : |.  \ '   :  ;/| |   | ;\  \     '  \   |  ", align="center"))
+rich_print(Align("[#B83B5E]'   | '/  : |   ,/     '   :  | '   | '/  : |   | '_\.' |   |    \ :   ' | \.'      \  ;  ;  ", align="center"))
+rich_print(Align("[#6A2C70] \   \ .'              '---'     \   \ .'   ;   |,'     |   | ,'   |   |.'            \  ' ; ", align="center"))
+rich_print(Align("[#6A2C70]|   :    /  '---'      ;   |.'  |   :    /  '   : |     |   :   .' :   : :-'         :  \  \ ", align="center"))
+rich_print(Align("[#6A2C70]  `---`                           `---`     '---'       `----'     `---'               `--`  ", align="center"))
 
-def initialise(argv):
+def initialise(argv) -> None:
     # Starts execution and handles keyboard interruption
     try:
         startup(argv)
     except KeyboardInterrupt:
         error("Keyboard Interrupt")
-        pass
 
 
-def startup(argv):
+def startup(argv) -> None:
     egg(argv)
 
     # The main part of the code
@@ -72,6 +70,7 @@ def startup(argv):
             menu.PrintRecorded()
             error("Input Error")
             return
+        
     # For manual input
     elif keyboardinput in ["right shift", "shift"]:
         print()
@@ -140,12 +139,12 @@ def startup(argv):
     menu.SaveToDB()
 
     # If all goes well...
-    richPrint()
+    rich_print()
     text = Align(":Party_Popper: [bold #8D72E1] SUCCESS :Party_Popper: ", align="center")
-    richPrint(Panel(text, subtitle="[#6D9886]The End", subtitle_align="right"))
+    rich_print(Panel(text, subtitle="[#6D9886]The End", subtitle_align="right"))
 
 
-def post_record_menu():
+def post_record_menu() -> None:
     # The post record menu...
     print()
     
@@ -155,9 +154,10 @@ def post_record_menu():
 
     menu.print(MENU, action="Post-Menu")
 
-def play_recorded():
+def play_recorded() -> None:
     
-    i = 0
+    # id for tracking the actions completed
+    i: int= 0
 
     # Does what is recorded
     for action in config.record:
@@ -172,7 +172,7 @@ def play_recorded():
             # For moving
             if key == "move":
                 
-                richPrint("[#7D9D9C italic]Moving to location...")
+                rich_print("[#7D9D9C italic]Moving to location...")
                 
                 i += 1
                 
@@ -186,13 +186,13 @@ def play_recorded():
                 print("\033[A                    \033[A")
                 
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]MOVED TO[/#829460 BOLD] {position}", f"{i}"
+                    ":palm_tree:",  f"[#829460 BOLD]MOVED TO[/#829460 BOLD] {position}", i
                 )
                 
             # For left Clicking
             elif key == "l-click":
                 
-                richPrint(" [#7D9D9C italic]Inserting left click...")
+                rich_print(" [#7D9D9C italic]Inserting left click...")
                 
                 i += 1
                 pyautogui.click(button="left")
@@ -205,12 +205,12 @@ def play_recorded():
                 print("\033[A                        \033[A")
 
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]LEFT CLICKED AT [/#829460 BOLD]{current_position}", f"{i}"
+                    ":palm_tree:",  f"[#829460 BOLD]LEFT CLICKED AT [/#829460 BOLD]{current_position}", i
                 )
             # For right Clicking
             elif key == "r-click":
                 
-                richPrint(" [#7D9D9C italic]Inserting right click...")
+                rich_print(" [#7D9D9C italic]Inserting right click...")
                 
                 i += 1
                 pyautogui.click(button="right")
@@ -221,39 +221,39 @@ def play_recorded():
                 current_position["y"] = y
                 print("\033[A                         \033[A")
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]RIGHT CLICKED AT [/#829460 BOLD]{current_position}", f"{i}"
+                    ":palm_tree:",  f"[#829460 BOLD]RIGHT CLICKED AT [/#829460 BOLD]{current_position}", i
                 )
                 
             # For dragging with cursor
             elif key == "drag":
                 
-                richPrint(" [#7D9D9C italic]Dragging cursor to location...")
+                rich_print(" [#7D9D9C italic]Dragging cursor to location...")
                 
                 i += 1
                 
                 pyautogui.dragTo(position["x"], position["y"], config.Drag_Speed)
                 print("\033[A                               \033[A")
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]DRAGGED TO[/#829460 BOLD] {position}", f"{i}"
+                    ":palm_tree:",  f"[#829460 BOLD]DRAGGED TO[/#829460 BOLD] {position}", i
                 )
             # For text display
             elif key == "write":
                 
-                richPrint(" [#7D9D9C italic]Writing given text...")
+                rich_print(" [#7D9D9C italic]Writing given text...")
                 
                 i += 1
                 
                 pyautogui.write(action["write"], interval=config.Type_Speed)
                 print("\033[A                     \033[A")
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]WROTE[/#829460 BOLD] [italic #8D9EFF]{action['write']}", f"{i}"
+                    ":palm_tree:",  f"[#829460 BOLD]WROTE[/#829460 BOLD] [italic #8D9EFF]{action['write']}", i
                 )
             # For screen search
             elif key == "image":
                 
                 i += 1
                 
-                richPrint(" [#7D9D9C italic]Searching for given image...")
+                rich_print(" [#7D9D9C italic]Searching for given image...")
                 
                 try:
                     Image.open(action["image"]).convert("RGB").save(
@@ -266,25 +266,25 @@ def play_recorded():
                 DetectImage(r"assets\images\images.png")
                 print("\033[A                          \033[A")
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]FOUND[/#829460 BOLD] [italic #8D9EFF]{action['image']}", f"{i}"
+                    ":palm_tree:",  f"[#829460 BOLD]FOUND[/#829460 BOLD] [italic #8D9EFF]{action['image']}", i
                 )
                 
             # For wait
             elif key == "sleep":
                 
-                richPrint(" [#7D9D9C italic]Waiting for given time...")
+                rich_print(" [#7D9D9C italic]Waiting for given time...")
                 
                 i += 1
                 
                 sleep(action["sleep"])
                 print("\033[A                          \033[A")
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]WAITED FOR[/#829460 BOLD] [italic #8D9EFF]{action['sleep']}s", f"{i}"
+                    ":palm_tree:",  f"[#829460 BOLD]WAITED FOR[/#829460 BOLD] [italic #8D9EFF]{action['sleep']}s", i
                 )
             # For hotkey input
             elif key == "hotkey":
                 
-                richPrint(" [#7D9D9C italic]Inserting given hotkey...")
+                rich_print(" [#7D9D9C italic]Inserting given hotkey...")
                 
                 i += 1
                 
@@ -294,7 +294,7 @@ def play_recorded():
                     release(current_key)
                 print("\033[A                          \033[A")
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]INSERTED HOTKEYS[/#829460 BOLD] [italic #F0A500]{action['hotkey']}", f"{i}"
+                    ":palm_tree:",  f"[#829460 BOLD]INSERTED HOTKEYS[/#829460 BOLD] [italic #F0A500]{action['hotkey']}", i
                 )
                 
             # For key input
@@ -302,7 +302,7 @@ def play_recorded():
                 
                 i += 1
                 
-                richPrint(" [#7D9D9C italic]Inserting given key...")
+                rich_print(" [#7D9D9C italic]Inserting given key...")
                 
                 # Clicks key
                 time.sleep(0.3)
@@ -313,13 +313,13 @@ def play_recorded():
                 
                 # For User
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]INSERTED KEY[/#829460 BOLD][italic #F0A500] {key}", f"{i}"
+                    ":palm_tree:",  f"[#829460 BOLD]INSERTED KEY[/#829460 BOLD][italic #F0A500] {key}", i
                 )
                 
             # For key input
             elif key == "wait_key":
                 
-                richPrint(" [#7D9D9C italic]Waiting for given key input...")
+                rich_print(" [#7D9D9C italic]Waiting for given key input...")
                 
                 i += 1
                 
@@ -331,49 +331,49 @@ def play_recorded():
                 
                 # For User
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]WAITED FOR[/#829460 BOLD][italic #F0A500] {key}", f"{i}"
+                    ":palm_tree:",  f"[#829460 BOLD]WAITED FOR[/#829460 BOLD][italic #F0A500] {key}", i
                 )
                     
             elif key == "screenshot":
                 
-                richPrint(" [#7D9D9C italic]Taking a screenshot...")
+                rich_print(" [#7D9D9C italic]Taking a screenshot...")
                 
                 i += 1
                 
                 pyautogui.screenshot(action["screenshot"])
                 print("\033[A                       \033[A")
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]SCREENSHOT SAVED AT[/#829460 BOLD] [italic #8D9EFF]{action['screenshot']}", f"{i}"
+                    ":palm_tree:",  f"[#829460 BOLD]SCREENSHOT SAVED AT[/#829460 BOLD] [italic #8D9EFF]{action['screenshot']}", i
                 )
                 
             else:
                 continue
                 
-            richPrint(recorded)
+            rich_print(recorded)
             thread = Thread(target=playing_sound)
             thread.start()
             
 
 
-def playing_sound():
+def playing_sound() -> None:
 	playsound(r"assets\sounds\mixkit-arrow-whoosh-1491.wav")
                 
                 
-def DetectImage(path):
+def DetectImage(path) -> None:
     while True:
         image_location = pyautogui.locateCenterOnScreen(path, confidence=0.9)
         if image_location:
             pyautogui.moveTo(image_location)
             return
         
-def error(error=""):
-    richPrint()
+def error(error="") -> None:
+    rich_print()
     text = Align(":cactus: [bold #8D72E1] FAILED [/] :cactus:", align="center")
     error = "[#6D9886]" + error
-    richPrint(Panel(text, subtitle=error, subtitle_align="right"))
+    rich_print(Panel(text, subtitle=error, subtitle_align="right"))
     
     
-def release_all():
+def release_all() -> None:
     keys = ['\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&', "'", '(',
 ')', '*', '+', ',', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6', '7',
 '8', '9', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`',
