@@ -1,5 +1,4 @@
-from sys import argv, platform, stdout
-import os
+from sys import argv
 from rich import print
 from rich.align import Align
 
