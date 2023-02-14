@@ -11,17 +11,21 @@ Clickery is an AutoGUI software designed to make it easier to use AutoGUI withou
 
 
 
-To get started with Clickery, [download the Clickery zip](https://github.com/MZaFaRM/Clickery/archive/refs/heads/main.zip), extract it , open it on any terminal (preferably [VS Code](https://code.visualstudio.com/download)) and execute the following command in the terminal:
+To get started with Clickery, 
+- [Download the Clickery zip](https://github.com/MZaFaRM/Clickery/archive/refs/heads/main.zip)
+- Extract it
+- Open the folder on any terminal (preferably [VS Code](https://code.visualstudio.com/download)) 
+- and execute the following command in the terminal:
 
 ```
-py setup.py
+python setup.py
 ```
 
 This will install all the required libraries to run the project. Then, execute the following command to start the program:
 
 
 ```
-py main.py
+python main.py
 ```
 
 
