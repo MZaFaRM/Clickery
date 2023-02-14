@@ -10,7 +10,6 @@ Clickery is an AutoGUI software designed to make it easier to use AutoGUI withou
 ## Getting Started
 
 
-
 To get started with Clickery, 
 - [Download the Clickery zip](https://github.com/MZaFaRM/Clickery/archive/refs/heads/main.zip)
 - Extract it
@@ -27,6 +26,8 @@ This will install all the required libraries to run the project. Then, execute t
 ```
 python main.py
 ```
+
+Do connect with me if you have any queries, complements and/or suggestions regarding the project, and leave a star if you like it!
 
 
 ## Mode of Input
