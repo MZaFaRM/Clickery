@@ -27,9 +27,6 @@ This will install all the required libraries to run the project. Then, execute t
 python main.py
 ```
 
-Do connect with me if you have any queries, complements and/or suggestions regarding the project, and leave a star if you like it!
-
-
 ## Mode of Input
 
 After running the program, you will be prompted to choose the mode of input.
@@ -356,5 +353,5 @@ Should you wish to download ```sqlite3```, you may do so from the [official webs
 
 # Feedback
 
-If you have any feedback, please reach out to me at muhammedzafar.mm@gmail.com
+Do connect with me if you have any queries, complements and/or suggestions regarding the project, and leave a star if you like it!
 
