@@ -9,8 +9,6 @@ Clickery is an AUTOGUI software designed to make it easier to use AUTOGUI withou
 
 ## Getting Started
 
-
-
 To get started with Clickery, [download the Clickery zip](https://github.com/MZaFaRM/Clickery/archive/refs/heads/main.zip), extract it , open it on any terminal (preferably [VS Code](https://code.visualstudio.com/download)) and execute the following command in the terminal:
 
 ```
@@ -27,6 +25,8 @@ py main.py
 
 ## Mode of Input
 
+*Note: Due to recent changes readme may contain outdated information, I am still in the process of updating it.*
+
 After running the program, you will be prompted to choose the mode of input.
 
 ### File Input
@@ -41,8 +41,8 @@ Your file input must be a list of dictionaries, where each dictionary represents
 | Action                     | Syntax                                                              |
 |----------------------------|---------------------------------------------------------------------|
 | MOVE CURSOR                | `{'move': {'x': 935, 'y': 697}}`                                  |
-| LEFT CLICK                 | `{'l-click': 1}`                                                    |
-| RIGHT CLICK                | `{'r-click': 1}`                                                    |
+| LEFT CLICK                 | `{'click': 'left'}`                                                    |
+| RIGHT CLICK                | `{'click': 'right'}`                                                    |
 | DRAG CURSOR                | `{'drag': {'x': 1031, 'y': 955}}`                                  |
 | ENTER TEXT                 | `{'write': 'Hello World'}`                                          |
 | WAIT TIME                  | `{'sleep': 1}`                                                      |
@@ -50,7 +50,6 @@ Your file input must be a list of dictionaries, where each dictionary represents
 | WAIT FOR KEY INPUT         | `{'wait_key': 1}`                                                   |
 | INSERT KEY                 | `{'key': 'shift'}`                                                  |
 | INSERT HOTKEY              | `{'hotkey': ['ctrl', 'C']}`                                         |
-| TAKE A SCREENSHOT          | `{'screenshot': 'C:/Users/images/Screenshot.png'}/`                 | 
 
 
 ##### MOVE CURSOR
@@ -61,15 +60,15 @@ The key must be `move`, and the `x` and `y` positions must be specified as shown
 
 ##### LEFT CLICK
 
-```{'l-click': 1}```
+```{'click': 'left'}```
 
-The key must be `l-click`, but the value can be anything, as it is ignored by the program.
+The key must be `click`, and the value 'left'.
 
 ##### RIGHT CLICK
 
-```{'r-click': 1}```
+```{'click': 'right'}```
 
-The key must be `r-click`, but the value can be anything, as it is ignored by the program.
+The key must be `click`, and the value 'left'.
 
 ##### DRAG CURSOR
 
@@ -107,26 +106,21 @@ To insert a single key into the program, use the key `key` and specify the desir
 
 To insert a combination of keys as a hotkey, use the key `hotkey` and specify a list of the keys in lowercase as the value.
 
-##### TAKE A SCREENSHOT
-```{'screenshot': 'C:/Users/images/Screenshot.png'}```
-
-To take a screenshot of the current screen, use the key `screenshot` and specify the desired file path and filename as the value.
 
 ### Example
 
 ```
 [
   { "move": { "x": 1008, "y": 863 }, "id": 1 },
-  { "l-click": 1, "id": 2 },
-  { "r-click": 1, "id": 3 },
+  { "click": 'left', "id": 2 },
+  { "click": 'right', "id": 3 },
   { "drag": { "x": 1007, "y": 864 }, "id": 4 },
   { "write": "He110 W0r1D", "id": 5 },
   { "sleep": 3, "id": 6 },
   { "image": "C:/Users/images/image-to-search.png", "id": 7 },
   { "wait_key": "shift", "id": 8 },
   { "key": "shift", "id": 9 },
-  { "hotkey": ["ctrl", "x"], "id": 10 },
-  { "screenshot": "C:/Users/images/Screenshot.png", "id": 11 }
+  { "hotkey": ["ctrl", "x"], "id": 10 }
 ]
 
 ```
@@ -151,7 +145,6 @@ To record actions using manual input, follow these instructions:
 | 9  | INSERT KEY         | `9`       |
 | 10 | INSERT HOTKEY      | `0`       |
 | 11 | DELETE LAST ACTION | `-`       |
-| 12 | TAKE A SCREENSHOT  | `=`       |
 
 
 #### MOVE CURSOR
@@ -203,10 +196,6 @@ To record the action of inserting multiple keys at once, input `0` and enter eac
 #### DELETE LAST ACTION
 
 To delete the last recorded action in manual input mode, input `-`. In the `Replace Action` section (after all actions have been recorded), this action will delete the element with the specified ID.
-
-#### TAKE A SCREENSHOT
-
-To take a screenshot and save it to a specified location, input `=`. Enter the desired save location in the dialogue box that appears.
   
 
 # Post-Recording Actions
