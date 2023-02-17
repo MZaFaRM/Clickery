@@ -11,7 +11,7 @@ from .key_insert import return_key_input
 from .hot_key_insert import return_hot_key_input
 from .wait_seconds import return_wait
 from .text_input import return_write
-from .wait_for_key import return_wait_key
+from .wait_key import return_wait_key
 from rich.table import Table
 
 

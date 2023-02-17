@@ -44,7 +44,7 @@
     {
         "id": 8,
         "call": "8",
-        "function": "wait_for_key()",
+        "function": "wait_key()",
         "description": "WAIT FOR KEY INPUT"
     },
     {
