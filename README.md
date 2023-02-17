@@ -1,31 +1,29 @@
-![Clickery](https://github.com/MZaFaRM/Clickery/blob/main/assets/images/Clickery.png)
+![Clickery](https://user-images.githubusercontent.com/98420006/208743882-d486969b-1079-4b74-8cae-447bda40c47c.png)
 
 # CLICKERY
 
 ![edX](https://img.shields.io/badge/edX-%2302262B.svg?style=for-the-badge&logo=edX&logoColor=white)
 ![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-Clickery is an AutoGUI software designed to make it easier to use AutoGUI without coding.
+Clickery is an AUTOGUI software designed to make it easier to use AUTOGUI without coding.
 
 ## Getting Started
 
 
-To get started with Clickery, 
-- [Download the Clickery zip](https://github.com/MZaFaRM/Clickery/archive/refs/heads/main.zip)
-- Extract it
-- Open the folder on any terminal (preferably [VS Code](https://code.visualstudio.com/download)) 
-- and execute the following command in the terminal:
+
+To get started with Clickery, [download the Clickery zip](https://github.com/MZaFaRM/Clickery/archive/refs/heads/main.zip), extract it , open it on any terminal (preferably [VS Code](https://code.visualstudio.com/download)) and execute the following command in the terminal:
 
 ```
-python setup.py
+py setup.py
 ```
 
 This will install all the required libraries to run the project. Then, execute the following command to start the program:
 
 
 ```
-python main.py
+py main.py
 ```
+
 
 ## Mode of Input
 
@@ -353,5 +351,5 @@ Should you wish to download ```sqlite3```, you may do so from the [official webs
 
 # Feedback
 
-Do connect with me if you have any queries, complements and/or suggestions regarding the project, and leave a star if you like it!
+If you have any feedback, please reach out to me at muhammedzafar.mm@gmail.com
 

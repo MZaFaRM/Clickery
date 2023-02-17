@@ -4,7 +4,7 @@ from subprocess import check_call
 import sqlite3
 
 
-def clear_all() -> None:
+def clear_all():
 
     print("Cleaning database .")
 
