@@ -25,7 +25,7 @@ py main.py
 
 ## Mode of Input
 
-Note: Due to recent changes readme may contain outdated information, I am still in the process of updating it.
+*Note: Due to recent changes readme may contain outdated information, I am still in the process of updating it.*
 
 After running the program, you will be prompted to choose the mode of input.
 
