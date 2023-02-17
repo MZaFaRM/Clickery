@@ -1,3 +1,5 @@
 __pycache__/
 assets/history/
 assets/images/
+myenv/
+.vscode/

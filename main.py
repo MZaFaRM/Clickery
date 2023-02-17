@@ -1,16 +1,14 @@
-from sys import argv, platform, stdout
-import os
+from sys import argv
 from rich import print
 from rich.align import Align
 
 
 def main():
 
-    print(
-        Align(
-            "This application uses emoji characters which may not be displayed correctly in terminals without Unicode support. For optimal experience, use a Unicode-supported terminal."
-        , align="center")
-    )
+    print("This application uses emoji characters which may not be displayed " 
+        "correctly in terminals without Unicode support. For optimal " 
+        "experience, use a Unicode-supported terminal.")
+
     # program checks tries to install all modules required to run the program
     try:
         # imports the program
