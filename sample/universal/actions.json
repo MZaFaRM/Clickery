@@ -2,73 +2,67 @@
     {
         "id": 1,
         "call": "1",
-        "function": "MoveCursor()",
+        "function": "move_cursor()",
         "description": "MOVE CURSOR"
     },
     {
         "id": 2,
         "call": "2",
-        "function": "LeftClickCursor()",
+        "function": "left_click_cursor()",
         "description": "LEFT CLICK"
     },
     {
         "id": 3,
         "call": "3",
-        "function": "RightClickCursor()",
+        "function": "right_click_cursor()",
         "description": "RIGHT CLICK"
     },
     {
         "id": 4,
         "call": "4",
-        "function": "DragCursor()",
+        "function": "drag_cursor()",
         "description": "DRAG CURSOR"
     },
     {
         "id": 5,
         "call": "5",
-        "function": "TextInput()",
+        "function": "text_input()",
         "description": "ENTER TEXT"
     },
     {
         "id": 6,
         "call": "6",
-        "function": "Wait()",
+        "function": "wait_time()",
         "description": "WAIT TIME"
     },
     {
         "id": 7,
         "call": "7",
-        "function": "WaitForImage()",
+        "function": "wait_for_image()",
         "description": "WAIT FOR IMAGE"
     },
     {
         "id": 8,
         "call": "8",
-        "function": "WaitForKey()",
+        "function": "wait_key()",
         "description": "WAIT FOR KEY INPUT"
     },
     {
         "id": 9,
         "call": "9",
-        "function": "KeyInput()",
+        "function": "key_input()",
         "description": "INSERT KEY"
     },
     {
         "id": 10,
         "call": "0",
-        "function": "InsertHotkey()",
+        "function": "insert_hotkey()",
         "description": "INSERT HOTKEY"
     },
     {
         "id": 11,
         "call": "-",
-        "function": "Pop()",
+        "function": "delete_action()",
         "description": "DELETE LAST ACTION"
-    },
-    {
-        "id": 12,
-        "call": "=",
-        "function": "TakeScreenshot()",
-        "description": "TAKE A SCREENSHOT"
     }
 ]

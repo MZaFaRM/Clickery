@@ -1,74 +1,68 @@
 [
-  {
-      "id": 1,
-      "call": "1",
-      "function": "MoveCursor()",
-      "description": "MOVE CURSOR"
-  },
-  {
-      "id": 2,
-      "call": "2",
-      "function": "LeftClickCursor()",
-      "description": "LEFT CLICK"
-  },
-  {
-      "id": 3,
-      "call": "3",
-      "function": "RightClickCursor()",
-      "description": "RIGHT CLICK"
-  },
-  {
-      "id": 4,
-      "call": "4",
-      "function": "DragCursor()",
-      "description": "DRAG CURSOR"
-  },
-  {
-      "id": 5,
-      "call": "5",
-      "function": "TextInput()",
-      "description": "ENTER TEXT"
-  },
-  {
-      "id": 6,
-      "call": "6",
-      "function": "Wait()",
-      "description": "WAIT TIME"
-  },
-  {
-      "id": 7,
-      "call": "7",
-      "function": "WaitForImage()",
-      "description": "WAIT FOR IMAGE"
-  },
-  {
-      "id": 8,
-      "call": "8",
-      "function": "WaitForKey()",
-      "description": "WAIT FOR KEY INPUT"
-  },
-  {
-      "id": 9,
-      "call": "9",
-      "function": "KeyInput()",
-      "description": "INSERT KEY"
-  },
-  {
-      "id": 10,
-      "call": "0",
-      "function": "InsertHotkey()",
-      "description": "INSERT HOTKEY"
-  },
-  {
-      "id": 11,
-      "call": "-",
-      "function": "Pop()",
-      "description": "DELETE ACTION"
-  },
-  {
-      "id": 12,
-      "call": "=",
-      "function": "TakeScreenshot()",
-      "description": "TAKE A SCREENSHOT"
-  }
+    {
+        "id": 1,
+        "call": "1",
+        "function": "move_cursor()",
+        "description": "MOVE CURSOR"
+    },
+    {
+        "id": 2,
+        "call": "2",
+        "function": "left_click_cursor()",
+        "description": "LEFT CLICK"
+    },
+    {
+        "id": 3,
+        "call": "3",
+        "function": "right_click_cursor()",
+        "description": "RIGHT CLICK"
+    },
+    {
+        "id": 4,
+        "call": "4",
+        "function": "drag_cursor()",
+        "description": "DRAG CURSOR"
+    },
+    {
+        "id": 5,
+        "call": "5",
+        "function": "text_input()",
+        "description": "ENTER TEXT"
+    },
+    {
+        "id": 6,
+        "call": "6",
+        "function": "wait_time()",
+        "description": "WAIT TIME"
+    },
+    {
+        "id": 7,
+        "call": "7",
+        "function": "wait_for_image()",
+        "description": "WAIT FOR IMAGE"
+    },
+    {
+        "id": 8,
+        "call": "8",
+        "function": "wait_for_key()",
+        "description": "WAIT FOR KEY INPUT"
+    },
+    {
+        "id": 9,
+        "call": "9",
+        "function": "key_input()",
+        "description": "INSERT KEY"
+    },
+    {
+        "id": 10,
+        "call": "0",
+        "function": "insert_hotkey()",
+        "description": "INSERT HOTKEY"
+    },
+    {
+        "id": 11,
+        "call": "-",
+        "function": "delete_action()",
+        "description": "DELETE ACTION"
+    }
 ]

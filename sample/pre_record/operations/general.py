@@ -3,21 +3,19 @@ from re import search
 from random import choices
 from sample.helpers.dir import folder
 import sample.universal.config as config
-from tkinter.filedialog import asksaveasfile
 from keyboard import normalize_name
 from playsound import playsound
 from threading import Thread
-import os
 import pyautogui
-from sample.pre_record.operations.key_insert import return_key_input
-from sample.pre_record.operations.hot_key_insert import return_hot_key_input
-from sample.pre_record.operations.wait_seconds import return_wait
-from sample.pre_record.operations.text_input import return_write
-from sample.pre_record.operations.wait_for_key import return_wait_key
+from .key_insert import return_key_input
+from .hot_key_insert import return_hot_key_input
+from .wait_seconds import return_wait
+from .text_input import return_write
+from .wait_for_key import return_wait_key
 from rich.table import Table
 
 
-def WaitForImage():
+def wait_for_image() -> dict:
 
 	# Declares dictionaries
 	action = {}
@@ -36,11 +34,11 @@ def WaitForImage():
 
 		return action
 
-	return 0
+	return None
 
 
 # For moving cursor
-def MoveCursor():
+def move_cursor() -> dict:
 
 	# Declares dictionaries
 	action = {}
@@ -60,13 +58,13 @@ def MoveCursor():
 	return action
 
 
-def LeftClickCursor():
+def left_click_cursor() -> dict:
 
 	# Declares dictionaries
 	action = {}
 
 	# Saves action
-	action["l-click"] = 1
+	action["click"] = "left"
 
 	# For user
 	align_text(description="LEFT CLICK AT", parameter="[italic #8D9EFF]position")
@@ -74,13 +72,13 @@ def LeftClickCursor():
 	return action
 
 
-def RightClickCursor():
+def right_click_cursor() -> dict:
 
 	# Declares dictionaries
 	action = {}
 
 	# Saves action
-	action["r-click"] = 1
+	action["click"] = "right"
 
 	# For user
 	align_text(description="RIGHT CLICK AT", parameter="[italic #8D9EFF]position")
@@ -88,7 +86,7 @@ def RightClickCursor():
 	return action
 
 
-def TextInput():
+def text_input() -> dict:
 
 	# Gets text
 	text = return_write()
@@ -101,10 +99,10 @@ def TextInput():
 
 		return action
 
-	return 0
+	return None
 
 
-def KeyInput():
+def key_input() -> dict:
 
 	# Declares dictionaries
 	action = {}
@@ -122,9 +120,9 @@ def KeyInput():
 
 		return action
 
-	return 0
+	return None
 
-def WaitForKey():
+def wait_key() -> dict:
 
 	# Declares dictionaries
 	action = {}
@@ -142,10 +140,10 @@ def WaitForKey():
 
 		return action
 
-	return 0
+	return None
 
 
-def Wait():
+def wait_time() -> dict:
 
 	action = {}
 	# gets input
@@ -158,10 +156,10 @@ def Wait():
 
 		return action
 	else:
-		return 0
+		return None
 
 
-def Pop(id=0):
+def delete_action(id :int = 0) -> None:
 
 	if not id:
 		# Delete last action
@@ -170,7 +168,6 @@ def Pop(id=0):
 
 		except IndexError:
 			align_text("[#D2001A italic]No actions to remove", "", ":cross_mark:", increment="None")
-
 			return
 	else:
 		delete = config.record.pop(id - 1)
@@ -178,7 +175,7 @@ def Pop(id=0):
 	align_text(f"[#7D9D9C italic]{delete}", "removed", ":wilted_flower:", description_style=False, increment="Negative")
 
 
-def DragCursor():
+def drag_cursor() -> dict:
 
 	# Declares dictionaries
 	action = {}
@@ -198,7 +195,7 @@ def DragCursor():
 	return action
 
 
-def InsertHotkey():
+def insert_hotkey() -> dict:
 
 	# Declares dictionaries
 	action = {}
@@ -212,41 +209,14 @@ def InsertHotkey():
 		action["hotkey"] = hotkeys
 
 		# For User
-		align_text("INSERT HOTKEYS", f"[italic #F0A500]{hotkeys}")
+		align_text("INSERT HOTKEYS", f"[italic #F0A500]{' + '.join(hotkeys)}")
 
 		return action
 
-	return 0
+	return None
 
 
-def TakeScreenshot():
-	# Declares dictionaries
-	action = {}
-
-	files = [("image files", "*.png")]
-	file = asksaveasfile(filetypes=files, defaultextension=files)
-
-	# Checks if the user provided a location
-	if file:
-
-		# 'file' is an io.TextWrapper
-		# Take screenshot and save it to the given location
-		location = file.name
-		file.close()
-		# os.remove(location)
-		action["screenshot"] = location
-
-		# For User
-		align_text("SAVE A SCREENSHOT AT", f"[italic #8D9EFF]{location}")
-
-		# Saving to config
-		return action
-
-	else:
-		return 0
-
-
-def egg(argv):
+def egg(argv) -> None:
 	try:
 		argv = argv[1].lower()
 		thanks = search("^thanks", argv)
@@ -269,7 +239,7 @@ def egg(argv):
 	except Exception:
 		pass
 
-def align_text(description="", parameter="", emoji=":rose:", description_style=True, increment="True"):
+def align_text(description="", parameter="", emoji=":rose:", description_style=True, increment="True") -> None:
 	
 	global index
 	
@@ -281,12 +251,12 @@ def align_text(description="", parameter="", emoji=":rose:", description_style=T
 	id = index
 		
 	if increment == "None":
-		thread = Thread(target = recording_action, args=("none", ))
+		thread = Thread(target = recording_action, args=("normal", ))
 		thread.start()
 		index -= 1
 		id = ""
 	elif increment == "Negative":
-		thread = Thread(target = recording_action, args=("pop", ))
+		thread = Thread(target = recording_action, args=("delete action", ))
 		thread.start()
 		index -= 2
 		id = ""
@@ -309,12 +279,12 @@ def align_text(description="", parameter="", emoji=":rose:", description_style=T
 	
 	print(recorded)
 	
-def recording_action(function=""):
+def recording_action(function :str = "") -> None:
 	
-	if function == "pop":
+	if function == "delete action":
 		playsound(r"assets\sounds\the-rustle-of-a-bush-106001.wav")
 
-	elif function == "none":
+	elif function == "normal":
 		playsound(r"assets\sounds\mixkit-small-wood-plank-pile-drop-3141.wav")
 	 
 	else:

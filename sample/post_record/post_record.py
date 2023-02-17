@@ -7,7 +7,7 @@ import sample.post_record.replacer as replace
 import sample.post_record.looper as loop
 import sample.pre_record.operations.general as general
 import sample.universal.config as config
-from sample.helpers.menu import add_id, PrintRecorded
+from sample.helpers.menu import add_id, print_recorded
 from sample.helpers.menu import print as menu_print
 from rich import print
 
@@ -24,7 +24,6 @@ def replacer():
     # For getting user input
     print_menu_replace()
     keyboardinput = read_key()
-    
 
     # Stop recording
     if keyboardinput == "esc":
@@ -39,10 +38,10 @@ def replacer():
 
             Hades = True
 
-            if item["function"] == "Pop()":
+            if item["function"] == "delete_action()":
                 # replace ID does't correspond to the index therefore it must be decremented by one before use
-                # decrementing done by 'Pop' function
-                general.Pop(replace.replace_id)
+                # decrementing done by 'delete_action' function
+                general.delete_action(replace.replace_id)
                 break
 
             # actions is the dictionary of the action
@@ -60,7 +59,7 @@ def replacer():
     # re-adds id after modification
     add_id()
     # Lists all recorded actions
-    PrintRecorded()
+    print_recorded()
 
     # reset replace_id for reuse
     replace.replace_id = 0
@@ -78,11 +77,11 @@ def print_menu_replace():
         single_item["CALL"] = '"' + item["call"] + '"'
         menu_items.append(single_item)
         single_item = {}
-    
+
     panel_group = Group(
         Align("\nUsage:", align="center"),
         Align(
-            "[#ECDBBA]Hover over the screen and press the appropriate call",
+            "[#ECDBBA]Hover over the screen and press the apropriate call",
             align="center",
         ),
         Align("[#ECDBBA]to perform the related operation", align="center"),
@@ -101,8 +100,9 @@ def print_menu_replace():
 
     print()
 
+
 def looper():
-    
+
     # initiates looper process
     loop.loop_window()
 
@@ -117,7 +117,7 @@ def looper():
     InsertAfter = loop.loop_final["InsertAfter"]
 
     # Gets the loop to multiply
-    looper_list = config.record[start - 1: end]
+    looper_list = config.record[start - 1 : end]
 
     # Multiplies the loop
     looper_list = looper_list * loops
@@ -130,7 +130,7 @@ def looper():
     add_id()
 
     # Lists all recorded actions
-    PrintRecorded()
+    print_recorded()
 
     # reset loop_final for reuse
     loop.loop_final = []

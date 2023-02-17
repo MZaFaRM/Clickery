@@ -29,7 +29,7 @@ def manual_input():
 
                     action = eval(f"general.{item['function']}")
 
-                    if item["function"] != "Pop()":
+                    if item["function"] != "delete_action()":
 
                         if action:
                             config.record.append(action)

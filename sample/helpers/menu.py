@@ -1,18 +1,18 @@
 from tabulate import tabulate
 import sample.universal.config as config
-from json import dump, dumps
+from json import dump
 import sqlite3
-from rich import print as richPrint
+from rich import print as rich_print
 from rich.align import Align
 from rich.bar import Bar
 from rich.panel import Panel
-from rich.json import JSON
 from rich.console import Group
 from rich.progress_bar import ProgressBar
+from rich.table import Table
 
 
 def print_menu():
-    
+
     # Menu for manual input
     menu_items = []
     single_item = {}
@@ -33,7 +33,7 @@ def print_menu():
     panel_group = Group(
         Align("\nUsage:", align="center"),
         Align(
-            "[#ECDBBA]Hover over the screen and press the appropriate call",
+            "[#ECDBBA]Hover over the screen and press the apropriate call",
             align="center",
         ),
         Align("[#ECDBBA]to perform the related operation", align="center"),
@@ -41,8 +41,8 @@ def print_menu():
         Align(tabulate(menu_items, "keys", "rounded_grid"), align="center"),
         "\n",
     )
-    
-    richPrint()
+
+    rich_print()
 
     print(
         Panel(
@@ -53,7 +53,7 @@ def print_menu():
             highlight=True,
         )
     )
-    richPrint()
+    rich_print()
 
     # starts recording
 
@@ -93,30 +93,45 @@ def SaveToDB():
     history.close()
 
 
-def PrintRecorded():
+def print_recorded():
+
     # prints all recorded actions
-    richPrint()
-    text = JSON(dumps(config.record), indent=4)
-    text = Align(text, align="center")
-    text = Panel(
-        text,
-        title="[#FFCCB3]Recorded actions:",
+    rich_print()
+    text = JSON_lingualizer(config.record)
+
+    heading = Panel(
+        Align("[#FFCCB3]Recorded actions:", align="center"),
         highlight=True,
         subtitle="[#6D9886]Step 2",
         subtitle_align="right",
     )
-    richPrint(text)
+
+    rich_print(heading)
+    
+    for i, line in enumerate(text):
+        
+        i += 1
+        # Table to print data in
+        recorded = Table(expand=True, box=None, highlight=True)
+        recorded.add_column(justify="right")
+        recorded.add_column(justify="center")
+        recorded.add_column(justify="left")
+        
+        recorded.add_row(":evergreen_tree:", line, f"{i}")
+
+        rich_print(recorded)
 
 
 def print(text="", action="Align"):
+
     if action == "Align":
-        richPrint(Align(text, align="center"))
+        rich_print(Align(text, align="center"))
     elif action == "Bar":
-        richPrint(Bar(100, 0, 100))
+        rich_print(Bar(100, 0, 100))
     elif action == "Table":
-        richPrint(text, highlight=True)
+        rich_print(text, highlight=True)
     elif action == "Pre-Menu":
-        richPrint(
+        rich_print(
             Panel(
                 Align(text, align="center"),
                 title="[#DC3535]Mode Of Input",
@@ -128,7 +143,7 @@ def print(text="", action="Align"):
         )
 
     elif action == "Post-Menu":
-        richPrint(
+        rich_print(
             Panel(
                 Align(text, align="center"),
                 title="[#C147E9]Action Modifications",
@@ -138,3 +153,56 @@ def print(text="", action="Align"):
                 subtitle_align="right",
             )
         )
+
+
+def JSON_lingualizer(actions) -> list:
+
+    text = []
+
+    for action in actions:
+        for (key, value) in action.items():
+            position = value
+            # For moving
+            if key == "move":
+
+                text.append(f"""[#CF4DCE BOLD]MOVE TO [/]{position}""")
+
+            elif key == "click":
+
+                text.append(f"""[#CF4DCE BOLD]{action["click"].upper()} CLICK AT[/] [italic #8D9EFF]position""")
+
+            elif key == "drag":
+
+                text.append(f"""[#CF4DCE BOLD]DRAG TO [/]{position}""")
+
+            elif key == "write":
+
+                text.append(f'''[#CF4DCE BOLD]WRITE [/][italic #8D9EFF]{action["write"]}[/]''')
+
+            elif key == "image":
+
+                text.append(f'''[#CF4DCE BOLD]SEARCH FOR [/][italic #8D9EFF]{action["image"]}[/]''')
+
+            elif key == "sleep":
+
+                text.append(f"""[#CF4DCE BOLD]WAIT FOR [/][italic #8D9EFF]{action["sleep"]}s[/]""")
+
+            elif key == "hotkey":
+
+                text.append(f'''[#CF4DCE BOLD]INSERT HOTKEYS [/][italic #F0A500]"{" + ".join(action['hotkey'])}"[/]''')
+
+            elif key == "key":
+
+                text.append(f'''[#CF4DCE BOLD]HIT KEY [/][italic #F0A500]{action["key"]}[/]''')
+
+            elif key == "wait_key":
+
+                text.append(f'''[#CF4DCE BOLD]WAIT FOR KEY [/][italic #F0A500]{action["wait_key"]}[/]''')
+
+            elif key == "id":
+                pass
+
+            else:
+                raise Exception(ValueError)
+
+    return text

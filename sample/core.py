@@ -1,4 +1,4 @@
-import pyautogui, time
+import pyautogui
 
 from rich import print as rich_print
 from time import sleep
@@ -6,6 +6,7 @@ from keyboard import read_key, send, press, release, wait
 from PIL import Image
 from rich.align import Align
 from rich.panel import Panel
+import time
 from threading import Thread
 from playsound import playsound
 
@@ -17,7 +18,7 @@ from .pre_record.operations.general import egg
 from .post_record.post_record import looper, replacer
 from .helpers.dir import clarity
 
-import sample.helpers.menu as menu
+from .helpers import menu
 
 from rich.table import Table
 
@@ -38,7 +39,7 @@ rich_print(Align("[#6A2C70] \   \ .'              '---'     \   \ .'   ;   |,'  
 rich_print(Align("[#6A2C70]|   :    /  '---'      ;   |.'  |   :    /  '   : |     |   :   .' :   : :-'         :  \  \ ", align="center"))
 rich_print(Align("[#6A2C70]  `---`                           `---`     '---'       `----'     `---'               `--`  ", align="center"))
 
-def initialise(argv) -> None:
+def initialise(argv):
     # Starts execution and handles keyboard interruption
     try:
         startup(argv)
@@ -47,7 +48,7 @@ def initialise(argv) -> None:
         pass
 
 
-def startup(argv) -> None:
+def startup(argv):
     egg(argv)
 
     # The main part of the code
@@ -68,10 +69,9 @@ def startup(argv) -> None:
         pyautogui.keyUp("enter")
         status = file_input()
         if not status:
-            menu.PrintRecorded()
+            menu.print_recorded()
             error("Input Error")
             return
-        
     # For manual input
     elif keyboardinput in ["right shift", "shift"]:
         print()
@@ -80,13 +80,13 @@ def startup(argv) -> None:
 
     # If actions record is empty the process quits
     if not len(config.record):
-        menu.PrintRecorded()
+        menu.print_recorded()
         error("No Actions Input")
         return
 
     # Adds ids and prints everything that is recorded
     menu.add_id()
-    menu.PrintRecorded()
+    menu.print_recorded()
 
     result = 1
 
@@ -145,7 +145,7 @@ def startup(argv) -> None:
     rich_print(Panel(text, subtitle="[#6D9886]The End", subtitle_align="right"))
 
 
-def post_record_menu() -> None:
+def post_record_menu():
     # The post record menu...
     print()
     
@@ -155,10 +155,9 @@ def post_record_menu() -> None:
 
     menu.print(MENU, action="Post-Menu")
 
-def play_recorded() -> None:
+def play_recorded():
     
-    # id for tracking the actions completed
-    i: int= 0
+    i = 0
 
     # Does what is recorded
     for action in config.record:
@@ -190,13 +189,13 @@ def play_recorded() -> None:
                     ":palm_tree:",  f"[#829460 BOLD]MOVED TO[/#829460 BOLD] {position}", f"{i}"
                 )
                 
-            # For left Clicking
-            elif key == "l-click":
+            # For Clicking
+            elif key == "click":
                 
-                rich_print(" [#7D9D9C italic]Inserting left click...")
+                rich_print(f" [#7D9D9C italic]Inserting {action['click']} click...")
                 
                 i += 1
-                pyautogui.click(button="left")
+                pyautogui.click(button=action['click'].lower())
                 current_position = {}
                 # Saves position
                 x, y = pyautogui.position()
@@ -206,23 +205,7 @@ def play_recorded() -> None:
                 print("\033[A                        \033[A")
 
                 recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]LEFT CLICKED AT [/#829460 BOLD]{current_position}", f"{i}"
-                )
-            # For right Clicking
-            elif key == "r-click":
-                
-                rich_print(" [#7D9D9C italic]Inserting right click...")
-                
-                i += 1
-                pyautogui.click(button="right")
-                current_position = {}
-                # Saves position
-                x, y = pyautogui.position()
-                current_position["x"] = x
-                current_position["y"] = y
-                print("\033[A                         \033[A")
-                recorded.add_row(
-                    ":palm_tree:",  f"[#829460 BOLD]RIGHT CLICKED AT [/#829460 BOLD]{current_position}", f"{i}"
+                    ":palm_tree:",  f"[#829460 BOLD]{action['click']} CLICKED AT [/#829460 BOLD]{current_position}".upper(), f"{i}"
                 )
                 
             # For dragging with cursor
@@ -264,7 +247,7 @@ def play_recorded() -> None:
                     error("Image to wait for not found")
                     return
                 
-                DetectImage(r"assets\images\images.png")
+                detect_image(r"assets\images\images.png")
                 print("\033[A                          \033[A")
                 recorded.add_row(
                     ":palm_tree:",  f"[#829460 BOLD]FOUND[/#829460 BOLD] [italic #8D9EFF]{action['image']}", f"{i}"
@@ -356,25 +339,25 @@ def play_recorded() -> None:
             
 
 
-def playing_sound() -> None:
+def playing_sound():
 	playsound(r"assets\sounds\mixkit-arrow-whoosh-1491.wav")
                 
                 
-def DetectImage(path) -> None:
+def detect_image(path):
     while True:
         image_location = pyautogui.locateCenterOnScreen(path, confidence=0.9)
         if image_location:
             pyautogui.moveTo(image_location)
             return
         
-def error(error="") -> None:
+def error(error=""):
     rich_print()
     text = Align(":cactus: [bold #8D72E1] FAILED [/] :cactus:", align="center")
     error = "[#6D9886]" + error
     rich_print(Panel(text, subtitle=error, subtitle_align="right"))
     
     
-def release_all() -> None:
+def release_all():
     keys = ['\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&', "'", '(',
 ')', '*', '+', ',', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6', '7',
 '8', '9', ':', ';', '<', '=', '>', '?', '@', '[', '\\', ']', '^', '_', '`',
