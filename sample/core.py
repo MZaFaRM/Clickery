@@ -50,6 +50,10 @@ def print_title():
 
 
 def initialise(argv):
+    
+    # prints title card
+    print_title()
+    
     # Starts execution and handles keyboard interruption
     try:
         startup(argv)
@@ -427,6 +431,5 @@ def release_all():
 
 
 if __name__ == "sample.core":
-    print_title()
     # Excecuted to increase the quality of ktinkter windows
     clarity()
