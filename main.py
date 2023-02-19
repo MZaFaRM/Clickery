@@ -3,7 +3,6 @@ from sys import argv
 
 def main():
 
-
     # program checks tries to install all modules required to run the program
     try:
         # imports the program
