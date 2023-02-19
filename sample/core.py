@@ -22,22 +22,26 @@ from .helpers import menu
 
 from rich.table import Table
 
-rich_print()
-rich_print(Align("[#F9ED69]            ,---.'|                                ,--.                           |          ", align="center"))
-rich_print(Align("[#F9ED69]               ,--,                                                              - -         ", align="center"))
-rich_print(Align("[#F9ED69]  ,----..   |   | :       ,---,   ,----..      ,--/  /|     ,---,. ,-.----.       |          ", align="center"))
-rich_print(Align("[#F9ED69] /   /   \  :   : |    ,`--.' |  /   /   \  ,---,': / '   ,'  .' | \    /  \           ,---, ", align="center"))
-rich_print(Align("[#F08A5D]|   :     : |   ' :    |   :  : |   :     : :   : '/ /  ,---.'   | ;   :    \         /_ ./| ", align="center"))
-rich_print(Align("[#F08A5D].   |  ;. / ;   ; '    :   |  ' .   |  ;. / |   '   ,   |   |   .' |   | .\ :   ,---, |  ' : ", align="center"))
-rich_print(Align("[#F08A5D].   ; /--`  '   | |__  |   :  | .   ; /--`  '   |  /    :   :  |-, .   : |: |  /___/ \.  : | ", align="center"))
-rich_print(Align("[#F08A5D];   | ;     |   | :.'| '   '  ; ;   | ;     |   ;  ;    :   |  ;/| |   |  \ :   .  \  \ ,' ' ", align="center"))
-rich_print(Align("[#B83B5E]|   : |     '   :    ; |   |  | |   : |     :   '   \   |   :   .' |   : .  /    \  ;  `  ,' ", align="center"))
-rich_print(Align("[#B83B5E].   | '___  |   |  ./  '   :  ; .   | '___  |   |    '  |   |  |-, ;   | |  \     \  \    '  ", align="center"))
-rich_print(Align("[#B83B5E]'   ; : .'| ;   : ;    |   |  ' '   ; : .'| '   : |.  \ '   :  ;/| |   | ;\  \     '  \   |  ", align="center"))
-rich_print(Align("[#B83B5E]'   | '/  : |   ,/     '   :  | '   | '/  : |   | '_\.' |   |    \ :   ' | \.'      \  ;  ;  ", align="center"))
-rich_print(Align("[#6A2C70] \   \ .'              '---'     \   \ .'   ;   |,'     |   | ,'   |   |.'            \  ' ; ", align="center"))
-rich_print(Align("[#6A2C70]|   :    /  '---'      ;   |.'  |   :    /  '   : |     |   :   .' :   : :-'         :  \  \ ", align="center"))
-rich_print(Align("[#6A2C70]  `---`                           `---`     '---'       `----'     `---'               `--`  ", align="center"))
+
+def l(text: str) -> None:
+    rich_print(Align(text, align="center"))
+
+l("")
+l("[#F9ED69]               ,--,                                                               |          ")
+l("[#F9ED69]            ,---.'|                                ,--.                          - -         ")
+l("[#F9ED69]  ,----..   |   | :       ,---,   ,----..      ,--/  /|     ,---,. ,-.----.       |          ")
+l("[#F9ED69] /   /   \  :   : |    ,`--.' |  /   /   \  ,---,': / '   ,'  .' | \    /  \           ,---, ")
+l("[#F08A5D]|   :     : |   ' :    |   :  : |   :     : :   : '/ /  ,---.'   | ;   :    \         /_ ./| ")
+l("[#F08A5D].   |  ;. / ;   ; '    :   |  ' .   |  ;. / |   '   ,   |   |   .' |   | .\ :   ,---, |  ' : ")
+l("[#F08A5D].   ; /--`  '   | |__  |   :  | .   ; /--`  '   |  /    :   :  |-, .   : |: |  /___/ \.  : | ")
+l("[#F08A5D];   | ;     |   | :.'| '   '  ; ;   | ;     |   ;  ;    :   |  ;/| |   |  \ :   .  \  \ ,' ' ")
+l("[#B83B5E]|   : |     '   :    ; |   |  | |   : |     :   '   \   |   :   .' |   : .  /    \  ;  `  ,' ")
+l("[#B83B5E].   | '___  |   |  ./  '   :  ; .   | '___  |   |    '  |   |  |-, ;   | |  \     \  \    '  ")
+l("[#B83B5E]'   ; : .'| ;   : ;    |   |  ' '   ; : .'| '   : |.  \ '   :  ;/| |   | ;\  \     '  \   |  ")
+l("[#B83B5E]'   | '/  : |   ,/     '   :  | '   | '/  : |   | '_\.' |   |    \ :   ' | \.'      \  ;  ;  ")
+l("[#6A2C70]|   :    /  '---'      ;   |.'  |   :    /  '   : |     |   :   .' :   : :-'         :  \  \ ")
+l("[#6A2C70] \   \ .'              '---'     \   \ .'   ;   |,'     |   | ,'   |   |.'            \  ' ; ")
+l("[#6A2C70]  `---`                           `---`     '---'       `----'     `---'               `--`  ")
 
 def initialise(argv):
     # Starts execution and handles keyboard interruption
@@ -139,7 +143,7 @@ def startup(argv):
     except ExecutionStopped:
         error("Execution Stopped")
         return
-        
+    
     except Exception as e:
         error(type(e).__name__)
         return
