@@ -1,4 +1,4 @@
-import pyautogui
+import pyautogui, keyboard, threading
 
 from rich import print as rich_print
 from time import sleep
@@ -135,6 +135,14 @@ def startup(argv):
     except pyautogui.FailSafeException:
         error("Execution Cancelled")
         return
+    
+    except ExecutionStopped:
+        error("Execution Stopped")
+        return
+        
+    except Exception as e:
+        error(type(e).__name__)
+        return
 
     # Saves recorded actions to assets/database/history.db in table HISTORY
     menu.SaveToDB()
@@ -155,13 +163,26 @@ def post_record_menu():
 
     menu.print(MENU, action="Post-Menu")
 
+
+def quit_operation():
+    global status
+    status = False
+
 def play_recorded():
+    
+    global status
+    status = True
+    
+    keyboard.add_hotkey('ctrl + delete', quit_operation)
     
     i = 0
 
     # Does what is recorded
     for action in config.record:
         for key, value in action.items():
+            
+            if not status:
+                raise ExecutionStopped
             
             recorded = Table(expand=True, box=None, highlight=True)
             recorded.add_column(justify="right")
@@ -349,6 +370,7 @@ def detect_image(path):
         if image_location:
             pyautogui.moveTo(image_location)
             return
+      
         
 def error(error=""):
     rich_print()
@@ -356,6 +378,10 @@ def error(error=""):
     error = "[#6D9886]" + error
     rich_print(Panel(text, subtitle=error, subtitle_align="right"))
     
+
+class ExecutionStopped(Exception):
+    pass
+
     
 def release_all():
     keys = ['\t', '\n', '\r', ' ', '!', '"', '#', '$', '%', '&', "'", '(',
