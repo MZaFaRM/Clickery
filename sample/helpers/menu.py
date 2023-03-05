@@ -33,7 +33,7 @@ def print_menu():
     panel_group = Group(
         Align("\nUsage:", align="center"),
         Align(
-            "[#ECDBBA]Hover over the screen and press the apropriate call",
+            "[#ECDBBA]Hover over the screen and press the appropriate call",
             align="center",
         ),
         Align("[#ECDBBA]to perform the related operation", align="center"),
