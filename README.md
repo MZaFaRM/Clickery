@@ -80,7 +80,7 @@ The key must be `click`, and the value 'left'.
 
 ```{'click': 'right'}```
 
-The key must be `click`, and the value 'left'.
+The key must be `click`, and the value 'right'.
 
 ##### DRAG CURSOR
 
