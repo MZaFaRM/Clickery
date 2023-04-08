@@ -84,7 +84,7 @@ def print_menu_replace():
             "[#ECDBBA]Hover over the screen and press the appropriate call",
             align="center",
         ),
-        Align("[#ECDBBA]to perform the related operation", align="center"),
+        Align("[#ECDBBA]to record the related operation", align="center"),
         Align("\n[#FF7777]Supported Operations:", align="center"),
         Align(tabulate(menu_items, "keys", "rounded_grid"), align="center"),
         "\n",
