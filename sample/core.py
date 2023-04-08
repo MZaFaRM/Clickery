@@ -68,8 +68,8 @@ def startup(argv):
     # The main part of the code
     # Initialisation
     print()
-    Input_type = """\nPress [italic #F0A500]ENTER[/italic #F0A500] for File input...
-    Or Press [italic #F0A500]SHIFT[/italic #F0A500] for  Manual input...\n"""
+    Input_type = """\nPress [italic #F0A500]ENTER[/italic #F0A500] to import a Script...
+    Or Press [italic #F0A500]SHIFT[/italic #F0A500] to record a Script...\n"""
 
     menu.print(Input_type, action="Pre-Menu")
 
@@ -95,7 +95,7 @@ def startup(argv):
     # If actions record is empty the process quits
     if not len(config.record):
         menu.print_recorded()
-        error("No Actions Input")
+        error("Empty Script")
         return
 
     # Adds ids and prints everything that is recorded
@@ -136,7 +136,7 @@ def startup(argv):
 
         # If actions record is empty the process quits
         if not len(config.record):
-            error("No Actions Input")
+            error("Empty Script")
             return
 
         # Saves recorded actions to a assets/json/history.json

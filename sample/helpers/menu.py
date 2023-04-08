@@ -36,7 +36,7 @@ def print_menu():
             "[#ECDBBA]Hover over the screen and press the appropriate call",
             align="center",
         ),
-        Align("[#ECDBBA]to perform the related operation", align="center"),
+        Align("[#ECDBBA]to record the related operation", align="center"),
         Align("\n[#FF7777]Supported Operations:", align="center"),
         Align(tabulate(menu_items, "keys", "rounded_grid"), align="center"),
         "\n",
@@ -48,7 +48,7 @@ def print_menu():
         Panel(
             panel_group,
             title="[#FF731D]Main Menu",
-            subtitle="Finally, [italic #F0A500]ESC[/italic #F0A500] to Start operation",
+            subtitle="Finally, [italic #F0A500]ESC[/italic #F0A500] to continue",
             expand=True,
             highlight=True,
         )
@@ -146,7 +146,7 @@ def print(text="", action="Align"):
         rich_print(
             Panel(
                 Align(text, align="center"),
-                title="[#C147E9]Action Modifications",
+                title="[#C147E9]Script Modifications",
                 title_align="center",
                 subtitle="[#6D9886]Step 3",
                 highlight=True,
